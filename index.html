@@ -376,16 +376,18 @@ document.addEventListener('DOMContentLoaded', function() {
     el.addEventListener('click', function(){ switchPage(this.dataset.page); });
   });
 
-  // Always auto-connect with hardcoded URL — skip setup for everyone
+  // Always auto-connect — skip setup screen for everyone
   cfg = {url: HARDCODED_URL, commSheet: HARDCODED_COMM, exprSheet: HARDCODED_EXPR, isDemo: false};
+  // Hide setup screen immediately, show loading
+  document.getElementById('setupScreen').style.display = 'none';
   showLoading('Loading your data...');
   fetchAll()
     .then(function(){ showApp(); startTimer(); })
     .catch(function(e){
       hideLoading();
-      // Only show setup screen if connection fails (for admin to reconfigure)
-      toast('Could not connect to sheet: '+e.message+'. Showing setup screen.','err');
-      document.getElementById('setupScreen').style.display='flex';
+      toast('Connection error: '+e.message,'err');
+      // Show setup screen only as fallback for admin
+      document.getElementById('setupScreen').style.display = 'flex';
     });
 });
 
