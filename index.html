@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ops Intelligence Platform</title>
+<title>Ops IQ</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -11,43 +11,43 @@
   --bg:#0d0f1a;--bg2:#141624;--bg3:#1a1d2e;--bg4:#1f2235;
   --border:#2a2d45;--border2:#363a5a;
   --blue:#4f7cff;--blue2:#3d6bef;--indigo:#7c6fcd;
-  --green:#22d3a5;--green2:#1ab88f;
-  --amber:#f59e0b;--red:#ef4444;--pink:#e879a0;--cyan:#06b6d4;--lime:#84cc16;
+  --green:#22d3a5;--amber:#f59e0b;--red:#ef4444;--pink:#e879a0;--cyan:#06b6d4;
   --text:#e8eaf6;--text2:#9ba3c0;--text3:#5c6285;
 }
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:13px;min-height:100vh}
 
-/* SETUP */
-.setup{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem;background:radial-gradient(ellipse at 30% 20%,rgba(79,124,255,0.08),transparent 60%),var(--bg)}
-.setup-inner{max-width:700px;width:100%}
+/* ── SETUP ── */
+.setup{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem;background:radial-gradient(ellipse at 30% 20%,rgba(79,124,255,.08),transparent 60%),var(--bg)}
+.setup-inner{max-width:680px;width:100%}
 .setup-inner h1{font-size:26px;font-weight:800;background:linear-gradient(135deg,#4f7cff,#22d3a5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
 .setup-inner>p{color:var(--text2);margin-bottom:1.5rem;line-height:1.7;font-size:14px}
-.steps-card,.connect-card{background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1.2rem}
-.steps-card h2,.connect-card h2{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--blue);margin-bottom:1.2rem}
+.scard{background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1.2rem}
+.scard h2{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--blue);margin-bottom:1.2rem}
 .step{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
 .step:last-child{margin-bottom:0}
-.step-num{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--indigo));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;color:#fff}
-.step-body strong{display:block;font-size:13px;color:var(--text);margin-bottom:3px}
-.step-body p{font-size:12px;color:var(--text2);line-height:1.6}
-.step-body code{background:rgba(79,124,255,0.15);color:#7eb3ff;padding:1px 6px;border-radius:4px;font-size:11px;font-family:monospace}
-.code-block{background:#0a0c15;border:1px solid var(--border);border-radius:10px;padding:1rem;font-family:monospace;font-size:11px;color:#7eb3ff;overflow-x:auto;white-space:pre;margin-top:8px;position:relative;max-height:260px;overflow-y:auto}
-.copy-btn{position:sticky;top:0;float:right;background:var(--blue);color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;margin-bottom:4px}
-.input-group{margin-bottom:12px}
-.input-group label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text2);margin-bottom:5px}
-.input-group input{width:100%;padding:9px 12px;background:var(--bg);border:1.5px solid var(--border2);border-radius:8px;color:var(--text);font-size:13px;outline:none;transition:border .2s}
-.input-group input:focus{border-color:var(--blue)}
-.input-group input::placeholder{color:var(--text3)}
-.btn-connect{width:100%;padding:12px;background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:opacity .2s}
-.btn-connect:hover{opacity:.9}
-.alt-note{margin-top:.8rem;font-size:12px;color:var(--text3);text-align:center}
-.alt-note a{color:var(--blue);cursor:pointer;text-decoration:underline}
+.snum{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--indigo));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;color:#fff}
+.sbody strong{display:block;font-size:13px;color:var(--text);margin-bottom:3px}
+.sbody p{font-size:12px;color:var(--text2);line-height:1.6}
+.sbody code{background:rgba(79,124,255,.15);color:#7eb3ff;padding:1px 6px;border-radius:4px;font-size:11px;font-family:monospace}
+.codebox{background:#0a0c15;border:1px solid var(--border);border-radius:10px;padding:1rem;font-family:monospace;font-size:11px;color:#7eb3ff;overflow-x:auto;white-space:pre;margin-top:8px;max-height:240px;overflow-y:auto}
+.copybtn{float:right;background:var(--blue);color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;margin-bottom:6px;position:sticky;top:0}
+.igroup{margin-bottom:12px}
+.igroup label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text2);margin-bottom:5px}
+.igroup input{width:100%;padding:9px 12px;background:var(--bg);border:1.5px solid var(--border2);border-radius:8px;color:var(--text);font-size:13px;outline:none;transition:border .2s}
+.igroup input:focus{border-color:var(--blue)}
+.igroup input::placeholder{color:var(--text3)}
+.igrid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.btnconnect{width:100%;padding:12px;background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:opacity .2s}
+.btnconnect:hover{opacity:.9}
+.altnote{margin-top:.8rem;font-size:12px;color:var(--text3);text-align:center}
+.altnote a{color:var(--blue);cursor:pointer;text-decoration:underline}
 
-/* APP */
+/* ── APP SHELL ── */
 .app{display:none;flex-direction:column;height:100vh;overflow:hidden}
 .topbar{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 20px;height:52px;display:flex;align-items:center;gap:12px;flex-shrink:0}
 .logo{font-size:15px;font-weight:800;background:linear-gradient(135deg,#4f7cff,#22d3a5);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.topbar-sep{flex:1}
-.sync-pill{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2);background:var(--bg3);padding:4px 11px;border-radius:20px;border:1px solid var(--border)}
+.tsep{flex:1}
+.syncpill{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2);background:var(--bg3);padding:4px 11px;border-radius:20px;border:1px solid var(--border)}
 .sdot{width:7px;height:7px;border-radius:50%;background:var(--green)}
 .sdot.spin{animation:pulse 1s infinite;background:var(--amber)}
 .sdot.err{background:var(--red)}
@@ -64,35 +64,40 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 .nbadge.warn{background:var(--amber)}
 .main{flex:1;overflow-y:auto;padding:18px 20px}
 
-/* METRICS */
+/* ── METRIC CARDS ── */
 .mrow{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:18px}
-.mc{background:var(--bg3);border:1px solid var(--border);border-radius:13px;padding:14px 16px;position:relative;overflow:hidden;cursor:default}
+.mc{background:var(--bg3);border:1px solid var(--border);border-radius:13px;padding:14px 16px;position:relative;overflow:hidden}
 .mc::after{content:'';position:absolute;top:-20px;right:-20px;width:70px;height:70px;border-radius:50%;opacity:.1}
-.mc.blue::after{background:var(--blue)}.mc.green::after{background:var(--green)}.mc.amber::after{background:var(--amber)}.mc.pink::after{background:var(--pink)}.mc.red::after{background:var(--red)}.mc.indigo::after{background:var(--indigo)}.mc.cyan::after{background:var(--cyan)}
+.mc.blue::after{background:var(--blue)}.mc.green::after{background:var(--green)}.mc.amber::after{background:var(--amber)}
+.mc.pink::after{background:var(--pink)}.mc.red::after{background:var(--red)}.mc.indigo::after{background:var(--indigo)}.mc.cyan::after{background:var(--cyan)}
 .ml{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin-bottom:6px}
 .mv{font-size:26px;font-weight:800;color:var(--text)}
-.mc.blue .mv{color:var(--blue)}.mc.green .mv{color:var(--green)}.mc.amber .mv{color:var(--amber)}.mc.pink .mv{color:var(--pink)}.mc.red .mv{color:var(--red)}.mc.indigo .mv{color:var(--indigo)}.mc.cyan .mv{color:var(--cyan)}
+.mc.blue .mv{color:var(--blue)}.mc.green .mv{color:var(--green)}.mc.amber .mv{color:var(--amber)}
+.mc.pink .mv{color:var(--pink)}.mc.red .mv{color:var(--red)}.mc.indigo .mv{color:var(--indigo)}.mc.cyan .mv{color:var(--cyan)}
 .ms{font-size:11px;color:var(--text3);margin-top:3px}
+.clickable{cursor:pointer;transition:all .18s}
+.clickable:hover{border-color:var(--blue)!important;transform:translateY(-1px)}
+.mc.clickable:hover{box-shadow:0 0 0 2px rgba(79,124,255,.4)}
 
-/* GRID */
+/* ── LAYOUT ── */
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
 .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px}
-.g12{display:grid;grid-template-columns:1fr 2fr;gap:14px;margin-bottom:14px}
 .g21{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-bottom:14px}
 
-/* CARDS */
+/* ── CHART CARDS ── */
 .cc{background:var(--bg3);border:1px solid var(--border);border-radius:13px;padding:16px}
 .cc h3{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px}
 .ccsub{font-size:11px;color:var(--text3);margin-bottom:14px}
 .chwrap{position:relative;width:100%}
+.clicktip{font-size:10px;color:var(--blue);margin-top:6px;text-align:center}
 
-/* TABLE */
+/* ── TABLE ── */
 .tpanel{background:var(--bg3);border:1px solid var(--border);border-radius:13px;overflow:hidden}
 .ttoolbar{padding:12px 14px;display:flex;gap:8px;align-items:center;border-bottom:1px solid var(--border);flex-wrap:wrap;background:var(--bg4)}
 .ttoolbar input[type=text]{padding:6px 11px;background:var(--bg);border:1px solid var(--border2);border-radius:7px;color:var(--text);font-size:12px;outline:none;width:180px}
 .ttoolbar input:focus{border-color:var(--blue)}
 .ttoolbar select{padding:6px 9px;background:var(--bg);border:1px solid var(--border2);border-radius:7px;color:var(--text);font-size:12px;outline:none;max-width:150px}
-.tscroll{overflow:auto;max-height:450px}
+.tscroll{overflow:auto;max-height:460px}
 table{width:100%;border-collapse:collapse;font-size:12px}
 thead{background:var(--bg4);position:sticky;top:0;z-index:5}
 th{padding:9px 11px;text-align:left;font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--text3);white-space:nowrap;border-bottom:1px solid var(--border)}
@@ -105,17 +110,13 @@ tr:hover .abt{opacity:1}
 .abt.d{color:var(--red);border-color:rgba(239,68,68,.3);margin-left:3px}
 .autocell{color:var(--indigo);font-style:italic}
 
-/* BADGE */
-.badge{padding:2px 7px;border-radius:10px;font-size:10px;font-weight:700;letter-spacing:.02em;white-space:nowrap}
-.bg{background:rgba(34,211,165,.12);color:var(--green)}
-.ba{background:rgba(245,158,11,.12);color:var(--amber)}
-.br{background:rgba(239,68,68,.12);color:var(--red)}
-.bb{background:rgba(79,124,255,.12);color:var(--blue)}
-.bi{background:rgba(124,111,205,.12);color:var(--indigo)}
-.bc{background:rgba(6,182,212,.12);color:var(--cyan)}
-.bgr{background:rgba(92,98,133,.2);color:var(--text3)}
+/* ── BADGE ── */
+.badge{padding:2px 7px;border-radius:10px;font-size:10px;font-weight:700;white-space:nowrap}
+.bg{background:rgba(34,211,165,.12);color:var(--green)}.ba{background:rgba(245,158,11,.12);color:var(--amber)}
+.br{background:rgba(239,68,68,.12);color:var(--red)}.bb{background:rgba(79,124,255,.12);color:var(--blue)}
+.bi{background:rgba(124,111,205,.12);color:var(--indigo)}.bgr{background:rgba(92,98,133,.2);color:var(--text3)}
 
-/* PROGRESS */
+/* ── PROGRESS BARS ── */
 .plist{display:flex;flex-direction:column;gap:9px}
 .pi{display:flex;flex-direction:column;gap:4px}
 .ph{display:flex;justify-content:space-between;font-size:11px;color:var(--text2)}
@@ -123,27 +124,37 @@ tr:hover .abt{opacity:1}
 .pt{height:5px;background:var(--bg4);border-radius:3px;overflow:hidden}
 .pf{height:100%;border-radius:3px;transition:width .5s ease}
 
-/* MINI STATS */
+/* ── SUB BARS (clickable) ── */
+.sbl-list{display:flex;flex-direction:column;gap:5px;max-height:320px;overflow-y:auto}
+.sbl-row{display:flex;align-items:center;gap:8px;font-size:12px;padding:6px 8px;border-radius:7px;cursor:pointer;transition:background .15s}
+.sbl-row:hover{background:rgba(79,124,255,.08)}
+.sbl-label{flex:1;color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sbl-track{width:70px;height:5px;background:var(--bg4);border-radius:3px;overflow:hidden;flex-shrink:0}
+.sbl-fill{height:100%;border-radius:3px}
+.sbl-count{font-weight:700;color:var(--text);min-width:28px;text-align:right;font-size:11px}
+.sbl-pct{font-size:10px;color:var(--text3);min-width:30px;text-align:right}
+
+/* ── MINI STATS ── */
 .mstats{display:flex;flex-direction:column;gap:7px}
 .mstat{display:flex;justify-content:space-between;align-items:center;padding:7px 11px;background:var(--bg4);border-radius:7px;border:1px solid var(--border)}
 .msl{font-size:12px;color:var(--text2)}.msv{font-size:13px;font-weight:700;color:var(--text)}
 
-/* ALERT */
+/* ── ALERTS ── */
 .alist{display:flex;flex-direction:column;gap:7px}
 .ai{display:flex;gap:10px;padding:9px 12px;border-radius:9px;border:1px solid;align-items:flex-start}
 .ai.warn{background:rgba(245,158,11,.06);border-color:rgba(245,158,11,.2)}
 .ai.danger{background:rgba(239,68,68,.06);border-color:rgba(239,68,68,.2)}
 .ai.info{background:rgba(79,124,255,.06);border-color:rgba(79,124,255,.2)}
 .ai.ok{background:rgba(34,211,165,.06);border-color:rgba(34,211,165,.2)}
-.at .att{font-size:12px;font-weight:600;color:var(--text)}
-.at .ats{font-size:11px;color:var(--text3);margin-top:2px}
+.att{font-size:12px;font-weight:600;color:var(--text)}
+.ats{font-size:11px;color:var(--text3);margin-top:2px}
 
-/* TIMELINE/HEATMAP */
-.hm-grid{display:grid;gap:3px}
-.hm-cell{border-radius:3px;aspect-ratio:1;min-width:18px;cursor:default;transition:opacity .2s}
-.hm-cell:hover{opacity:.7}
+/* ── STABS ── */
+.stabs{display:flex;gap:0;margin-bottom:16px;border-bottom:1px solid var(--border)}
+.stab{padding:7px 15px;font-size:12px;font-weight:600;cursor:pointer;color:var(--text3);border-bottom:2px solid transparent;transition:all .2s}
+.stab.active{color:var(--blue);border-bottom-color:var(--blue)}
 
-/* MODAL */
+/* ── MODAL ── */
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center}
 .overlay.open{display:flex}
 .modal{background:var(--bg3);border:1px solid var(--border2);border-radius:16px;width:760px;max-width:96vw;max-height:88vh;display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,.5)}
@@ -152,8 +163,6 @@ tr:hover .abt{opacity:1}
 .mclose{background:none;border:1px solid var(--border2);border-radius:7px;width:28px;height:28px;cursor:pointer;color:var(--text3);font-size:15px;display:flex;align-items:center;justify-content:center}
 .mclose:hover{background:var(--bg4);color:var(--text)}
 .mbody{padding:20px;overflow-y:auto;flex:1}
-.fsec{margin-bottom:18px}
-.fst{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--blue);margin-bottom:12px;padding-bottom:7px;border-bottom:1px solid var(--border)}
 .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .ff{display:flex;flex-direction:column;gap:4px}
 .ff.full{grid-column:1/-1}
@@ -162,8 +171,7 @@ tr:hover .abt{opacity:1}
 .ff input,.ff select,.ff textarea{padding:8px 10px;background:var(--bg);border:1.5px solid var(--border2);border-radius:7px;color:var(--text);font-size:12px;outline:none;font-family:inherit;transition:border .2s}
 .ff input:focus,.ff select:focus,.ff textarea:focus{border-color:var(--blue)}
 .ff input[readonly]{background:rgba(124,111,205,.08);color:var(--indigo);cursor:not-allowed}
-.ff textarea{resize:vertical;min-height:60px}
-.ff input::placeholder,.ff textarea::placeholder{color:var(--text3)}
+.ff input::placeholder{color:var(--text3)}
 .mftr{padding:14px 20px;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:space-between;align-items:center}
 .mnote{font-size:11px;color:var(--text3)}
 .mbtns{display:flex;gap:8px}
@@ -172,59 +180,37 @@ tr:hover .abt{opacity:1}
 .btn-p{background:var(--blue);border-color:var(--blue);color:#fff}.btn-p:hover{background:var(--blue2)}
 .btn-p:disabled{opacity:.5;cursor:not-allowed}
 
-/* SECTION TABS */
-.stabs{display:flex;gap:0;margin-bottom:16px;border-bottom:1px solid var(--border)}
-.stab{padding:7px 15px;font-size:12px;font-weight:600;cursor:pointer;color:var(--text3);border-bottom:2px solid transparent;transition:all .2s}
-.stab.active{color:var(--blue);border-bottom-color:var(--blue)}
-
-/* DRILL DOWN */
-.drill-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);z-index:400;align-items:flex-end;justify-content:center}
-.drill-overlay.open{display:flex}
-.drill-panel{background:var(--bg3);border:1px solid var(--border2);border-radius:18px 18px 0 0;width:100%;max-width:1100px;max-height:88vh;display:flex;flex-direction:column;box-shadow:0 -20px 60px rgba(0,0,0,.5);animation:slideup .25s ease}
+/* ── DRILL DOWN ── */
+.doverlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);z-index:400;align-items:flex-end;justify-content:center}
+.doverlay.open{display:flex}
+.dpanel{background:var(--bg3);border:1px solid var(--border2);border-radius:18px 18px 0 0;width:100%;max-width:1100px;max-height:88vh;display:flex;flex-direction:column;box-shadow:0 -20px 60px rgba(0,0,0,.5);animation:slideup .25s ease}
 @keyframes slideup{from{transform:translateY(60px);opacity:0}to{transform:translateY(0);opacity:1}}
-.drill-hdr{padding:16px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;flex-shrink:0}
-.drill-hdr h2{font-size:15px;font-weight:700;flex:1}
-.drill-hdr .dclose{background:none;border:1px solid var(--border2);border-radius:8px;width:30px;height:30px;cursor:pointer;color:var(--text3);font-size:16px;display:flex;align-items:center;justify-content:center}
-.drill-hdr .dclose:hover{background:var(--bg4);color:var(--text)}
-.drill-body{padding:18px 22px;overflow-y:auto;flex:1}
-.drill-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-bottom:18px}
-.dstat{background:var(--bg4);border:1px solid var(--border);border-radius:10px;padding:12px 14px}
-.dstat .dl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text3);margin-bottom:5px}
-.dstat .dv{font-size:20px;font-weight:800;color:var(--blue)}
-.dstat .ds{font-size:11px;color:var(--text3);margin-top:2px}
-.drill-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
-.clickable{cursor:pointer;transition:all .2s;position:relative}
-.clickable:hover{border-color:var(--blue)!important;transform:translateY(-1px)}
-.clickable::after{content:'🔍 Click to drill down';position:absolute;bottom:8px;right:12px;font-size:10px;color:var(--text3);opacity:0;transition:opacity .2s}
-.clickable:hover::after{opacity:1}
-.mc.clickable:hover{box-shadow:0 0 0 2px var(--blue)}
-.chart-segment-tip{font-size:11px;color:var(--text3);margin-top:8px;text-align:center}
-.sub-bar-list{display:flex;flex-direction:column;gap:7px;max-height:300px;overflow-y:auto}
-.sub-bar{display:flex;align-items:center;gap:10px;font-size:12px;padding:6px 10px;border-radius:7px;cursor:pointer;transition:background .15s}
-.sub-bar:hover{background:rgba(79,124,255,.08)}
-.sub-bar .sbl{flex:1;color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.sub-bar .sbc{font-weight:700;color:var(--text);min-width:30px;text-align:right}
-.sub-bar .sbp{font-size:11px;color:var(--text3);min-width:36px;text-align:right}
-.sub-bar-track{width:80px;height:5px;background:var(--bg4);border-radius:3px;overflow:hidden;flex-shrink:0}
-.sub-bar-fill{height:100%;border-radius:3px}
-.drill-table{font-size:12px;width:100%;border-collapse:collapse}
-.drill-table th{padding:8px 10px;background:var(--bg4);font-size:10px;text-transform:uppercase;color:var(--text3);font-weight:700;letter-spacing:.04em;white-space:nowrap;border-bottom:1px solid var(--border);position:sticky;top:0}
-.drill-table td{padding:7px 10px;border-bottom:1px solid rgba(42,45,69,.4);color:var(--text2);white-space:nowrap;max-width:150px;overflow:hidden;text-overflow:ellipsis}
-.drill-table tr:hover td{background:rgba(79,124,255,.04);color:var(--text)}
-.dtscroll{max-height:320px;overflow-y:auto;border-radius:8px;border:1px solid var(--border)}
-.back-btn{padding:5px 12px;background:transparent;border:1px solid var(--border2);border-radius:7px;color:var(--text2);font-size:12px;cursor:pointer;margin-right:8px}
-.back-btn:hover{background:var(--bg4)}
+.dhdr{padding:16px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;flex-shrink:0}
+.dhdr h2{font-size:15px;font-weight:700;flex:1}
+.dclose{background:none;border:1px solid var(--border2);border-radius:8px;width:30px;height:30px;cursor:pointer;color:var(--text3);font-size:16px;display:flex;align-items:center;justify-content:center}
+.dclose:hover{background:var(--bg4);color:var(--text)}
+.dbody{padding:18px 22px;overflow-y:auto;flex:1}
+.dstats{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-bottom:18px}
+.dsc{background:var(--bg4);border:1px solid var(--border);border-radius:10px;padding:12px 14px}
+.dsc .dl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text3);margin-bottom:5px}
+.dsc .dv{font-size:20px;font-weight:800;color:var(--blue)}
+.dsc .ds{font-size:11px;color:var(--text3);margin-top:2px}
+.backbtn{padding:5px 12px;background:transparent;border:1px solid var(--border2);border-radius:7px;color:var(--text2);font-size:12px;cursor:pointer}
+.backbtn:hover{background:var(--bg4)}
+.dtscroll{max-height:300px;overflow-y:auto;border-radius:8px;border:1px solid var(--border)}
+.dtable{width:100%;border-collapse:collapse;font-size:12px}
+.dtable th{padding:8px 10px;background:var(--bg4);font-size:10px;text-transform:uppercase;color:var(--text3);font-weight:700;letter-spacing:.04em;white-space:nowrap;border-bottom:1px solid var(--border);position:sticky;top:0}
+.dtable td{padding:7px 10px;border-bottom:1px solid rgba(42,45,69,.4);color:var(--text2);white-space:nowrap;max-width:150px;overflow:hidden;text-overflow:ellipsis}
+.dtable tr:hover td{background:rgba(79,124,255,.04);color:var(--text)}
 
-/* TOAST */
+/* ── TOAST / LOADING ── */
 .twrap{position:fixed;bottom:20px;right:20px;z-index:999;display:flex;flex-direction:column;gap:7px;pointer-events:none}
 .toast{padding:10px 16px;border-radius:9px;font-size:12px;color:#fff;background:var(--bg4);border:1px solid var(--border2);opacity:0;transform:translateY(8px);transition:all .3s;max-width:320px;box-shadow:0 8px 30px rgba(0,0,0,.4)}
 .toast.show{opacity:1;transform:translateY(0)}
 .toast.ok{background:rgba(22,163,74,.9)}.toast.err{background:rgba(185,28,28,.9)}.toast.info{background:rgba(79,124,255,.9)}
-
-/* LOADING */
 .lov{position:fixed;inset:0;background:rgba(13,15,26,.85);backdrop-filter:blur(6px);z-index:300;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px}
 .lov.hide{display:none}
-.spin2{width:34px;height:34px;border:3px solid rgba(79,124,255,.2);border-top-color:var(--blue);border-radius:50%;animation:sp .7s linear infinite}
+.spinner{width:34px;height:34px;border:3px solid rgba(79,124,255,.2);border-top-color:var(--blue);border-radius:50%;animation:sp .7s linear infinite}
 @keyframes sp{to{transform:rotate(360deg)}}
 .ltxt{color:var(--text2);font-size:13px}
 .empty{text-align:center;padding:50px 20px;color:var(--text3)}
@@ -232,62 +218,69 @@ tr:hover .abt{opacity:1}
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{background:var(--bg2)}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
-@media(max-width:860px){.g2,.g3,.g12,.g21{grid-template-columns:1fr}}
+@media(max-width:860px){.g2,.g3,.g21{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
-<div class="lov hide" id="lov"><div class="spin2"></div><div class="ltxt" id="ltxt">Connecting...</div></div>
+<div class="lov hide" id="lov"><div class="spinner"></div><div class="ltxt" id="ltxt">Connecting...</div></div>
 
 <!-- SETUP -->
 <div class="setup" id="setupScreen">
   <div class="setup-inner">
     <h1>⚡ Ops Intelligence Platform</h1>
-    <p>Real-time connection to your Google Sheet — reads all columns automatically and builds full analytics from your actual data.</p>
-    <div class="steps-card">
+    <p>Real-time Google Sheet connection — reads all your columns automatically and builds full drill-down analytics from your live data.</p>
+    <div class="scard">
       <h2>Step 1 — Paste this into Apps Script (Extensions → Apps Script in your Sheet)</h2>
       <div style="position:relative">
-        <button class="copy-btn" onclick="copyScript()">Copy Script</button>
-        <div class="code-block" id="scriptCode">const COMM_SHEET = 'Commercial';
+        <div class="codebox" id="scriptCode">const COMM_SHEET = 'Commercial';
 const EXPR_SHEET = 'Express';
 
 function doGet(e) {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const name = (e.parameter.sheet === 'express') ? EXPR_SHEET : COMM_SHEET;
-  const ws = ss.getSheetByName(name);
-  const data = ws ? ws.getDataRange().getValues() : [];
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var name = (e.parameter.sheet === 'express') ? EXPR_SHEET : COMM_SHEET;
+  var ws = ss.getSheetByName(name);
+  var data = ws ? ws.getDataRange().getValues() : [];
   return ContentService
     .createTextOutput(JSON.stringify({ok:true, data:data}))
     .setMimeType(ContentService.MimeType.JSON);
 }
 
 function doPost(e) {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const body = JSON.parse(e.postData.contents);
-  const name = (body.sheet === 'express') ? EXPR_SHEET : COMM_SHEET;
-  const ws = ss.getSheetByName(name);
-  if (!ws) return resp({ok:false,error:'Sheet not found'});
-  if (body.action === 'append') ws.appendRow(body.row);
-  else if (body.action === 'update') ws.getRange(body.rowIndex,1,1,body.row.length).setValues([body.row]);
-  else if (body.action === 'delete') ws.deleteRow(body.rowIndex);
-  return resp({ok:true});
-}
-function resp(o){return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON);}</div>
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var body = JSON.parse(e.postData.contents);
+  var name = (body.sheet === 'express') ? EXPR_SHEET : COMM_SHEET;
+  var ws = ss.getSheetByName(name);
+  if (!ws) {
+    return ContentService.createTextOutput(JSON.stringify({ok:false,error:'Sheet not found'}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+  if (body.action === 'append') {
+    ws.appendRow(body.row);
+  } else if (body.action === 'update') {
+    ws.getRange(body.rowIndex, 1, 1, body.row.length).setValues([body.row]);
+  } else if (body.action === 'delete') {
+    ws.deleteRow(body.rowIndex);
+  }
+  return ContentService.createTextOutput(JSON.stringify({ok:true}))
+    .setMimeType(ContentService.MimeType.JSON);
+}</div>
+        <button class="copybtn" id="copyBtn">Copy Script</button>
       </div>
       <div class="step" style="margin-top:14px">
-        <div class="step-num">2</div>
-        <div class="step-body"><strong>Deploy → New Deployment → Web App</strong><p>Execute as: <code>Me</code> · Access: <code>Anyone</code> · Deploy → copy URL</p></div>
+        <div class="snum">2</div>
+        <div class="sbody"><strong>Deploy → New Deployment → Web App</strong><p>Execute as: <code>Me</code> · Who has access: <code>Anyone</code> · Deploy → copy the URL</p></div>
       </div>
     </div>
-    <div class="connect-card">
+    <div class="scard">
       <h2>Step 2 — Connect</h2>
-      <div class="input-group"><label>Apps Script Web App URL</label><input type="text" id="webAppUrl" placeholder="https://script.google.com/macros/s/.../exec"></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
-        <div class="input-group" style="margin:0"><label>Commercial Sheet Name</label><input type="text" id="commSN" placeholder="Commercial" value="Commercial"></div>
-        <div class="input-group" style="margin:0"><label>Express Sheet Name</label><input type="text" id="exprSN" placeholder="Express" value="Express"></div>
+      <div class="igroup"><label>Apps Script Web App URL</label><input type="text" id="webAppUrl" placeholder="https://script.google.com/macros/s/.../exec"></div>
+      <div class="igrid2">
+        <div class="igroup" style="margin:0"><label>Commercial Sheet Name</label><input type="text" id="commSN" value="Commercial"></div>
+        <div class="igroup" style="margin:0"><label>Express Sheet Name</label><input type="text" id="exprSN" value="Express"></div>
       </div>
-      <button class="btn-connect" onclick="connectSheet()">Connect & Load Data →</button>
-      <p class="alt-note">No sheet yet? <a onclick="loadDemo()">Explore with demo data</a></p>
+      <button class="btnconnect" id="connectBtn">Connect &amp; Load Data →</button>
+      <p class="altnote">No sheet yet? <a id="demoLink">Explore with demo data</a></p>
     </div>
   </div>
 </div>
@@ -297,925 +290,897 @@ function resp(o){return ContentService.createTextOutput(JSON.stringify(o)).setMi
   <div class="topbar">
     <div class="logo">⚡ OPS IQ</div>
     <span style="font-size:11px;color:var(--text3)" id="sheetLabel"></span>
-    <div class="topbar-sep"></div>
-    <div class="sync-pill"><div class="sdot" id="sdot"></div><span id="stxt">Live</span></div>
-    <button class="tbtn" onclick="refreshAll()">↻ Sync</button>
-    <button class="tbtn pri" id="topAddBtn" onclick="openModal('commercial',-1)">+ Add Entry</button>
-    <button class="tbtn" onclick="resetToSetup()" style="font-size:11px">⚙</button>
+    <div class="tsep"></div>
+    <div class="syncpill"><div class="sdot" id="sdot"></div><span id="stxt">Live</span></div>
+    <button class="tbtn" id="syncBtn">↻ Sync</button>
+    <button class="tbtn pri" id="topAddBtn">+ Add Entry</button>
+    <button class="tbtn" id="settingsBtn" style="font-size:11px">⚙</button>
   </div>
   <div class="nav">
-    <div class="ni active" onclick="switchPage('dashboard')">📊 Dashboard</div>
-    <div class="ni" onclick="switchPage('commercial')">🏢 Commercial <span class="nbadge" id="cb">0</span></div>
-    <div class="ni" onclick="switchPage('express')">✈ Express <span class="nbadge" id="eb">0</span></div>
-    <div class="ni" onclick="switchPage('analytics')">📈 Analytics</div>
-    <div class="ni" onclick="switchPage('alerts')">🔔 Alerts <span class="nbadge warn" id="ab">0</span></div>
+    <div class="ni active" data-page="dashboard">📊 Dashboard</div>
+    <div class="ni" data-page="commercial">🏢 Commercial <span class="nbadge" id="cb">0</span></div>
+    <div class="ni" data-page="express">✈ Express <span class="nbadge" id="eb">0</span></div>
+    <div class="ni" data-page="analytics">📈 Analytics</div>
+    <div class="ni" data-page="alerts">🔔 Alerts <span class="nbadge warn" id="ab">0</span></div>
   </div>
   <div class="main" id="mainContent"></div>
 </div>
 
-<!-- MODAL -->
+<!-- ADD/EDIT MODAL -->
 <div class="overlay" id="overlay">
   <div class="modal">
-    <div class="mhdr"><h2 id="mtitle">Add Entry</h2><div class="mclose" onclick="closeModal()">×</div></div>
+    <div class="mhdr"><h2 id="mtitle">Add Entry</h2><div class="mclose" id="mcloseBtn">×</div></div>
     <div class="mbody"><div id="formContent"></div></div>
-    <div class="mftr"><span class="mnote" id="mnote"></span><div class="mbtns"><button class="btn btn-g" onclick="closeModal()">Cancel</button><button class="btn btn-p" onclick="saveEntry()" id="saveBtn">Save</button></div></div>
+    <div class="mftr"><span class="mnote" id="mnote"></span><div class="mbtns"><button class="btn btn-g" id="mcancelBtn">Cancel</button><button class="btn btn-p" id="saveBtn">Save</button></div></div>
   </div>
 </div>
+
+<!-- DRILL DOWN -->
+<div class="doverlay" id="doverlay">
+  <div class="dpanel">
+    <div class="dhdr">
+      <button class="backbtn" id="backBtn" style="display:none">← Back</button>
+      <h2 id="dtitle">Drill Down</h2>
+      <span style="font-size:11px;color:var(--text3);margin-left:8px" id="dsubtitle"></span>
+      <div style="flex:1"></div>
+      <div class="dclose" id="dcloseBtn">×</div>
+    </div>
+    <div class="dbody" id="dbody"></div>
+  </div>
+</div>
+
 <div class="twrap" id="twrap"></div>
 
-<!-- DRILL DOWN PANEL -->
-<div class="drill-overlay" id="drillOverlay" onclick="closeDrillIfBg(event)">
-  <div class="drill-panel" id="drillPanel">
-    <div class="drill-hdr">
-      <button class="back-btn" id="drillBackBtn" style="display:none" onclick="drillBack()">← Back</button>
-      <h2 id="drillTitle">Drill Down</h2>
-      <div style="font-size:11px;color:var(--text3)" id="drillSubtitle"></div>
-      <div style="flex:1"></div>
-      <div class="dclose" onclick="closeDrill()">×</div>
-    </div>
-    <div class="drill-body" id="drillBody"></div>
-  </div>
-</div>
-
 <script>
-// ═══════════════════════════════════════════
+// ════════════════════════════════════════════
 // STATE
-// ═══════════════════════════════════════════
-let cfg={url:'',commSheet:'Commercial',exprSheet:'Express',isDemo:false};
-let commData=[],exprData=[],commHeaders=[],exprHeaders=[];
-let modalState={sheet:'',rowIdx:-1};
-let autoTimer=null, charts={}, currentPage='dashboard';
+// ════════════════════════════════════════════
+var cfg = {url:'', commSheet:'Commercial', exprSheet:'Express', isDemo:false};
+var commData=[], exprData=[], commHeaders=[], exprHeaders=[];
+var modalState = {sheet:'', rowIdx:-1};
+var drillStack = [];
+var autoTimer = null;
+var charts = {};
+var currentPage = 'dashboard';
 
-const EXPR_AUTO=['FLIGHT No.','OC Clearance Partner','Number Of Pkgs','HANDOVER DATE',
+var EXPR_AUTO = ['FLIGHT No.','OC Clearance Partner','Number Of Pkgs','HANDOVER DATE',
   'Expected FLYING DATE','Port','ETD (Local airport time)','ATD (Local airport time)','ETA (Local airport time)'];
 
-const PALETTE=['#4f7cff','#22d3a5','#f59e0b','#ef4444','#e879a0','#7c6fcd','#06b6d4','#84cc16','#f97316','#a855f7','#14b8a6','#eab308'];
+var PAL = ['#4f7cff','#22d3a5','#f59e0b','#ef4444','#e879a0','#7c6fcd','#06b6d4','#84cc16','#f97316','#a855f7','#14b8a6','#eab308'];
 
-// ═══════════════════════════════════════════
+// ════════════════════════════════════════════
+// INIT — wire up all events after DOM ready
+// ════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('connectBtn').addEventListener('click', connectSheet);
+  document.getElementById('demoLink').addEventListener('click', loadDemo);
+  document.getElementById('copyBtn').addEventListener('click', copyScript);
+  document.getElementById('syncBtn').addEventListener('click', refreshAll);
+  document.getElementById('settingsBtn').addEventListener('click', resetToSetup);
+  document.getElementById('topAddBtn').addEventListener('click', function(){ openModal(currentPage==='express'?'express':'commercial', -1); });
+  document.getElementById('saveBtn').addEventListener('click', saveEntry);
+  document.getElementById('mcancelBtn').addEventListener('click', closeModal);
+  document.getElementById('mcloseBtn').addEventListener('click', closeModal);
+  document.getElementById('dcloseBtn').addEventListener('click', closeDrill);
+  document.getElementById('backBtn').addEventListener('click', drillBack);
+  document.getElementById('doverlay').addEventListener('click', function(e){ if(e.target===this) closeDrill(); });
+
+  // Nav
+  document.querySelectorAll('.ni').forEach(function(el){
+    el.addEventListener('click', function(){ switchPage(this.dataset.page); });
+  });
+
+  // Load saved config
+  var saved = localStorage.getItem('opsCfgV3');
+  if(saved){
+    try{
+      cfg = JSON.parse(saved);
+      document.getElementById('webAppUrl').value = cfg.url||'';
+      document.getElementById('commSN').value = cfg.commSheet||'Commercial';
+      document.getElementById('exprSN').value = cfg.exprSheet||'Express';
+      if(cfg.url){ showLoading('Reconnecting...'); fetchAll().then(function(){ showApp(); startTimer(); }).catch(function(e){ hideLoading(); toast('Reconnect failed: '+e.message,'err'); }); }
+    }catch(e){}
+  }
+});
+
+// ════════════════════════════════════════════
 // SETUP
-// ═══════════════════════════════════════════
+// ════════════════════════════════════════════
 function copyScript(){
-  navigator.clipboard.writeText(document.getElementById('scriptCode').innerText)
-    .then(()=>toast('Script copied!','info'));
+  var txt = document.getElementById('scriptCode').innerText;
+  navigator.clipboard.writeText(txt).then(function(){ toast('Script copied!','info'); });
 }
 
-async function connectSheet(){
-  const url=document.getElementById('webAppUrl').value.trim();
-  if(!url){toast('Paste your Web App URL first','err');return;}
-  cfg={url,commSheet:document.getElementById('commSN').value.trim()||'Commercial',
-       exprSheet:document.getElementById('exprSN').value.trim()||'Express',isDemo:false};
-  localStorage.setItem('opsCfg',JSON.stringify(cfg));
+function connectSheet(){
+  var url = document.getElementById('webAppUrl').value.trim();
+  if(!url){ toast('Paste your Web App URL first','err'); return; }
+  cfg = {url:url, commSheet:document.getElementById('commSN').value.trim()||'Commercial',
+         exprSheet:document.getElementById('exprSN').value.trim()||'Express', isDemo:false};
+  localStorage.setItem('opsCfgV3', JSON.stringify(cfg));
   showLoading('Connecting to Google Sheet...');
-  try{await fetchAll();showApp();toast('Connected! Auto-syncing every 30s.','ok');startTimer();}
-  catch(e){hideLoading();toast('Connection failed: '+e.message+'. Check your Web App URL.','err');}
+  fetchAll().then(function(){ showApp(); toast('Connected! Auto-syncing every 30s.','ok'); startTimer(); })
+    .catch(function(e){ hideLoading(); toast('Connection failed: '+e.message,'err'); });
 }
 
 function loadDemo(){
-  cfg.isDemo=true;genDemo();showApp();
-  toast('Demo mode — changes not synced to any sheet','info');
+  cfg.isDemo = true;
+  genDemo();
+  showApp();
+  toast('Demo mode — changes not synced','info');
 }
-function resetToSetup(){clearInterval(autoTimer);document.getElementById('setupScreen').style.display='flex';document.getElementById('mainApp').style.display='none';}
 
-// ═══════════════════════════════════════════
-// FETCH
-// ═══════════════════════════════════════════
-async function fetchAll(){
-  const [cr,er]=await Promise.all([fetchSheet('commercial'),fetchSheet('express')]);
-  parseSheet(cr,'commercial');parseSheet(er,'express');
-  updateBadges();
+function resetToSetup(){
+  clearInterval(autoTimer);
+  document.getElementById('setupScreen').style.display='flex';
+  document.getElementById('mainApp').style.display='none';
 }
-async function fetchSheet(which){
-  if(cfg.isDemo)return null;
-  const r=await fetch(cfg.url+'?sheet='+which+'&t='+Date.now(),{redirect:'follow'});
-  if(!r.ok)throw new Error('HTTP '+r.status);
-  const txt=await r.text();
-  let j;try{j=JSON.parse(txt);}catch(e){throw new Error('Bad response from script');}
-  if(!j.ok)throw new Error('Script error');
-  return j.data;
+
+// ════════════════════════════════════════════
+// DATA FETCH & PARSE
+// ════════════════════════════════════════════
+function fetchAll(){
+  return Promise.all([fetchSheet('commercial'), fetchSheet('express')])
+    .then(function(res){ parseSheet(res[0],'commercial'); parseSheet(res[1],'express'); updateBadges(); });
 }
-function parseSheet(raw,which){
-  if(!raw||!raw.length)return;
-  const headers=raw[0].map(h=>String(h||'').trim()).filter(Boolean);
-  const rows=raw.slice(1).map(r=>{const o={};headers.forEach((h,i)=>o[h]=r[i]!==undefined?String(r[i]):'');return o;})
-    .filter(r=>Object.values(r).some(v=>v.trim()!==''));
-  if(which==='commercial'){commHeaders=headers;commData=rows;}
-  else{exprHeaders=headers;exprData=rows;}
+
+function fetchSheet(which){
+  if(cfg.isDemo) return Promise.resolve(null);
+  return fetch(cfg.url+'?sheet='+which+'&t='+Date.now(), {redirect:'follow'})
+    .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.text(); })
+    .then(function(txt){
+      var j;
+      try{ j=JSON.parse(txt); }catch(e){ throw new Error('Bad response — check script is deployed'); }
+      if(!j.ok) throw new Error('Script error');
+      return j.data;
+    });
 }
-async function refreshAll(){
-  if(cfg.isDemo){renderPage();return;}
+
+function parseSheet(raw, which){
+  if(!raw||!raw.length) return;
+  var headers = raw[0].map(function(h){ return String(h||'').trim(); }).filter(Boolean);
+  var rows = raw.slice(1).map(function(r){
+    var o={};
+    headers.forEach(function(h,i){ o[h]=r[i]!==undefined?String(r[i]):''; });
+    return o;
+  }).filter(function(r){ return Object.values(r).some(function(v){ return v.trim()!==''; }); });
+  if(which==='commercial'){ commHeaders=headers; commData=rows; }
+  else{ exprHeaders=headers; exprData=rows; }
+}
+
+function refreshAll(){
+  if(cfg.isDemo){ renderPage(); return; }
   setSync('spin','Syncing...');
-  try{await fetchAll();renderPage();setSync('ok','Live');toast('Refreshed','ok');}
-  catch(e){setSync('err','Error');toast('Sync failed: '+e.message,'err');}
+  fetchAll().then(function(){ renderPage(); setSync('ok','Live'); toast('Refreshed','ok'); })
+    .catch(function(e){ setSync('err','Error'); toast('Sync failed: '+e.message,'err'); });
 }
-function startTimer(){clearInterval(autoTimer);autoTimer=setInterval(async()=>{
-  try{await fetchAll();renderPage();setSync('ok','Live');}catch(e){setSync('err','Sync error');}
-},30000);}
 
-// ═══════════════════════════════════════════
-// WRITE
-// ═══════════════════════════════════════════
-async function writeSheet(action,sheet,row,rowIndex){
-  if(cfg.isDemo)return;
-  const r=await fetch(cfg.url,{method:'POST',redirect:'follow',
+function startTimer(){
+  clearInterval(autoTimer);
+  autoTimer = setInterval(function(){
+    fetchAll().then(function(){ renderPage(); setSync('ok','Live'); }).catch(function(){ setSync('err','Sync error'); });
+  }, 30000);
+}
+
+async function writeSheet(action, sheet, row, rowIndex){
+  if(cfg.isDemo) return;
+  var r = await fetch(cfg.url, {method:'POST', redirect:'follow',
     headers:{'Content-Type':'text/plain'},
-    body:JSON.stringify({action,sheet,row,rowIndex})});
-  if(!r.ok)throw new Error('HTTP '+r.status);
+    body:JSON.stringify({action:action, sheet:sheet, row:row, rowIndex:rowIndex})});
+  if(!r.ok) throw new Error('HTTP '+r.status);
 }
 
-// ═══════════════════════════════════════════
-// APP UI
-// ═══════════════════════════════════════════
+// ════════════════════════════════════════════
+// APP UI HELPERS
+// ════════════════════════════════════════════
 function showApp(){
   hideLoading();
   document.getElementById('setupScreen').style.display='none';
   document.getElementById('mainApp').style.display='flex';
-  document.getElementById('sheetLabel').textContent=cfg.isDemo?'Demo Mode':'Live · Google Sheet';
-  setSync(cfg.isDemo?'warn':'ok',cfg.isDemo?'Demo':'Live');
+  document.getElementById('sheetLabel').textContent = cfg.isDemo?'Demo Mode':'Live · Google Sheet';
+  setSync(cfg.isDemo?'warn':'ok', cfg.isDemo?'Demo':'Live');
   switchPage('dashboard');
 }
-function showLoading(t){document.getElementById('ltxt').textContent=t;document.getElementById('lov').classList.remove('hide');}
-function hideLoading(){document.getElementById('lov').classList.add('hide');}
-function setSync(s,t){const d=document.getElementById('sdot');d.className='sdot'+(s==='spin'?' spin':s==='err'?' err':'');document.getElementById('stxt').textContent=t;}
+function showLoading(t){ document.getElementById('ltxt').textContent=t||'Loading...'; document.getElementById('lov').classList.remove('hide'); }
+function hideLoading(){ document.getElementById('lov').classList.add('hide'); }
+function setSync(s,t){
+  var d=document.getElementById('sdot');
+  d.className='sdot'+(s==='spin'?' spin':s==='err'?' err':'');
+  document.getElementById('stxt').textContent=t;
+}
 function updateBadges(){
   document.getElementById('cb').textContent=commData.length;
   document.getElementById('eb').textContent=exprData.length;
-  document.getElementById('ab').textContent=getAlerts().filter(a=>a.type!=='ok').length||'✓';
+  var ac=getAlerts().filter(function(a){ return a.type!=='ok'; }).length;
+  document.getElementById('ab').textContent=ac||'✓';
 }
 function switchPage(name){
   currentPage=name;
-  document.querySelectorAll('.ni').forEach((el,i)=>{const p=['dashboard','commercial','express','analytics','alerts'];el.classList.toggle('active',p[i]===name);});
-  const isExpr=name==='express';
-  document.getElementById('topAddBtn').textContent=isExpr?'+ Add Express':'+ Add Commercial';
-  document.getElementById('topAddBtn').onclick=()=>openModal(isExpr?'express':'commercial',-1);
+  document.querySelectorAll('.ni').forEach(function(el){ el.classList.toggle('active', el.dataset.page===name); });
   renderPage();
 }
 function renderPage(){
-  const p=currentPage;
-  if(p==='dashboard')renderDash();
-  else if(p==='commercial')renderTable('commercial');
-  else if(p==='express')renderTable('express');
-  else if(p==='analytics')renderAnalytics();
-  else if(p==='alerts')renderAlerts();
+  if(currentPage==='dashboard') renderDash();
+  else if(currentPage==='commercial') renderTable('commercial');
+  else if(currentPage==='express') renderTable('express');
+  else if(currentPage==='analytics') renderAnalytics();
+  else if(currentPage==='alerts') renderAlerts();
 }
 
-// ═══════════════════════════════════════════
-// SMART COLUMN ANALYSER — v3
-// Strict type detection, no false numerics
-// ═══════════════════════════════════════════
+// ════════════════════════════════════════════
+// COLUMN ANALYSER — strict type detection
+// ════════════════════════════════════════════
 function analyseColumns(headers, data){
-  return headers.map(h=>{
-    const vals=data.map(r=>(r[h]||'').trim()).filter(Boolean);
-    const unique=[...new Set(vals)];
-    const hl=h.toLowerCase().replace(/[^a-z0-9 ]/g,' ');
+  return headers.map(function(h){
+    var vals=data.map(function(r){ return (r[h]||'').trim(); }).filter(Boolean);
+    var unique=[...new Set(vals)];
+    var hl=h.toLowerCase().replace(/[^a-z0-9 ]/g,' ');
 
-    // ── 1. DATE detection — name OR value pattern ──
-    const dateNameHints=['date','eta','etd','atd','time','handover','flying','arrival','departure','pre alert'];
-    const isDateName=dateNameHints.some(k=>hl.includes(k));
-    const dateValuePattern=/^\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4}$|^\d{4}[\/\-]\d{2}[\/\-]\d{2}|^\d{1,2} \w{3} \d{4}/;
-    const dateSample=vals.slice(0,10).filter(v=>dateValuePattern.test(v));
-    const isDate=isDateName||(dateSample.length>vals.slice(0,10).length*0.5);
+    // DATE — name hint or value pattern
+    var dateHints=['date','eta','etd','atd','time','handover','flying','arrival','departure','pre alert','pre-alert'];
+    var isDate=dateHints.some(function(k){ return hl.includes(k); });
+    if(!isDate){
+      var dp=/^\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4}$|^\d{4}[\/\-]\d{2}[\/\-]\d{2}|^\d{1,2} \w{3} \d{4}/;
+      var dsample=vals.slice(0,10).filter(function(v){ return dp.test(v); });
+      isDate=dsample.length>vals.slice(0,10).length*0.5;
+    }
 
-    // ── 2. IDENTIFIER detection — never sum these ──
-    const idHints=['mawb','hawb','awb','flight no','flight #','file no','file #','ref','hs code','invoice no','bl no','bl #','job no','booking','container','seal','vessel'];
-    const isIdentifier=idHints.some(k=>hl.includes(k));
+    // IDENTIFIER — never sum
+    var idHints=['mawb','hawb','awb','flight no','flight #','file no','file #','ref','hs code','invoice no','bl no','bl #','job no','booking','container','seal','vessel'];
+    var isId=idHints.some(function(k){ return hl.includes(k); });
 
-    // ── 3. TRUE NUMERIC detection ──
-    // Only columns whose name strongly implies a measurable quantity
-    const numNameHints=['weight','kg','kgs','cbm','m3','qty','quantity','pcs','pieces','packages','pkgs','amount','value','rate','charge','cost','price','fee','total','revenue','count'];
-    const isNumName=numNameHints.some(k=>hl.includes(k));
-    // AND values must actually be clean numbers (not date-like, not codes)
-    const cleanNums=isDate||isIdentifier?[]:
-      vals.map(v=>{
-        const c=v.replace(/,/g,'').replace(/[^0-9.-]/g,'');
-        const n=parseFloat(c);
-        return(!isNaN(n)&&c.length>=1&&c===v.replace(/,/g,'').replace(/[^0-9.-]/g,''))?n:NaN;
-      }).filter(v=>!isNaN(v));
-    const numRatio=vals.length?cleanNums.length/vals.length:0;
-    const isNumeric=!isDate&&!isIdentifier&&isNumName&&numRatio>0.7;
-    const numVals=isNumeric?cleanNums:[];
+    // NUMERIC — only if name signals measurable quantity
+    var numHints=['weight','kg','kgs','cbm','m3','qty','quantity','pcs','pieces','packages','pkgs','amount','value','rate','charge','cost','price','fee','total','revenue'];
+    var isNumName=numHints.some(function(k){ return hl.includes(k); });
+    var cleanNums=[];
+    if(!isDate&&!isId&&isNumName){
+      cleanNums=vals.map(function(v){
+        var c=v.replace(/,/g,'').trim();
+        var n=parseFloat(c);
+        return(!isNaN(n)&&String(n)===c||c.match(/^\d+\.?\d*$/))?n:NaN;
+      }).filter(function(v){ return !isNaN(v); });
+    }
+    var isNumeric=!isDate&&!isId&&isNumName&&cleanNums.length>vals.length*0.6;
+    var numVals=isNumeric?cleanNums:[];
+    var isCat=!isDate&&unique.length>=2&&unique.length<=25&&vals.length>0;
+    var sum=numVals.length?numVals.reduce(function(a,b){return a+b;},0):null;
+    var avg=numVals.length?sum/numVals.length:null;
 
-    // ── 4. CATEGORICAL ──
-    const isCat=!isDate&&unique.length>=2&&unique.length<=25&&vals.length>0;
-
-    return {
-      h, vals, unique, isDate, isIdentifier, isNumeric, isCat,
-      numVals,
-      total:vals.length,
-      missing:data.length-vals.length,
-      sum:numVals.length?numVals.reduce((a,b)=>a+b,0):null,
-      avg:numVals.length?numVals.reduce((a,b)=>a+b,0)/numVals.length:null,
-      max:numVals.length?Math.max(...numVals):null,
-      min:numVals.length?Math.min(...numVals):null,
-      freq:vals.reduce((m,v)=>{m[v]=(m[v]||0)+1;return m;},{})
-    };
+    return {h:h, vals:vals, unique:unique, isDate:isDate, isId:isId, isNumeric:isNumeric, isCat:isCat,
+      numVals:numVals, total:vals.length, missing:data.length-vals.length,
+      sum:sum, avg:avg,
+      max:numVals.length?Math.max.apply(null,numVals):null,
+      min:numVals.length?Math.min.apply(null,numVals):null,
+      freq:vals.reduce(function(m,v){m[v]=(m[v]||0)+1;return m;},{})};
   });
 }
 
-function topN(freq,n=8){return Object.entries(freq).sort((a,b)=>b[1]-a[1]).slice(0,n);}
+function topN(freq,n){
+  return Object.entries(freq).sort(function(a,b){return b[1]-a[1];}).slice(0,n||8);
+}
 
-// ═══════════════════════════════════════════
+// ════════════════════════════════════════════
 // DASHBOARD
-// ═══════════════════════════════════════════
+// ════════════════════════════════════════════
 function renderDash(){
-  const mc=document.getElementById('mainContent');
-  const ca=analyseColumns(commHeaders,commData);
-  const ea=analyseColumns(exprHeaders,exprData);
-  
-  const pkgCol=ea.find(c=>c.isNumeric&&(c.h.toLowerCase().includes('pkg')||c.h.toLowerCase().includes('package')||c.h.toLowerCase().includes('pcs')));
-  const statusCol=ca.find(c=>c.h.toLowerCase().includes('status'));
-  const portCol=ea.find(c=>c.isCat&&(c.h.toLowerCase().includes('port')));
-  const originCol=ca.find(c=>c.isCat&&(c.h.toLowerCase().includes('origin')||c.h.toLowerCase().includes('loading')));
-  const destCol=ca.find(c=>c.isCat&&(c.h.toLowerCase().includes('dest')||c.h.toLowerCase().includes('discharge')));
-  const alerts=getAlerts();
-  const alertCount=alerts.filter(a=>a.type!=='ok').length;
-  
-  let totalPkgs=pkgCol&&pkgCol.sum!=null?Math.round(pkgCol.sum):0;
-  let pendCount=statusCol?statusCol.vals.filter(v=>v.toLowerCase().includes('pend')).length:0;
-  
-  mc.innerHTML=`
-  <div class="mrow">
-    <div class="mc blue"><div class="ml">Commercial</div><div class="mv">${commData.length}</div><div class="ms">${commHeaders.length} columns</div></div>
-    <div class="mc green"><div class="ml">Express</div><div class="mv">${exprData.length}</div><div class="ms">${exprHeaders.length} columns</div></div>
-    ${totalPkgs?`<div class="mc amber"><div class="ml">Total Packages</div><div class="mv">${totalPkgs.toLocaleString()}</div><div class="ms">Express shipments</div></div>`:''}
-    ${pendCount?`<div class="mc red"><div class="ml">Pending</div><div class="mv">${pendCount}</div><div class="ms">Need action</div></div>`:''}
-    <div class="mc ${alertCount>0?'amber':'green'}"><div class="ml">Alerts</div><div class="mv">${alertCount||'✓'}</div><div class="ms">${alertCount?'Need attention':'All clear'}</div></div>
-    <div class="mc indigo"><div class="ml">Total Records</div><div class="mv">${commData.length+exprData.length}</div><div class="ms">Both sheets</div></div>
-  </div>
-  <div class="g2">
-    ${statusCol?`<div class="cc"><h3>Commercial — ${statusCol.h}</h3><div class="ccsub">Status distribution across all entries</div><div class="chwrap" style="height:200px"><canvas id="dsc"></canvas></div></div>`:''}
-    ${portCol?`<div class="cc"><h3>Express — ${portCol.h}</h3><div class="ccsub">Shipments by destination port</div><div class="chwrap" style="height:200px"><canvas id="dpc"></canvas></div></div>`:''}
-    ${!statusCol&&originCol?`<div class="cc"><h3>Commercial — ${originCol.h}</h3><div class="ccsub">Top origins</div><div class="chwrap" style="height:200px"><canvas id="doc"></canvas></div></div>`:''}
-  </div>
-  <div class="g2">
-    ${destCol?`<div class="cc"><h3>Commercial — ${destCol.h}</h3><div class="ccsub">Volume by destination</div>
-      <div class="plist">${topN(destCol.freq,6).map(([v,c],i)=>{const p=Math.round(c/commData.length*100);return`<div class="pi"><div class="ph"><span>${v}</span><span>${c} (${p}%)</span></div><div class="pt"><div class="pf" style="width:${p}%;background:${PALETTE[i%PALETTE.length]}"></div></div></div>`;}).join('')}</div>
-    </div>`:''}
-    <div class="cc"><h3>🔔 Live Alerts</h3><div class="ccsub">Auto-detected issues in your data</div>
-      <div class="alist">${alerts.slice(0,5).map(a=>`<div class="ai ${a.type}"><div><div class="att">${a.title}</div><div class="ats">${a.sub}</div></div></div>`).join('')}</div>
-    </div>
-  </div>`;
-  
-  setTimeout(()=>{
-    if(statusCol){const t=topN(statusCol.freq);drawDoughnut('dsc',t.map(x=>x[0]),t.map(x=>x[1]));}
-    if(portCol){const t=topN(portCol.freq);drawBar('dpc',t.map(x=>x[0]),t.map(x=>x[1]),'#4f7cff');}
-    if(!statusCol&&originCol){const t=topN(originCol.freq);drawBar('doc',t.map(x=>x[0]),t.map(x=>x[1]),'#22d3a5');}
+  var mc=document.getElementById('mainContent');
+  var ca=analyseColumns(commHeaders,commData);
+  var ea=analyseColumns(exprHeaders,exprData);
+  var pkgCol=ea.find(function(c){return c.isNumeric&&(c.h.toLowerCase().includes('pkg')||c.h.toLowerCase().includes('pcs'));});
+  var statusCol=ca.find(function(c){return c.h.toLowerCase().includes('status');});
+  var portCol=ea.find(function(c){return c.isCat&&c.h.toLowerCase().includes('port');});
+  var originCol=ca.find(function(c){return c.isCat&&(c.h.toLowerCase().includes('origin')||c.h.toLowerCase().includes('loading'));});
+  var destCol=ca.find(function(c){return c.isCat&&(c.h.toLowerCase().includes('dest')||c.h.toLowerCase().includes('discharge'));});
+  var alerts=getAlerts();
+  var ac=alerts.filter(function(a){return a.type!=='ok';}).length;
+  var totalPkgs=pkgCol&&pkgCol.sum!=null?Math.round(pkgCol.sum):0;
+  var pendCount=statusCol?statusCol.vals.filter(function(v){return v.toLowerCase().includes('pend');}).length:0;
+
+  var destBars='';
+  if(destCol){
+    destBars=topN(destCol.freq,6).map(function(kv,i){
+      var v=kv[0],c=kv[1],p=Math.round(c/commData.length*100);
+      return '<div class="sbl-row" data-drill-val="'+esc(destCol.h)+'|||'+esc(v)+'" data-drill-sheet="commercial">'+
+        '<div class="sbl-label">'+esc(v)+'</div>'+
+        '<div class="sbl-track"><div class="sbl-fill" style="width:'+Math.max(p,2)+'%;background:'+PAL[i]+'"></div></div>'+
+        '<div class="sbl-count">'+c+'</div><div class="sbl-pct">'+p+'%</div></div>';
+    }).join('');
+  }
+
+  mc.innerHTML=
+    '<div class="mrow">'+
+      '<div class="mc blue"><div class="ml">Commercial</div><div class="mv">'+commData.length+'</div><div class="ms">'+commHeaders.length+' columns</div></div>'+
+      '<div class="mc green"><div class="ml">Express</div><div class="mv">'+exprData.length+'</div><div class="ms">'+exprHeaders.length+' columns</div></div>'+
+      (totalPkgs?'<div class="mc amber clickable" data-drill-num="'+(pkgCol?esc(pkgCol.h):'')+'" data-drill-sheet="express"><div class="ml">Total Packages</div><div class="mv">'+totalPkgs.toLocaleString()+'</div><div class="ms">Express pkgs ↗</div></div>':'')+
+      (pendCount&&statusCol?'<div class="mc red clickable" data-drill-val="'+esc(statusCol.h)+'|||Pending" data-drill-sheet="commercial"><div class="ml">Pending</div><div class="mv">'+pendCount+'</div><div class="ms">Need action ↗</div></div>':'')+
+      '<div class="mc '+(ac>0?'amber':'green')+'"><div class="ml">Alerts</div><div class="mv">'+(ac||'✓')+'</div><div class="ms">'+(ac?'Need attention':'All clear')+'</div></div>'+
+      '<div class="mc indigo"><div class="ml">Total Records</div><div class="mv">'+(commData.length+exprData.length)+'</div><div class="ms">Both sheets</div></div>'+
+    '</div>'+
+    '<div class="g2">'+
+      (statusCol?'<div class="cc clickable" data-drill-col="'+esc(statusCol.h)+'" data-drill-sheet="commercial"><h3>Commercial — '+statusCol.h+'</h3><div class="ccsub">Click to explore all statuses ↗</div><div class="chwrap" style="height:200px"><canvas id="dsc"></canvas></div></div>':'')+
+      (portCol?'<div class="cc clickable" data-drill-col="'+esc(portCol.h)+'" data-drill-sheet="express"><h3>Express — '+portCol.h+'</h3><div class="ccsub">Click to explore ports ↗</div><div class="chwrap" style="height:200px"><canvas id="dpc"></canvas></div></div>':'')+
+      (!statusCol&&originCol?'<div class="cc clickable" data-drill-col="'+esc(originCol.h)+'" data-drill-sheet="commercial"><h3>Commercial — '+originCol.h+'</h3><div class="ccsub">Click to explore ↗</div><div class="chwrap" style="height:200px"><canvas id="doc"></canvas></div></div>':'')+
+    '</div>'+
+    '<div class="g2">'+
+      (destCol?'<div class="cc"><h3>Commercial — '+destCol.h+'</h3><div class="ccsub">Click a row to drill into records</div><div class="sbl-list">'+destBars+'</div></div>':'')+
+      '<div class="cc"><h3>🔔 Live Alerts</h3><div class="ccsub">Auto-detected from your data</div>'+
+        '<div class="alist">'+alerts.slice(0,5).map(function(a){return'<div class="ai '+a.type+'"><div class="att">'+a.title+'</div><div class="ats">'+a.sub+'</div></div>';}).join('')+'</div>'+
+      '</div>'+
+    '</div>';
+
+  // Bind click events
+  bindDrillClicks(mc);
+
+  setTimeout(function(){
+    if(statusCol){var t=topN(statusCol.freq,8);drawChart('dsc','doughnut',t.map(function(x){return x[0];}),t.map(function(x){return x[1];}));}
+    if(portCol){var t=topN(portCol.freq,8);drawChart('dpc','bar',t.map(function(x){return x[0];}),t.map(function(x){return x[1];}),'#4f7cff');}
+    if(!statusCol&&originCol){var t=topN(originCol.freq,8);drawChart('doc','bar',t.map(function(x){return x[0];}),t.map(function(x){return x[1];}),'#22d3a5');}
   },80);
 }
 
-// ═══════════════════════════════════════════
+// ════════════════════════════════════════════
 // TABLE PAGE
-// ═══════════════════════════════════════════
+// ════════════════════════════════════════════
 function renderTable(sheet){
-  const isE=sheet==='express';
-  const headers=isE?exprHeaders:commHeaders;
-  const data=isE?exprData:commData;
-  
-  // Build filter dropdowns for categorical columns
-  const catCols=headers.filter(h=>{
-    const vals=[...new Set(data.map(r=>(r[h]||'').trim()).filter(Boolean))];
-    return vals.length>=2&&vals.length<=25;
+  var isE=sheet==='express', headers=isE?exprHeaders:commHeaders, data=isE?exprData:commData;
+  var catCols=headers.filter(function(h){
+    var u=[...new Set(data.map(function(r){return (r[h]||'').trim();}).filter(Boolean))];
+    return u.length>=2&&u.length<=25;
   }).slice(0,4);
-  
-  const filterSelects=catCols.map((h,i)=>`<select id="tf${i}" data-col="${h}" onchange="filterTbl('${sheet}')">
-    <option value="">All ${h}</option>
-    ${[...new Set(data.map(r=>(r[h]||'').trim()).filter(Boolean))].sort().map(v=>`<option>${v}</option>`).join('')}
-  </select>`).join('');
-  
-  document.getElementById('mainContent').innerHTML=`
-  <div class="tpanel">
-    <div class="ttoolbar">
-      <input type="text" id="tsearch" placeholder="Search all columns..." oninput="filterTbl('${sheet}')">
-      ${filterSelects}
-      <button class="tbtn pri" style="padding:5px 12px;font-size:11px" onclick="openModal('${sheet}',-1)">+ Add Row</button>
-      <span style="margin-left:auto;font-size:11px;color:var(--text3)" id="tcount">${data.length} records</span>
-    </div>
-    <div class="tscroll">
-      <table><thead><tr><th class="rn">#</th>${headers.map(h=>`<th${isE&&EXPR_AUTO.includes(h)?' style="color:#b794f4"':''}>${h}${isE&&EXPR_AUTO.includes(h)?'★':''}</th>`).join('')}<th></th></tr></thead>
-      <tbody id="tbody"></tbody></table>
-      <div class="empty" id="tempty" style="display:none">📋 No records match</div>
-    </div>
-  </div>`;
+  var selects=catCols.map(function(h,i){
+    var opts=[...new Set(data.map(function(r){return (r[h]||'').trim();}).filter(Boolean))].sort()
+      .map(function(v){return '<option>'+esc(v)+'</option>';}).join('');
+    return '<select class="tfilter" data-col="'+esc(h)+'"><option value="">All '+esc(h)+'</option>'+opts+'</select>';
+  }).join('');
+  document.getElementById('mainContent').innerHTML=
+    '<div class="tpanel">'+
+      '<div class="ttoolbar">'+
+        '<input type="text" id="tsearch" placeholder="Search all columns...">'+selects+
+        '<button class="tbtn pri" id="tAddBtn" style="padding:5px 12px;font-size:11px">+ Add Row</button>'+
+        '<span style="margin-left:auto;font-size:11px;color:var(--text3)" id="tcount">'+data.length+' records</span>'+
+      '</div>'+
+      '<div class="tscroll"><table><thead id="thead"></thead><tbody id="tbody"></tbody></table>'+
+        '<div class="empty" id="tempty" style="display:none">📋 No records match</div>'+
+      '</div>'+
+    '</div>';
+  document.getElementById('tsearch').addEventListener('input', function(){ filterTbl(sheet); });
+  document.getElementById('tAddBtn').addEventListener('click', function(){ openModal(sheet,-1); });
+  document.querySelectorAll('.tfilter').forEach(function(s){ s.addEventListener('change', function(){ filterTbl(sheet); }); });
   filterTbl(sheet);
 }
 
 function filterTbl(sheet){
-  const isE=sheet==='express';
-  const headers=isE?exprHeaders:commHeaders;
-  const data=isE?exprData:commData;
-  const q=(document.getElementById('tsearch')?.value||'').toLowerCase();
-  
-  // Collect active filter values
-  const filters={};
-  document.querySelectorAll('[id^="tf"]').forEach(el=>{if(el.value)filters[el.dataset.col]=el.value;});
-  
-  const statusCol=commHeaders.find(h=>h.toLowerCase().includes('status'))||'';
-  
-  let rows=data.filter(r=>{
-    for(const[col,val]of Object.entries(filters))if((r[col]||'')!==val)return false;
-    if(!q)return true;
-    return headers.some(h=>(r[h]||'').toLowerCase().includes(q));
+  var isE=sheet==='express', headers=isE?exprHeaders:commHeaders, data=isE?exprData:commData;
+  var q=(document.getElementById('tsearch').value||'').toLowerCase();
+  var filters={};
+  document.querySelectorAll('.tfilter').forEach(function(s){ if(s.value) filters[s.dataset.col]=s.value; });
+  var statusH=commHeaders.find(function(h){return h.toLowerCase().includes('status');})||'';
+  var rows=data.filter(function(r){
+    for(var col in filters){ if((r[col]||'')!==filters[col]) return false; }
+    if(!q) return true;
+    return headers.some(function(h){return (r[h]||'').toLowerCase().includes(q);});
   });
-  
-  document.getElementById('tcount').textContent=rows.length+' of '+data.length+' records';
-  const tb=document.getElementById('tbody');
-  const em=document.getElementById('tempty');
+  var tc=document.getElementById('tcount'); if(tc) tc.textContent=rows.length+' of '+data.length+' records';
+  var th=document.getElementById('thead'), tb=document.getElementById('tbody'), em=document.getElementById('tempty');
+  if(!tb) return;
+  th.innerHTML='<tr><th class="rn">#</th>'+headers.map(function(h){return '<th'+(isE&&EXPR_AUTO.includes(h)?' style="color:#b794f4"':'')+'>'+esc(h)+(isE&&EXPR_AUTO.includes(h)?'★':'')+'</th>';}).join('')+'<th></th></tr>';
   if(!rows.length){tb.innerHTML='';em.style.display='block';return;}
   em.style.display='none';
-  
-  tb.innerHTML=rows.map(r=>{
-    const oi=data.indexOf(r);
-    return`<tr><td class="rn">${oi+1}</td>${headers.map(h=>{
-      const isA=isE&&EXPR_AUTO.includes(h);
-      const v=r[h]||'';
-      const isSt=h===statusCol;
-      return`<td class="${isA?'autocell':''}" title="${esc(v)}">${isSt?statusBadge(v):esc(v)||'—'}</td>`;
-    }).join('')}<td><button class="abt e" onclick="openModal('${sheet}',${oi})">Edit</button><button class="abt d" onclick="delRow('${sheet}',${oi})">Del</button></td></tr>`;
+  tb.innerHTML=rows.map(function(r){
+    var oi=data.indexOf(r);
+    return'<tr><td class="rn">'+( oi+1)+'</td>'+headers.map(function(h){
+      var v=r[h]||'',isA=isE&&EXPR_AUTO.includes(h),isSt=h===statusH;
+      return'<td class="'+(isA?'autocell':'')+'" title="'+esc(v)+'">'+(isSt?statusBadge(v):esc(v)||'—')+'</td>';
+    }).join('')+'<td>'+
+      '<button class="abt e" data-sheet="'+sheet+'" data-idx="'+oi+'">Edit</button>'+
+      '<button class="abt d" data-sheet="'+sheet+'" data-idx="'+oi+'">Del</button>'+
+    '</td></tr>';
   }).join('');
+  tb.querySelectorAll('.abt.e').forEach(function(b){ b.addEventListener('click', function(){ openModal(b.dataset.sheet, parseInt(b.dataset.idx)); }); });
+  tb.querySelectorAll('.abt.d').forEach(function(b){ b.addEventListener('click', function(){ delRow(b.dataset.sheet, parseInt(b.dataset.idx)); }); });
 }
 
 function statusBadge(v){
-  const vl=(v||'').toLowerCase();
-  const cls=vl.includes('clear')||vl.includes('done')||vl.includes('deliver')||vl.includes('complet')?'bg':
+  var vl=(v||'').toLowerCase();
+  var cls=vl.includes('clear')||vl.includes('done')||vl.includes('deliver')||vl.includes('complet')?'bg':
     vl.includes('pend')||vl.includes('process')?'ba':
-    vl.includes('hold')||vl.includes('delay')||vl.includes('cancel')?'br':
-    v?'bb':'bgr';
-  return v?`<span class="badge ${cls}">${v}</span>`:'—';
+    vl.includes('hold')||vl.includes('delay')||vl.includes('cancel')?'br':v?'bb':'bgr';
+  return v?'<span class="badge '+cls+'">'+esc(v)+'</span>':'—';
 }
 
-// ═══════════════════════════════════════════
-// ANALYTICS — FULL DYNAMIC ENGINE
-// ═══════════════════════════════════════════
+// ════════════════════════════════════════════
+// ANALYTICS
+// ════════════════════════════════════════════
 function renderAnalytics(){
-  const mc=document.getElementById('mainContent');
-  
-  // Analyse all columns
-  const ca=analyseColumns(commHeaders,commData);
-  const ea=analyseColumns(exprHeaders,exprData);
-  
-  // Build tab UI
-  mc.innerHTML=`
-  <div class="stabs">
-    <div class="stab active" onclick="aTab('comm',this)">🏢 Commercial Analysis</div>
-    <div class="stab" onclick="aTab('expr',this)">✈ Express Analysis</div>
-    <div class="stab" onclick="aTab('cross',this)">🔗 Cross-Sheet Insights</div>
-  </div>
-  <div id="aContent"></div>`;
-  
-  renderCommAnalytics(ca);
+  document.getElementById('mainContent').innerHTML=
+    '<div class="stabs">'+
+      '<div class="stab active" data-atab="comm">🏢 Commercial Analysis</div>'+
+      '<div class="stab" data-atab="expr">✈ Express Analysis</div>'+
+      '<div class="stab" data-atab="cross">🔗 Cross-Sheet Insights</div>'+
+    '</div><div id="aContent"></div>';
+  document.querySelectorAll('.stab').forEach(function(el){
+    el.addEventListener('click', function(){
+      document.querySelectorAll('.stab').forEach(function(s){s.classList.remove('active');});
+      this.classList.add('active');
+      if(this.dataset.atab==='comm') renderCommAnalytics();
+      else if(this.dataset.atab==='expr') renderExprAnalytics();
+      else renderCrossAnalytics();
+    });
+  });
+  renderCommAnalytics();
 }
 
-function aTab(which,el){
-  document.querySelectorAll('.stab').forEach(s=>s.classList.remove('active'));
-  el.classList.add('active');
-  const ca=analyseColumns(commHeaders,commData);
-  const ea=analyseColumns(exprHeaders,exprData);
-  if(which==='comm')renderCommAnalytics(ca);
-  else if(which==='expr')renderExprAnalytics(ea);
-  else renderCrossAnalytics(ca,ea);
-}
-
-function renderCommAnalytics(ca){
-  const el=document.getElementById('aContent');
+function renderCommAnalytics(){
+  var el=document.getElementById('aContent');
   if(!commData.length){el.innerHTML='<div class="empty">No commercial data loaded</div>';return;}
-  
-  // Pick the best categorical columns (up to 8) — exclude dates and identifiers
-  const catCols=ca.filter(c=>c.isCat&&!c.isDate&&!c.isIdentifier&&c.unique.length>=2&&c.unique.length<=20&&c.total>0).slice(0,8);
-  // Only true numeric columns (weight, cbm, charges etc) — never dates, never IDs
-  const numCols=ca.filter(c=>c.isNumeric&&c.sum!=null&&c.numVals.length>0).slice(0,4);
-  const dateCols=ca.filter(c=>c.isDate&&c.vals.length>0).slice(0,2);
-  
-  // Summary stats — only real numerics get metric cards
-  let summaryHTML=`<div class="mrow" style="margin-bottom:16px">
-    <div class="mc blue"><div class="ml">Total Entries</div><div class="mv">${commData.length}</div><div class="ms">${commHeaders.length} columns</div></div>
-    ${numCols.map((c,i)=>{
-      const colors=['amber','green','pink','cyan'];
-      return`<div class="mc ${colors[i]}"><div class="ml">${c.h}</div><div class="mv">${Math.round(c.sum).toLocaleString()}</div><div class="ms">Avg: ${c.avg.toFixed(1)} · Max: ${c.max.toFixed(0)}</div></div>`;
-    }).join('')}
-    ${catCols[0]?`<div class="mc indigo"><div class="ml">Unique ${catCols[0].h}</div><div class="mv">${catCols[0].unique.length}</div><div class="ms">distinct values</div></div>`:''}
-  </div>`;
-  
-  // Chart rows — pair up categorical columns — ALL CLICKABLE
-  let chartsHTML='';
-  for(let i=0;i<catCols.length;i+=2){
-    const c1=catCols[i],c2=catCols[i+1];
-    chartsHTML+=`<div class="g2" style="margin-bottom:14px">
-      <div class="cc clickable" onclick="drillColumn('commercial','${esc(c1.h)}')" title="Click to drill down into ${c1.h}">
-        <h3>${c1.h}</h3><div class="ccsub">${c1.total} values · ${c1.unique.length} unique · <span style="color:var(--blue)">click to drill down ↗</span></div>
-        ${c1.unique.length<=6?`<div class="chwrap" style="height:200px"><canvas id="cc_${i}"></canvas></div><div class="chart-segment-tip">Click chart card to explore all values</div>`
-          :`<div class="plist">${topN(c1.freq,7).map(([v,c],j)=>{const p=Math.round(c/commData.length*100);
-            return`<div class="sub-bar" onclick="event.stopPropagation();drillColumnValue('commercial','${esc(c1.h)}','${esc(v)}')">
-              <div class="sbl" title="${esc(v)}">${esc(v)||'(blank)'}</div>
-              <div class="sub-bar-track"><div class="sub-bar-fill" style="width:${Math.max(p,2)}%;background:${PALETTE[j%PALETTE.length]}"></div></div>
-              <div class="sbc">${c}</div><div class="sbp">${p}%</div>
-            </div>`;}).join('')}</div>`}
-      </div>
-      ${c2?`<div class="cc clickable" onclick="drillColumn('commercial','${esc(c2.h)}')" title="Click to drill down into ${c2.h}">
-        <h3>${c2.h}</h3><div class="ccsub">${c2.total} values · ${c2.unique.length} unique · <span style="color:var(--blue)">click to drill down ↗</span></div>
-        ${c2.unique.length<=6?`<div class="chwrap" style="height:200px"><canvas id="cc_${i+1}"></canvas></div>`
-          :`<div class="plist">${topN(c2.freq,7).map(([v,c],j)=>{const p=Math.round(c/commData.length*100);
-            return`<div class="sub-bar" onclick="event.stopPropagation();drillColumnValue('commercial','${esc(c2.h)}','${esc(v)}')">
-              <div class="sbl" title="${esc(v)}">${esc(v)||'(blank)'}</div>
-              <div class="sub-bar-track"><div class="sub-bar-fill" style="width:${Math.max(p,2)}%;background:${PALETTE[j%PALETTE.length]}"></div></div>
-              <div class="sbc">${c}</div><div class="sbp">${p}%</div>
-            </div>`;}).join('')}</div>`}
-      </div>`:''}
-    </div>`;
+  var ca=analyseColumns(commHeaders,commData);
+  var catCols=ca.filter(function(c){return c.isCat&&!c.isDate&&!c.isId&&c.unique.length>=2&&c.unique.length<=20;}).slice(0,10);
+  var numCols=ca.filter(function(c){return c.isNumeric&&c.sum!=null;}).slice(0,4);
+
+  var metricCards=numCols.map(function(c,i){
+    var colors=['amber','green','pink','cyan'];
+    return'<div class="mc '+colors[i]+' clickable" data-drill-num="'+esc(c.h)+'" data-drill-sheet="commercial">'+
+      '<div class="ml">'+esc(c.h)+'</div><div class="mv">'+Math.round(c.sum).toLocaleString()+'</div>'+
+      '<div class="ms">Avg: '+c.avg.toFixed(1)+' · Max: '+c.max.toFixed(0)+' ↗</div></div>';
+  }).join('');
+  var firstCat=catCols[0];
+  var uniqueCard=firstCat?'<div class="mc indigo clickable" data-drill-col="'+esc(firstCat.h)+'" data-drill-sheet="commercial"><div class="ml">Unique '+esc(firstCat.h)+'</div><div class="mv">'+firstCat.unique.length+'</div><div class="ms">distinct values ↗</div></div>':'';
+
+  var chartRows='';
+  for(var i=0;i<catCols.length;i+=2){
+    var c1=catCols[i],c2=catCols[i+1];
+    chartRows+='<div class="g2" style="margin-bottom:14px">'+buildCatCard(c1,'commercial',i)+( c2?buildCatCard(c2,'commercial',i+1):'')+' </div>';
   }
-  
-  // Numeric columns analysis
-  let numHTML='';
-  if(numCols.length>0){
-    numHTML=`<div class="cc" style="margin-bottom:14px"><h3>Numeric Column Summary</h3><div class="ccsub">Statistical overview of numeric fields</div>
-    <div style="overflow-x:auto"><table style="min-width:500px">
-      <thead><tr><th>Column</th><th>Count</th><th>Total</th><th>Average</th><th>Min</th><th>Max</th></tr></thead>
-      <tbody>${numCols.map(c=>`<tr>
-        <td><strong style="color:var(--text)">${c.h}</strong></td>
-        <td>${c.numVals.length}</td>
-        <td style="color:var(--green)">${Math.round(c.sum).toLocaleString()}</td>
-        <td style="color:var(--blue)">${c.avg.toFixed(1)}</td>
-        <td>${c.min.toFixed(1)}</td>
-        <td style="color:var(--amber)">${c.max.toFixed(1)}</td>
-      </tr>`).join('')}</tbody>
-    </table></div></div>`;
+
+  var numTable='';
+  if(numCols.length){
+    numTable='<div class="cc" style="margin-bottom:14px"><h3>Numeric Column Summary</h3><div class="ccsub">Statistical overview of measurable fields</div>'+
+      '<div style="overflow-x:auto"><table style="min-width:480px;font-size:12px;width:100%">'+
+      '<thead><tr><th style="padding:8px 10px;background:var(--bg4);font-size:10px;text-transform:uppercase;color:var(--text3);font-weight:700">Column</th><th style="padding:8px 10px;background:var(--bg4);font-size:10px;text-transform:uppercase;color:var(--text3);font-weight:700">Count</th><th style="padding:8px 10px;background:var(--bg4);font-size:10px;text-transform:uppercase;color:var(--text3);font-weight:700">Total</th><th style="padding:8px 10px;background:var(--bg4);font-size:10px;text-transform:uppercase;color:var(--text3);font-weight:700">Average</th><th style="padding:8px 10px;background:var(--bg4);font-size:10px;text-transform:uppercase;color:var(--text3);font-weight:700">Min</th><th style="padding:8px 10px;background:var(--bg4);font-size:10px;text-transform:uppercase;color:var(--text3);font-weight:700">Max</th></tr></thead>'+
+      '<tbody>'+numCols.map(function(c){return'<tr><td style="padding:7px 10px;border-bottom:1px solid rgba(42,45,69,.4)"><strong style="color:var(--text)">'+esc(c.h)+'</strong></td><td style="padding:7px 10px;border-bottom:1px solid rgba(42,45,69,.4)">'+c.numVals.length+'</td><td style="padding:7px 10px;border-bottom:1px solid rgba(42,45,69,.4);color:var(--green)">'+Math.round(c.sum).toLocaleString()+'</td><td style="padding:7px 10px;border-bottom:1px solid rgba(42,45,69,.4);color:var(--blue)">'+c.avg.toFixed(1)+'</td><td style="padding:7px 10px;border-bottom:1px solid rgba(42,45,69,.4)">'+c.min.toFixed(0)+'</td><td style="padding:7px 10px;border-bottom:1px solid rgba(42,45,69,.4);color:var(--amber)">'+c.max.toFixed(0)+'</td></tr>';}).join('')+'</tbody></table></div></div>';
   }
-  
-  // Missing data analysis
-  const missingHTML=`<div class="cc" style="margin-bottom:14px"><h3>Data Completeness</h3><div class="ccsub">How complete is each column</div>
-  <div class="plist">${ca.filter(c=>c.total<commData.length).sort((a,b)=>(b.missing-a.missing)).slice(0,8).map(c=>{
-    const pct=Math.round(c.total/commData.length*100);
-    const col=pct>80?'#22d3a5':pct>50?'#f59e0b':'#ef4444';
-    return`<div class="pi"><div class="ph"><span>${c.h}</span><span style="color:${col}">${pct}% filled (${c.missing} missing)</span></div><div class="pt"><div class="pf" style="width:${pct}%;background:${col}"></div></div></div>`;
-  }).join('')}${ca.every(c=>c.missing===0)?'<p style="color:var(--green);font-size:12px">✓ All columns fully populated!</p>':''}</div></div>`;
-  
-  el.innerHTML=summaryHTML+chartsHTML+numHTML+missingHTML;
-  
-  setTimeout(()=>{
-    catCols.forEach((c,i)=>{
-      if(c.unique.length<=6){
-        const top=topN(c.freq,6);
-        drawDoughnut('cc_'+i,top.map(x=>x[0]),top.map(x=>x[1]));
-      }
+
+  var completeness='<div class="cc" style="margin-bottom:14px"><h3>Data Completeness</h3><div class="ccsub">Fill rate per column — click to inspect</div>'+
+    '<div class="plist">'+ca.sort(function(a,b){return a.missing-b.missing;}).slice(0,12).map(function(c){
+      var pct=Math.round(c.total/Math.max(commData.length,1)*100);
+      var col=pct===100?'#22d3a5':pct>70?'#f59e0b':'#ef4444';
+      return'<div class="pi"><div class="ph"><span>'+esc(c.h)+'</span><span style="color:'+col+'">'+pct+'% ('+c.missing+' missing)</span></div><div class="pt"><div class="pf" style="width:'+pct+'%;background:'+col+'"></div></div></div>';
+    }).join('')+'</div></div>';
+
+  el.innerHTML='<div class="mrow" style="margin-bottom:16px"><div class="mc blue"><div class="ml">Total Entries</div><div class="mv">'+commData.length+'</div><div class="ms">'+commHeaders.length+' columns</div></div>'+metricCards+uniqueCard+'</div>'+chartRows+numTable+completeness;
+
+  bindDrillClicks(el);
+  setTimeout(function(){
+    catCols.forEach(function(c,i){
+      if(c.unique.length<=8){ var t=topN(c.freq,8); drawChart('cc_'+i,'doughnut',t.map(function(x){return x[0];}),t.map(function(x){return x[1];})); }
     });
   },80);
 }
 
-function renderExprAnalytics(ea){
-  const el=document.getElementById('aContent');
+function buildCatCard(c, sheet, idx){
+  var isSmall=c.unique.length<=8;
+  var barsHtml=topN(c.freq,8).map(function(kv,j){
+    var v=kv[0],ct=kv[1],p=Math.round(ct/(sheet==='express'?exprData.length:commData.length)*100);
+    return'<div class="sbl-row" data-drill-val="'+esc(c.h)+'|||'+esc(v)+'" data-drill-sheet="'+sheet+'">'+
+      '<div class="sbl-label" title="'+esc(v)+'">'+esc(v||'(blank)')+'</div>'+
+      '<div class="sbl-track"><div class="sbl-fill" style="width:'+Math.max(p,2)+'%;background:'+PAL[j%PAL.length]+'"></div></div>'+
+      '<div class="sbl-count">'+ct+'</div><div class="sbl-pct">'+p+'%</div></div>';
+  }).join('');
+  return'<div class="cc clickable" data-drill-col="'+esc(c.h)+'" data-drill-sheet="'+sheet+'">'+
+    '<h3>'+esc(c.h)+'</h3>'+
+    '<div class="ccsub">'+c.total+' values · '+c.unique.length+' unique · <span style="color:var(--blue)">click to drill down ↗</span></div>'+
+    (isSmall?'<div class="chwrap" style="height:200px"><canvas id="cc_'+idx+'"></canvas></div>':'<div class="sbl-list">'+barsHtml+'</div>')+
+  '</div>';
+}
+
+function renderExprAnalytics(){
+  var el=document.getElementById('aContent');
   if(!exprData.length){el.innerHTML='<div class="empty">No express data loaded</div>';return;}
-  
-  const catCols=ea.filter(c=>c.isCat&&!c.isDate&&c.unique.length>=2&&c.unique.length<=20&&c.total>0&&!EXPR_AUTO.includes(c.h)).slice(0,6);
-  const autoCols=ea.filter(c=>EXPR_AUTO.includes(c.h)&&c.isCat&&c.unique.length>=2);
-  const numCols=ea.filter(c=>c.isNumeric&&c.numVals.length>0);
-  
-  let html=`<div class="mrow" style="margin-bottom:16px">
-    <div class="mc green"><div class="ml">Total Shipments</div><div class="mv">${exprData.length}</div><div class="ms">${exprHeaders.length} columns</div></div>
-    ${numCols.map((c,i)=>{const cls=['amber','blue','pink'][i]||'indigo';return`<div class="mc ${cls}"><div class="ml">${c.h}</div><div class="mv">${Math.round(c.sum).toLocaleString()}</div><div class="ms">Avg: ${c.avg.toFixed(1)}</div></div>`;}).join('')}
-  </div>
-  <div style="margin-bottom:10px;font-size:11px;color:var(--indigo);font-weight:600">★ MANUAL ENTRY COLUMNS</div>
-  <div class="g2" style="margin-bottom:14px">`;
-  
-  // Manual columns
-  catCols.forEach((c,i)=>{
-    if(i%2===0&&i>0)html+=`</div><div class="g2" style="margin-bottom:14px">`;
-    html+=`<div class="cc"><h3>${c.h}</h3><div class="ccsub">${c.total} values · ${c.unique.length} unique</div>
-      ${c.unique.length<=6?`<div class="chwrap" style="height:200px"><canvas id="ec_${i}"></canvas></div>`
-        :`<div class="plist">${topN(c.freq,7).map(([v,ct],j)=>{const p=Math.round(ct/exprData.length*100);return`<div class="pi"><div class="ph"><span>${v||'(blank)'}</span><span>${ct} · ${p}%</span></div><div class="pt"><div class="pf" style="width:${Math.max(p,2)}%;background:${PALETTE[j]}"></div></div></div>`;}).join('')}</div>`}
-    </div>`;
-  });
-  html+=`</div>`;
-  
-  // Auto-computed columns
+  var ea=analyseColumns(exprHeaders,exprData);
+  var manualCols=ea.filter(function(c){return c.isCat&&!c.isDate&&!c.isId&&c.unique.length>=2&&c.unique.length<=20&&!EXPR_AUTO.includes(c.h);}).slice(0,8);
+  var autoCols=ea.filter(function(c){return EXPR_AUTO.includes(c.h)&&c.isCat&&!c.isDate&&c.unique.length>=2;});
+  var numCols=ea.filter(function(c){return c.isNumeric&&c.sum!=null;});
+
+  var metricCards=numCols.map(function(c,i){
+    var colors=['amber','blue','pink','cyan'];
+    return'<div class="mc '+colors[i%4]+' clickable" data-drill-num="'+esc(c.h)+'" data-drill-sheet="express">'+
+      '<div class="ml">'+esc(c.h)+'</div><div class="mv">'+Math.round(c.sum).toLocaleString()+'</div>'+
+      '<div class="ms">Avg: '+c.avg.toFixed(1)+' ↗</div></div>';
+  }).join('');
+
+  var manualRows='';
+  for(var i=0;i<manualCols.length;i+=2){
+    manualRows+='<div class="g2" style="margin-bottom:14px">'+buildCatCard(manualCols[i],'express',i)+(manualCols[i+1]?buildCatCard(manualCols[i+1],'express',i+1):'')+' </div>';
+  }
+  var autoRows='';
   if(autoCols.length){
-    html+=`<div style="margin:14px 0 10px;font-size:11px;color:var(--indigo);font-weight:600">★ AUTO-COMPUTED COLUMNS (from formula)</div>
-    <div class="g2" style="margin-bottom:14px">`;
-    autoCols.slice(0,4).forEach((c,i)=>{
-      if(i%2===0&&i>0)html+=`</div><div class="g2" style="margin-bottom:14px">`;
-      html+=`<div class="cc" style="border-color:rgba(124,111,205,.3)"><h3 style="color:var(--indigo)">${c.h} ★</h3><div class="ccsub">${c.total} values · ${c.unique.length} unique</div>
-        <div class="plist">${topN(c.freq,6).map(([v,ct],j)=>{const p=Math.round(ct/exprData.length*100);return`<div class="pi"><div class="ph"><span>${v||'(blank)'}</span><span>${ct} · ${p}%</span></div><div class="pt"><div class="pf" style="width:${Math.max(p,2)}%;background:${PALETTE[j]}"></div></div></div>`;}).join('')}</div>
-      </div>`;
-    });
-    html+=`</div>`;
-  }
-  
-  el.innerHTML=html;
-  setTimeout(()=>{
-    catCols.forEach((c,i)=>{if(c.unique.length<=6){const t=topN(c.freq,6);drawDoughnut('ec_'+i,t.map(x=>x[0]),t.map(x=>x[1]));}});
-  },80);
-}
-
-function renderCrossAnalytics(ca,ea){
-  const el=document.getElementById('aContent');
-  
-  // Try to find matching columns between sheets
-  const commCatCols=ca.filter(c=>c.isCat&&c.unique.length>=2&&c.unique.length<=20);
-  const exprCatCols=ea.filter(c=>c.isCat&&c.unique.length>=2&&c.unique.length<=20);
-  
-  // Column coverage comparison
-  const allColumns=[...new Set([...commHeaders,...exprHeaders])];
-  
-  el.innerHTML=`
-  <div class="g2" style="margin-bottom:14px">
-    <div class="cc"><h3>Sheet Comparison</h3><div class="ccsub">Side-by-side overview</div>
-      <div class="mstats">
-        <div class="mstat"><span class="msl">Commercial Records</span><span class="msv" style="color:var(--blue)">${commData.length}</span></div>
-        <div class="mstat"><span class="msl">Express Records</span><span class="msv" style="color:var(--green)">${exprData.length}</span></div>
-        <div class="mstat"><span class="msl">Commercial Columns</span><span class="msv">${commHeaders.length}</span></div>
-        <div class="mstat"><span class="msl">Express Columns</span><span class="msv">${exprHeaders.length}</span></div>
-        <div class="mstat"><span class="msl">Total Data Points</span><span class="msv" style="color:var(--amber)">${(commData.length*commHeaders.length+exprData.length*exprHeaders.length).toLocaleString()}</span></div>
-      </div>
-    </div>
-    <div class="cc"><h3>Combined Volume</h3><div class="ccsub">Both sheets combined</div>
-      <div class="chwrap" style="height:200px"><canvas id="xc1"></canvas></div>
-    </div>
-  </div>
-  <div class="cc" style="margin-bottom:14px"><h3>Commercial Column Headers (${commHeaders.length})</h3><div class="ccsub">All columns in your Commercial sheet — ${ca.filter(c=>c.missing>0).length} with missing data</div>
-    <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:4px">
-      ${ca.map(c=>{const pct=Math.round(c.total/Math.max(commData.length,1)*100);const cls=pct===100?'bg':pct>70?'ba':'br';return`<span class="badge ${cls}" title="${c.total}/${commData.length} filled">${c.h} ${pct<100?pct+'%':''}</span>`;}).join('')}
-    </div>
-  </div>
-  <div class="cc" style="margin-bottom:14px"><h3>Express Column Headers (${exprHeaders.length})</h3><div class="ccsub">All columns in your Express sheet — purple = auto-computed</div>
-    <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:4px">
-      ${ea.map(c=>{const pct=Math.round(c.total/Math.max(exprData.length,1)*100);const isA=EXPR_AUTO.includes(c.h);const cls=isA?'bi':pct===100?'bg':pct>70?'ba':'br';return`<span class="badge ${cls}" title="${c.total}/${exprData.length} filled">${c.h}${isA?' ★':''} ${pct<100?pct+'%':''}</span>`;}).join('')}
-    </div>
-  </div>`;
-  
-  setTimeout(()=>{
-    const c=document.getElementById('xc1');
-    if(c){
-      if(charts.xc1)charts.xc1.destroy();
-      charts.xc1=new Chart(c,{type:'bar',
-        data:{labels:['Commercial','Express'],
-          datasets:[{label:'Records',data:[commData.length,exprData.length],backgroundColor:['rgba(79,124,255,.7)','rgba(34,211,165,.7)'],borderColor:['#4f7cff','#22d3a5'],borderWidth:1,borderRadius:8}]},
-        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#5c6285'},grid:{color:'rgba(42,45,69,.5)'}},y:{ticks:{color:'#5c6285'},grid:{color:'rgba(42,45,69,.5)'}}}}});
+    autoRows='<div style="margin:14px 0 10px;font-size:11px;color:var(--indigo);font-weight:600">★ AUTO-COMPUTED COLUMNS (from formula)</div>';
+    for(var i=0;i<autoCols.length;i+=2){
+      autoRows+='<div class="g2" style="margin-bottom:14px">'+buildAutoCard(autoCols[i],'express')+(autoCols[i+1]?buildAutoCard(autoCols[i+1],'express'):'')+' </div>';
     }
+  }
+
+  el.innerHTML='<div class="mrow" style="margin-bottom:16px"><div class="mc green"><div class="ml">Total Shipments</div><div class="mv">'+exprData.length+'</div><div class="ms">'+exprHeaders.length+' columns</div></div>'+metricCards+'</div>'+
+    '<div style="margin-bottom:10px;font-size:11px;color:var(--text2);font-weight:600">MANUAL ENTRY COLUMNS</div>'+manualRows+autoRows;
+
+  bindDrillClicks(el);
+  setTimeout(function(){
+    manualCols.forEach(function(c,i){
+      if(c.unique.length<=8){var t=topN(c.freq,8);drawChart('cc_'+i,'doughnut',t.map(function(x){return x[0];}),t.map(function(x){return x[1];}));}
+    });
   },80);
 }
 
-// ═══════════════════════════════════════════
+function buildAutoCard(c, sheet){
+  var bars=topN(c.freq,6).map(function(kv,j){
+    var v=kv[0],ct=kv[1],p=Math.round(ct/exprData.length*100);
+    return'<div class="sbl-row" data-drill-val="'+esc(c.h)+'|||'+esc(v)+'" data-drill-sheet="'+sheet+'">'+
+      '<div class="sbl-label">'+esc(v)+'</div>'+
+      '<div class="sbl-track"><div class="sbl-fill" style="width:'+Math.max(p,2)+'%;background:'+PAL[j]+'"></div></div>'+
+      '<div class="sbl-count">'+ct+'</div><div class="sbl-pct">'+p+'%</div></div>';
+  }).join('');
+  return'<div class="cc clickable" style="border-color:rgba(124,111,205,.35)" data-drill-col="'+esc(c.h)+'" data-drill-sheet="'+sheet+'">'+
+    '<h3 style="color:var(--indigo)">'+esc(c.h)+' ★</h3>'+
+    '<div class="ccsub">'+c.total+' values · '+c.unique.length+' unique · <span style="color:var(--indigo)">click to drill down ↗</span></div>'+
+    '<div class="sbl-list">'+bars+'</div></div>';
+}
+
+function renderCrossAnalytics(){
+  var el=document.getElementById('aContent');
+  var ca=analyseColumns(commHeaders,commData);
+  var ea=analyseColumns(exprHeaders,exprData);
+  el.innerHTML=
+    '<div class="g2" style="margin-bottom:14px">'+
+      '<div class="cc"><h3>Sheet Comparison</h3><div class="ccsub">Side-by-side overview</div>'+
+        '<div class="mstats">'+
+          '<div class="mstat"><span class="msl">Commercial Records</span><span class="msv" style="color:var(--blue)">'+commData.length+'</span></div>'+
+          '<div class="mstat"><span class="msl">Express Records</span><span class="msv" style="color:var(--green)">'+exprData.length+'</span></div>'+
+          '<div class="mstat"><span class="msl">Commercial Columns</span><span class="msv">'+commHeaders.length+'</span></div>'+
+          '<div class="mstat"><span class="msl">Express Columns</span><span class="msv">'+exprHeaders.length+'</span></div>'+
+          '<div class="mstat"><span class="msl">Total Data Points</span><span class="msv" style="color:var(--amber)">'+(commData.length*commHeaders.length+exprData.length*exprHeaders.length).toLocaleString()+'</span></div>'+
+        '</div>'+
+      '</div>'+
+      '<div class="cc"><h3>Volume Comparison</h3><div class="ccsub">Records in each sheet</div><div class="chwrap" style="height:200px"><canvas id="xcc"></canvas></div></div>'+
+    '</div>'+
+    '<div class="cc" style="margin-bottom:14px"><h3>Commercial Columns ('+commHeaders.length+')</h3><div class="ccsub">Fill rate — green=100%, amber=>70%, red=low</div>'+
+      '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">'+
+        ca.map(function(c){var pct=Math.round(c.total/Math.max(commData.length,1)*100);var cls=pct===100?'bg':pct>70?'ba':'br';return'<span class="badge '+cls+'" title="'+pct+'% filled">'+esc(c.h)+(pct<100?' '+pct+'%':'')+'</span>';}).join('')+
+      '</div></div>'+
+    '<div class="cc"><h3>Express Columns ('+exprHeaders.length+')</h3><div class="ccsub">Purple ★ = auto-computed</div>'+
+      '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">'+
+        ea.map(function(c){var pct=Math.round(c.total/Math.max(exprData.length,1)*100);var isA=EXPR_AUTO.includes(c.h);var cls=isA?'bi':pct===100?'bg':pct>70?'ba':'br';return'<span class="badge '+cls+'">'+esc(c.h)+(isA?' ★':'')+(pct<100?' '+pct+'%':'')+'</span>';}).join('')+
+      '</div></div>';
+  setTimeout(function(){
+    drawChart('xcc','bar',['Commercial','Express'],[commData.length,exprData.length],'#4f7cff');
+  },80);
+}
+
+// ════════════════════════════════════════════
 // ALERTS
-// ═══════════════════════════════════════════
+// ════════════════════════════════════════════
 function getAlerts(){
-  const alerts=[];
-  const today=new Date();
-  const ca=analyseColumns(commHeaders,commData);
-  const ea=analyseColumns(exprHeaders,exprData);
-  
-  // Missing data alerts
-  ca.filter(c=>c.missing>0&&c.missing/commData.length>0.1).forEach(c=>{
-    alerts.push({type:'warn',title:`${c.missing} missing values in "${c.h}"`,sub:`Commercial sheet — ${Math.round(c.missing/commData.length*100)}% of rows have no data`});
-  });
-  ea.filter(c=>c.missing>0&&!EXPR_AUTO.includes(c.h)&&c.missing/exprData.length>0.1).forEach(c=>{
-    alerts.push({type:'warn',title:`${c.missing} missing values in "${c.h}" (Express)`,sub:`${Math.round(c.missing/exprData.length*100)}% of express rows have no data`});
-  });
-  
-  // Status alerts
-  const statusCol=commHeaders.find(h=>h.toLowerCase().includes('status'));
-  if(statusCol){
-    const pending=commData.filter(r=>(r[statusCol]||'').toLowerCase().includes('pend'));
-    const held=commData.filter(r=>{const s=(r[statusCol]||'').toLowerCase();return s.includes('hold')||s.includes('delay');});
-    if(pending.length>0)alerts.push({type:'warn',title:`${pending.length} commercial entries pending`,sub:`Status: "${statusCol}" shows Pending`});
-    if(held.length>0)alerts.push({type:'danger',title:`${held.length} entries on hold or delayed`,sub:`Requires immediate attention`});
+  var alerts=[];
+  var ca=analyseColumns(commHeaders,commData);
+  var ea=analyseColumns(exprHeaders,exprData);
+  var today=new Date();
+  var statusH=commHeaders.find(function(h){return h.toLowerCase().includes('status');})||'';
+  if(statusH){
+    var pend=commData.filter(function(r){return (r[statusH]||'').toLowerCase().includes('pend');});
+    var held=commData.filter(function(r){var s=(r[statusH]||'').toLowerCase();return s.includes('hold')||s.includes('delay');});
+    if(pend.length) alerts.push({type:'warn',title:pend.length+' commercial entries pending',sub:'Status "'+statusH+'" shows Pending'});
+    if(held.length) alerts.push({type:'danger',title:held.length+' entries on hold or delayed',sub:'Requires immediate attention'});
   }
-  
-  // Date alerts — past ETD
-  const etdCol=exprHeaders.find(h=>h.toLowerCase().includes('etd')&&!h.toLowerCase().includes('local'));
-  if(etdCol){
-    const past=exprData.filter(r=>{try{const d=new Date(r[etdCol]);return d<today&&d>new Date('2020-01-01');}catch(e){return false;}});
-    if(past.length>0)alerts.push({type:'warn',title:`${past.length} shipments with past ETD`,sub:`${etdCol} date has passed — confirm actual departure`});
-  }
-  
-  // Empty first column in express (MAWB)
+  ca.filter(function(c){return c.missing>0&&c.missing/Math.max(commData.length,1)>0.1;}).forEach(function(c){
+    alerts.push({type:'warn',title:c.missing+' missing values in "'+c.h+'"',sub:'Commercial — '+Math.round(c.missing/commData.length*100)+'% rows empty'});
+  });
+  ea.filter(function(c){return c.missing>0&&!EXPR_AUTO.includes(c.h)&&c.missing/Math.max(exprData.length,1)>0.1;}).forEach(function(c){
+    alerts.push({type:'warn',title:c.missing+' missing values in "'+c.h+'" (Express)',sub:Math.round(c.missing/exprData.length*100)+'% of express rows empty'});
+  });
   if(exprHeaders[0]){
-    const empty=exprData.filter(r=>!(r[exprHeaders[0]]||'').trim());
-    if(empty.length>0)alerts.push({type:'danger',title:`${empty.length} Express rows missing ${exprHeaders[0]}`,sub:`Key identifier column is empty`});
+    var noKey=exprData.filter(function(r){return !(r[exprHeaders[0]]||'').trim();});
+    if(noKey.length) alerts.push({type:'danger',title:noKey.length+' Express rows missing '+exprHeaders[0],sub:'Key identifier column is empty'});
   }
-  
-  if(!alerts.length)alerts.push({type:'ok',title:'All clear — no issues detected',sub:'Data looks complete across both sheets'});
+  if(!alerts.length) alerts.push({type:'ok',title:'All clear — no issues detected',sub:'Data looks complete across both sheets'});
   return alerts;
 }
 
 function renderAlerts(){
-  const alerts=getAlerts();
-  const ca=analyseColumns(commHeaders,commData);
-  document.getElementById('mainContent').innerHTML=`
-  <div class="g2">
-    <div class="cc"><h3>🔔 Active Alerts (${alerts.filter(a=>a.type!=='ok').length})</h3><div class="ccsub">Auto-generated from your live data</div>
-      <div class="alist">${alerts.map(a=>`<div class="ai ${a.type}"><div><div class="att">${a.type==='danger'?'🔴':a.type==='warn'?'🟡':a.type==='ok'?'✅':'🔵'} ${a.title}</div><div class="ats">${a.sub}</div></div></div>`).join('')}</div>
-    </div>
-    <div class="cc"><h3>📊 Data Health Score</h3><div class="ccsub">Completeness of each column</div>
-      <div class="plist">${ca.map(c=>{const pct=Math.round(c.total/Math.max(commData.length,1)*100);const col=pct===100?'#22d3a5':pct>70?'#f59e0b':'#ef4444';return`<div class="pi"><div class="ph"><span>${c.h}</span><span style="color:${col}">${pct}%</span></div><div class="pt"><div class="pf" style="width:${pct}%;background:${col}"></div></div></div>`;}).join('')}
-      </div>
-    </div>
-  </div>`;
+  var alerts=getAlerts();
+  var ca=analyseColumns(commHeaders,commData);
+  document.getElementById('mainContent').innerHTML=
+    '<div class="g2">'+
+      '<div class="cc"><h3>🔔 Active Alerts</h3><div class="ccsub">'+alerts.filter(function(a){return a.type!=='ok';}).length+' issues found</div>'+
+        '<div class="alist">'+alerts.map(function(a){
+          var icon=a.type==='danger'?'🔴':a.type==='warn'?'🟡':a.type==='ok'?'✅':'🔵';
+          return'<div class="ai '+a.type+'"><div class="att">'+icon+' '+a.title+'</div><div class="ats">'+a.sub+'</div></div>';
+        }).join('')+'</div>'+
+      '</div>'+
+      '<div class="cc"><h3>📊 Column Health — Commercial</h3><div class="ccsub">Fill rate for each column</div>'+
+        '<div class="plist">'+ca.map(function(c){
+          var pct=Math.round(c.total/Math.max(commData.length,1)*100);
+          var col=pct===100?'#22d3a5':pct>70?'#f59e0b':'#ef4444';
+          return'<div class="pi"><div class="ph"><span>'+esc(c.h)+'</span><span style="color:'+col+'">'+pct+'%</span></div><div class="pt"><div class="pf" style="width:'+pct+'%;background:'+col+'"></div></div></div>';
+        }).join('')+'</div>'+
+      '</div>'+
+    '</div>';
 }
 
-// ═══════════════════════════════════════════
+// ════════════════════════════════════════════
 // DRILL DOWN ENGINE
-// ═══════════════════════════════════════════
-let drillStack = []; // history for back navigation
+// ════════════════════════════════════════════
+function bindDrillClicks(container){
+  container.querySelectorAll('[data-drill-col]').forEach(function(el){
+    el.addEventListener('click', function(e){
+      if(e.target.closest('[data-drill-val]')&&e.target.closest('[data-drill-val]')!==this) return;
+      drillColumn(this.dataset.drillSheet, this.dataset.drillCol);
+    });
+  });
+  container.querySelectorAll('[data-drill-val]').forEach(function(el){
+    el.addEventListener('click', function(e){
+      e.stopPropagation();
+      var parts=this.dataset.drillVal.split('|||');
+      drillColumnValue(this.dataset.drillSheet, parts[0], parts[1]);
+    });
+  });
+  container.querySelectorAll('[data-drill-num]').forEach(function(el){
+    el.addEventListener('click', function(e){
+      e.stopPropagation();
+      drillNumeric(this.dataset.drillSheet, this.dataset.drillNum);
+    });
+  });
+}
 
-function openDrill(title, subtitle, bodyFn){
-  drillStack.push({title, subtitle, bodyFn});
+function openDrill(title, subtitle, bodyHtml){
+  drillStack.push({title:title, subtitle:subtitle, bodyHtml:bodyHtml});
   renderDrill();
 }
 
 function renderDrill(){
-  const cur = drillStack[drillStack.length-1];
-  document.getElementById('drillTitle').textContent = cur.title;
-  document.getElementById('drillSubtitle').textContent = cur.subtitle||'';
-  document.getElementById('drillBackBtn').style.display = drillStack.length>1?'':'none';
-  document.getElementById('drillBody').innerHTML = cur.bodyFn();
-  document.getElementById('drillOverlay').classList.add('open');
-  // draw any charts inside drill
-  setTimeout(()=>{
-    document.querySelectorAll('[data-drill-chart]').forEach(el=>{
-      const d=JSON.parse(el.dataset.drillChart);
-      if(charts['drill_'+d.id])charts['drill_'+d.id].destroy();
-      if(d.type==='doughnut') charts['drill_'+d.id]=drawDoughnutEl(el,d.labels,d.vals);
-      else charts['drill_'+d.id]=drawBarEl(el,d.labels,d.vals,d.color||'#4f7cff');
+  var cur=drillStack[drillStack.length-1];
+  document.getElementById('dtitle').textContent=cur.title;
+  document.getElementById('dsubtitle').textContent=cur.subtitle||'';
+  document.getElementById('backBtn').style.display=drillStack.length>1?'':'none';
+  var body=document.getElementById('dbody');
+  body.innerHTML=cur.bodyHtml;
+  document.getElementById('doverlay').classList.add('open');
+  bindDrillClicks(body);
+  setTimeout(function(){
+    body.querySelectorAll('[data-chart]').forEach(function(el){
+      var d=JSON.parse(el.dataset.chart);
+      drawChart(el.id, d.type, d.labels, d.vals, d.color);
     });
   },60);
 }
 
-function drillBack(){
-  drillStack.pop();
-  if(drillStack.length) renderDrill();
-  else closeDrill();
-}
+function drillBack(){ drillStack.pop(); if(drillStack.length) renderDrill(); else closeDrill(); }
+function closeDrill(){ document.getElementById('doverlay').classList.remove('open'); drillStack=[]; }
 
-function closeDrill(){
-  document.getElementById('drillOverlay').classList.remove('open');
-  drillStack=[];
-}
-
-function closeDrillIfBg(e){
-  if(e.target===document.getElementById('drillOverlay')) closeDrill();
-}
-
-// Drill into a categorical column value breakdown
 function drillColumn(sheet, colName){
-  const isE=sheet==='express';
-  const data=isE?exprData:commData;
-  const headers=isE?exprHeaders:commHeaders;
-  const col=analyseColumns(headers,data).find(c=>c.h===colName);
+  var isE=sheet==='express', data=isE?exprData:commData, headers=isE?exprHeaders:commHeaders;
+  var col=analyseColumns(headers,data).find(function(c){return c.h===colName;});
   if(!col) return;
-  const top=topN(col.freq,20);
-  const total=data.length;
-
-  openDrill(colName, `${col.total} values · ${col.unique.length} unique · click any row to see records`, ()=>{
-    const bars=top.map(([v,c],i)=>{
-      const pct=Math.round(c/total*100);
-      return`<div class="sub-bar" onclick="drillColumnValue('${sheet}','${esc(colName)}','${esc(v)}')">
-        <div class="sbl" title="${esc(v)}">${esc(v)||'(blank)'}</div>
-        <div class="sub-bar-track"><div class="sub-bar-fill" style="width:${Math.max(pct,2)}%;background:${PALETTE[i%PALETTE.length]}"></div></div>
-        <div class="sbc">${c}</div>
-        <div class="sbp">${pct}%</div>
-      </div>`;
-    }).join('');
-
-    const chartData=`{"type":"doughnut","id":"col","labels":${JSON.stringify(top.slice(0,8).map(x=>x[0]))},"vals":${JSON.stringify(top.slice(0,8).map(x=>x[1]))}}`;
-
-    return`<div class="drill-grid">
-      <div class="cc"><h3>Distribution</h3><div class="ccsub">${col.unique.length} unique values</div>
-        <canvas style="max-height:220px" data-drill-chart='${chartData}'></canvas>
-      </div>
-      <div class="cc"><h3>Breakdown — click to see records</h3><div class="ccsub">Ranked by frequency</div>
-        <div class="sub-bar-list">${bars}</div>
-      </div>
-    </div>`;
-  });
+  var top=topN(col.freq,20);
+  var total=data.length;
+  var cid='drill_col_chart';
+  var chartData=JSON.stringify({type:'doughnut',labels:top.slice(0,8).map(function(x){return x[0];}),vals:top.slice(0,8).map(function(x){return x[1];})});
+  var bars=top.map(function(kv,i){
+    var v=kv[0],c=kv[1],p=Math.round(c/total*100);
+    return'<div class="sbl-row" data-drill-val="'+esc(colName)+'|||'+esc(v)+'" data-drill-sheet="'+sheet+'">'+
+      '<div class="sbl-label" title="'+esc(v)+'">'+esc(v||'(blank)')+'</div>'+
+      '<div class="sbl-track"><div class="sbl-fill" style="width:'+Math.max(p,2)+'%;background:'+PAL[i%PAL.length]+'"></div></div>'+
+      '<div class="sbl-count">'+c+'</div><div class="sbl-pct">'+p+'%</div></div>';
+  }).join('');
+  var html='<div class="g2">'+
+    '<div class="cc"><h3>Distribution</h3><div class="ccsub">'+col.unique.length+' unique values</div>'+
+      '<canvas id="'+cid+'" style="max-height:240px" data-chart=\''+chartData+'\'></canvas>'+
+    '</div>'+
+    '<div class="cc"><h3>All Values — click to see records</h3><div class="ccsub">Ranked by count</div>'+
+      '<div class="sbl-list">'+bars+'</div>'+
+    '</div>'+
+  '</div>';
+  openDrill(colName, col.total+' values · '+col.unique.length+' unique', html);
 }
 
-// Drill into records matching a specific value in a column
 function drillColumnValue(sheet, colName, value){
-  const isE=sheet==='express';
-  const data=isE?exprData:commData;
-  const headers=isE?exprHeaders:commHeaders;
-  const filtered=data.filter(r=>(r[colName]||'')===value||(r[colName]||'').trim()===value.trim());
+  var isE=sheet==='express', data=isE?exprData:commData, headers=isE?exprHeaders:commHeaders;
+  var filtered=data.filter(function(r){return (r[colName]||'').trim()===(value||'').trim();});
+  var fa=analyseColumns(headers,filtered);
+  var numCols=fa.filter(function(c){return c.isNumeric&&c.sum!=null;});
+  var otherCats=fa.filter(function(c){return c.isCat&&!c.isDate&&!c.isId&&c.h!==colName&&c.unique.length>=2&&c.unique.length<=15&&c.total>0;}).slice(0,4);
+  var showCols=headers.filter(function(h){return !EXPR_AUTO.includes(h);}).slice(0,10);
 
-  // Compute sub-breakdown for all other cat columns
-  const otherCols=analyseColumns(headers,filtered)
-    .filter(c=>c.isCat&&!c.isDate&&!c.isIdentifier&&c.h!==colName&&c.unique.length>=2&&c.unique.length<=15&&c.total>0)
-    .slice(0,4);
+  var statsHtml='<div class="dstats">'+
+    '<div class="dsc"><div class="dl">Records</div><div class="dv">'+filtered.length+'</div><div class="ds">matching this value</div></div>'+
+    '<div class="dsc"><div class="dl">% of Total</div><div class="dv">'+Math.round(filtered.length/Math.max(data.length,1)*100)+'%</div><div class="ds">of '+data.length+' total</div></div>'+
+    numCols.map(function(c){return'<div class="dsc"><div class="dl">'+esc(c.h)+'</div><div class="dv">'+Math.round(c.sum).toLocaleString()+'</div><div class="ds">Avg: '+c.avg.toFixed(1)+'</div></div>';}).join('')+
+  '</div>';
 
-  openDrill(`${colName}: "${value}"`, `${filtered.length} matching records`, ()=>{
-    // Stats
-    const numCols=analyseColumns(headers,filtered).filter(c=>c.isNumeric&&c.sum!=null);
-    const statsHTML=`<div class="drill-stats">
-      <div class="dstat"><div class="dl">Records</div><div class="dv">${filtered.length}</div><div class="ds">matching "${value}"</div></div>
-      <div class="dstat"><div class="dl">% of Total</div><div class="dv">${Math.round(filtered.length/data.length*100)}%</div><div class="ds">of ${data.length} total</div></div>
-      ${numCols.map(c=>`<div class="dstat"><div class="dl">${c.h}</div><div class="dv">${Math.round(c.sum).toLocaleString()}</div><div class="ds">Avg: ${c.avg.toFixed(1)}</div></div>`).join('')}
-    </div>`;
+  var subHtml='';
+  if(otherCats.length){
+    var pairs='';
+    for(var i=0;i<otherCats.length;i+=2){
+      var c1=otherCats[i],c2=otherCats[i+1];
+      var b1=topN(c1.freq,5).map(function(kv,j){
+        var v2=kv[0],ct=kv[1],p=Math.round(ct/filtered.length*100);
+        return'<div class="sbl-row" data-drill-val="'+esc(c1.h)+'|||'+esc(v2)+'" data-drill-sheet="'+sheet+'">'+
+          '<div class="sbl-label">'+esc(v2)+'</div>'+
+          '<div class="sbl-track"><div class="sbl-fill" style="width:'+Math.max(p,2)+'%;background:'+PAL[j]+'"></div></div>'+
+          '<div class="sbl-count">'+ct+'</div><div class="sbl-pct">'+p+'%</div></div>';
+      }).join('');
+      var b2=c2?topN(c2.freq,5).map(function(kv,j){
+        var v2=kv[0],ct=kv[1],p=Math.round(ct/filtered.length*100);
+        return'<div class="sbl-row" data-drill-val="'+esc(c2.h)+'|||'+esc(v2)+'" data-drill-sheet="'+sheet+'">'+
+          '<div class="sbl-label">'+esc(v2)+'</div>'+
+          '<div class="sbl-track"><div class="sbl-fill" style="width:'+Math.max(p,2)+'%;background:'+PAL[j]+'"></div></div>'+
+          '<div class="sbl-count">'+ct+'</div><div class="sbl-pct">'+p+'%</div></div>';
+      }).join(''):'';
+      pairs+='<div class="g2" style="margin-bottom:12px">'+
+        '<div class="cc"><h3>'+esc(c1.h)+'</h3><div class="ccsub">Within this filter</div><div class="sbl-list">'+b1+'</div></div>'+
+        (c2?'<div class="cc"><h3>'+esc(c2.h)+'</h3><div class="ccsub">Within this filter</div><div class="sbl-list">'+b2+'</div></div>':'')+
+      '</div>';
+    }
+    subHtml=pairs;
+  }
 
-    // Sub-breakdowns
-    const subHTML=otherCols.length?`<div class="drill-grid" style="margin-bottom:16px">
-      ${otherCols.map((c,i)=>{
-        const top2=topN(c.freq,6);
-        const bars2=top2.map(([v2,ct],j)=>{
-          const p=Math.round(ct/filtered.length*100);
-          return`<div class="sub-bar" onclick="drillColumnValue('${sheet}','${esc(c.h)}','${esc(v2)}')">
-            <div class="sbl">${esc(v2)||'(blank)'}</div>
-            <div class="sub-bar-track"><div class="sub-bar-fill" style="width:${Math.max(p,2)}%;background:${PALETTE[j]}"></div></div>
-            <div class="sbc">${ct}</div><div class="sbp">${p}%</div>
-          </div>`;
-        }).join('');
-        return`<div class="cc"><h3>${c.h}</h3><div class="ccsub">Within this filter</div><div class="sub-bar-list">${bars2}</div></div>`;
-      }).join('')}
-    </div>`:'';
+  var tableHtml='<div class="cc"><h3>All '+filtered.length+' Matching Records</h3><div class="ccsub" style="margin-bottom:10px">Showing first 10 columns</div>'+
+    '<div class="dtscroll"><table class="dtable">'+
+      '<thead><tr><th>#</th>'+showCols.map(function(h){return'<th>'+esc(h)+'</th>';}).join('')+'</tr></thead>'+
+      '<tbody>'+filtered.map(function(r,i){
+        return'<tr><td style="color:var(--text3)">'+( i+1)+'</td>'+showCols.map(function(h){return'<td title="'+esc(r[h]||'')+'">'+esc(r[h]||'')||'—'+'</td>';}).join('')+'</tr>';
+      }).join('')+'</tbody>'+
+    '</table></div></div>';
 
-    // Records table
-    const showCols=headers.filter(h=>!EXPR_AUTO.includes(h)).slice(0,10);
-    const tableHTML=`<div class="cc"><h3>All ${filtered.length} Records</h3><div class="ccsub" style="margin-bottom:10px">Showing first 10 columns</div>
-      <div class="dtscroll"><table class="drill-table">
-        <thead><tr><th>#</th>${showCols.map(h=>`<th>${h}</th>`).join('')}</tr></thead>
-        <tbody>${filtered.map((r,i)=>`<tr><td style="color:var(--text3)">${i+1}</td>${showCols.map(h=>`<td title="${esc(r[h]||'')}">${esc(r[h]||'')||'—'}</td>`).join('')}</tr>`).join('')}</tbody>
-      </table></div>
-    </div>`;
-
-    return statsHTML+subHTML+tableHTML;
-  });
+  openDrill(colName+': "'+value+'"', filtered.length+' matching records', statsHtml+subHtml+tableHtml);
 }
 
-// Drill into a numeric column
-function drillNumericColumn(sheet, colName){
-  const isE=sheet==='express';
-  const data=isE?exprData:commData;
-  const headers=isE?exprHeaders:commHeaders;
-  const col=analyseColumns(headers,data).find(c=>c.h===colName);
+function drillNumeric(sheet, colName){
+  var isE=sheet==='express', data=isE?exprData:commData, headers=isE?exprHeaders:commHeaders;
+  var col=analyseColumns(headers,data).find(function(c){return c.h===colName;});
   if(!col||!col.isNumeric) return;
-
-  // Bucket distribution
-  const vals=col.numVals;
-  const mn=col.min, mx=col.max, range=mx-mn;
-  const buckets=6;
-  const bSize=range/buckets;
-  const bucketLabels=Array.from({length:buckets},(_,i)=>`${Math.round(mn+i*bSize)}–${Math.round(mn+(i+1)*bSize)}`);
-  const bucketVals=Array(buckets).fill(0);
-  vals.forEach(v=>{const b=Math.min(Math.floor((v-mn)/bSize),buckets-1);bucketVals[b]++;});
-
-  openDrill(colName, `Numeric analysis — ${vals.length} values`, ()=>{
-    const chartData=`{"type":"bar","id":"num","labels":${JSON.stringify(bucketLabels)},"vals":${JSON.stringify(bucketVals)},"color":"#22d3a5"}`;
-    return`
-    <div class="drill-stats">
-      <div class="dstat"><div class="dl">Total</div><div class="dv">${Math.round(col.sum).toLocaleString()}</div><div class="ds">sum</div></div>
-      <div class="dstat"><div class="dl">Average</div><div class="dv">${col.avg.toFixed(1)}</div><div class="ds">per record</div></div>
-      <div class="dstat"><div class="dl">Max</div><div class="dv">${col.max.toFixed(0)}</div><div class="ds">highest value</div></div>
-      <div class="dstat"><div class="dl">Min</div><div class="dv">${col.min.toFixed(0)}</div><div class="ds">lowest value</div></div>
-      <div class="dstat"><div class="dl">Count</div><div class="dv">${vals.length}</div><div class="ds">of ${data.length} rows</div></div>
-      <div class="dstat"><div class="dl">Missing</div><div class="dv">${col.missing}</div><div class="ds">empty rows</div></div>
-    </div>
-    <div class="cc"><h3>Value Distribution</h3><div class="ccsub">How values are spread across ranges</div>
-      <div style="height:200px"><canvas data-drill-chart='${chartData}'></canvas></div>
-    </div>`;
-  });
+  var vals=col.numVals, mn=col.min, mx=col.max, range=mx-mn||1;
+  var buckets=6, bSize=range/buckets;
+  var bLabels=Array.from({length:buckets},function(_,i){return Math.round(mn+i*bSize)+'–'+Math.round(mn+(i+1)*bSize);});
+  var bVals=Array(buckets).fill(0);
+  vals.forEach(function(v){var b=Math.min(Math.floor((v-mn)/bSize),buckets-1);bVals[b]++;});
+  var cid='drill_num_chart';
+  var chartData=JSON.stringify({type:'bar',labels:bLabels,vals:bVals,color:'#22d3a5'});
+  var html='<div class="dstats">'+
+    '<div class="dsc"><div class="dl">Total</div><div class="dv">'+Math.round(col.sum).toLocaleString()+'</div><div class="ds">sum</div></div>'+
+    '<div class="dsc"><div class="dl">Average</div><div class="dv">'+col.avg.toFixed(1)+'</div><div class="ds">per record</div></div>'+
+    '<div class="dsc"><div class="dl">Max</div><div class="dv">'+col.max.toFixed(0)+'</div><div class="ds">highest</div></div>'+
+    '<div class="dsc"><div class="dl">Min</div><div class="dv">'+col.min.toFixed(0)+'</div><div class="ds">lowest</div></div>'+
+    '<div class="dsc"><div class="dl">Count</div><div class="dv">'+vals.length+'</div><div class="ds">of '+data.length+' rows</div></div>'+
+    '<div class="dsc"><div class="dl">Missing</div><div class="dv">'+col.missing+'</div><div class="ds">empty rows</div></div>'+
+  '</div>'+
+  '<div class="cc"><h3>Value Distribution</h3><div class="ccsub">How values are spread across ranges</div>'+
+    '<div style="height:200px"><canvas id="'+cid+'" data-chart=\''+chartData+'\'></canvas></div>'+
+  '</div>';
+  openDrill(colName+' — Numeric Analysis', vals.length+' values', html);
 }
 
-// Draw chart helpers that return chart instance
-function drawDoughnutEl(el, labels, vals){
-  return new Chart(el,{type:'doughnut',data:{labels,datasets:[{data:vals,backgroundColor:PALETTE.slice(0,labels.length),borderColor:'#1a1d2e',borderWidth:2}]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{color:'#9ba3c0',font:{size:10},boxWidth:10,padding:8}}}}});
-}
-function drawBarEl(el, labels, vals, color){
-  return new Chart(el,{type:'bar',data:{labels,datasets:[{data:vals,backgroundColor:color+'b3',borderColor:color,borderWidth:1,borderRadius:5}]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
-      scales:{x:{ticks:{color:'#5c6285',font:{size:10},maxRotation:30},grid:{color:'rgba(42,45,69,.4)'}},
-              y:{ticks:{color:'#5c6285',font:{size:10}},grid:{color:'rgba(42,45,69,.4)'}}}}});
-}
-  const c=document.getElementById(id);if(!c)return;
-  if(charts[id])charts[id].destroy();
-  charts[id]=new Chart(c,{type:'bar',data:{labels,datasets:[{data:vals,backgroundColor:color+'b3',borderColor:color,borderWidth:1,borderRadius:5}]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
-      scales:{x:{ticks:{color:'#5c6285',font:{size:10},maxRotation:30},grid:{color:'rgba(42,45,69,.4)'}},
-              y:{ticks:{color:'#5c6285',font:{size:10}},grid:{color:'rgba(42,45,69,.4)'}}}}});
-}
-function drawDoughnut(id,labels,vals){
-  const c=document.getElementById(id);if(!c)return;
-  if(charts[id])charts[id].destroy();
-  charts[id]=new Chart(c,{type:'doughnut',data:{labels,datasets:[{data:vals,backgroundColor:PALETTE.slice(0,labels.length),borderColor:'#1a1d2e',borderWidth:2}]},
-    options:{responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{position:'right',labels:{color:'#9ba3c0',font:{size:10},boxWidth:10,padding:8}}}}});
-}
-
-// ═══════════════════════════════════════════
+// ════════════════════════════════════════════
 // MODAL
-// ═══════════════════════════════════════════
-function openModal(sheet,rowIdx){
-  modalState={sheet,rowIdx};
-  const isE=sheet==='express';
-  const headers=isE?exprHeaders:commHeaders;
-  const data=rowIdx>=0?(isE?exprData[rowIdx]:commData[rowIdx]):{};
+// ════════════════════════════════════════════
+function openModal(sheet, rowIdx){
+  modalState={sheet:sheet, rowIdx:rowIdx};
+  var isE=sheet==='express', headers=isE?exprHeaders:commHeaders, data=rowIdx>=0?(isE?exprData[rowIdx]:commData[rowIdx]):{};
   document.getElementById('mtitle').textContent=(rowIdx<0?'Add New ':'Edit ')+(isE?'Express Shipment':'Commercial Entry');
   document.getElementById('mnote').textContent=cfg.isDemo?'Demo — not synced':isE?'★ auto-computed fields are read-only':'';
-  
-  if(!headers.length){document.getElementById('formContent').innerHTML=`<p style="color:var(--text3)">No headers found — load data first.</p>`;document.getElementById('overlay').classList.add('open');return;}
-  
-  // Smart sections — group by 2 columns per row
-  let html='<div class="fsec"><div class="fst">'+(isE?'Shipment Details':'Entry Details')+'</div><div class="fgrid">';
-  headers.forEach((h,i)=>{
-    const isA=isE&&EXPR_AUTO.includes(h);
-    const val=data[h]||'';
-    html+=`<div class="ff"><label>${h} ${isA?'<span class="autotag">auto</span>':''}</label>
-      <input type="text" id="ff_${i}" value="${esc(val)}" ${isA?'readonly placeholder="Auto-computed by formula"':''} placeholder="${h}">
-    </div>`;
+  if(!headers.length){document.getElementById('formContent').innerHTML='<p style="color:var(--text3)">No headers found — load data first.</p>';document.getElementById('overlay').classList.add('open');return;}
+  var html='<div class="fgrid">';
+  headers.forEach(function(h,i){
+    var isA=isE&&EXPR_AUTO.includes(h), val=data[h]||'';
+    html+='<div class="ff"><label>'+esc(h)+(isA?' <span class="autotag">auto</span>':'')+'</label>'+
+      '<input type="text" id="ff_'+i+'" value="'+esc(val)+'" '+(isA?'readonly placeholder="Auto-computed by formula"':'placeholder="'+esc(h)+'"')+'>'+
+    '</div>';
   });
-  html+='</div></div>';
+  html+='</div>';
   document.getElementById('formContent').innerHTML=html;
   document.getElementById('overlay').classList.add('open');
 }
-function closeModal(){document.getElementById('overlay').classList.remove('open');}
-async function saveEntry(){
-  const{sheet,rowIdx}=modalState;
-  const isE=sheet==='express';
-  const headers=isE?exprHeaders:commHeaders;
-  const newRow={};
-  const arr=headers.map((h,i)=>{const v=document.getElementById('ff_'+i)?.value||'';newRow[h]=v;return v;});
-  const btn=document.getElementById('saveBtn');
-  btn.disabled=true;btn.textContent='Saving...';
-  try{
-    if(rowIdx<0){if(isE)exprData.push(newRow);else commData.push(newRow);await writeSheet('append',isE?'express':'commercial',arr);}
-    else{if(isE)exprData[rowIdx]=newRow;else commData[rowIdx]=newRow;await writeSheet('update',isE?'express':'commercial',arr,rowIdx+2);}
-    closeModal();updateBadges();renderPage();
-    toast((rowIdx<0?'Entry added':'Updated')+(cfg.isDemo?'':' · synced to Google Sheet'),'ok');
-  }catch(e){toast('Save failed: '+e.message,'err');}
-  btn.disabled=false;btn.textContent='Save';
-}
-async function delRow(sheet,idx){
-  if(!confirm('Delete this row? Will also remove from Google Sheet.'))return;
-  const isE=sheet==='express';
-  try{
-    await writeSheet('delete',isE?'express':'commercial',[],idx+2);
-    if(isE)exprData.splice(idx,1);else commData.splice(idx,1);
-    updateBadges();renderPage();toast('Deleted','ok');
-  }catch(e){toast('Delete failed: '+e.message,'err');}
+
+function closeModal(){ document.getElementById('overlay').classList.remove('open'); }
+
+function saveEntry(){
+  var s=modalState.sheet, ri=modalState.rowIdx, isE=s==='express';
+  var headers=isE?exprHeaders:commHeaders;
+  var newRow={}, arr=headers.map(function(h,i){var v=document.getElementById('ff_'+i)?.value||'';newRow[h]=v;return v;});
+  var btn=document.getElementById('saveBtn');
+  btn.disabled=true; btn.textContent='Saving...';
+  writeSheet(ri<0?'append':'update', isE?'express':'commercial', arr, ri<0?null:ri+2)
+    .then(function(){
+      if(ri<0){if(isE)exprData.push(newRow);else commData.push(newRow);}
+      else{if(isE)exprData[ri]=newRow;else commData[ri]=newRow;}
+      closeModal(); updateBadges(); renderPage();
+      toast((ri<0?'Entry added':'Updated')+(cfg.isDemo?'':' · synced to Google Sheet'),'ok');
+    })
+    .catch(function(e){ toast('Save failed: '+e.message,'err'); })
+    .finally(function(){ btn.disabled=false; btn.textContent='Save'; });
 }
 
-// ═══════════════════════════════════════════
+function delRow(sheet, idx){
+  if(!confirm('Delete this row? Will also remove from Google Sheet.')) return;
+  var isE=sheet==='express';
+  writeSheet('delete', isE?'express':'commercial', [], idx+2)
+    .then(function(){
+      if(isE)exprData.splice(idx,1);else commData.splice(idx,1);
+      updateBadges(); renderPage(); toast('Deleted','ok');
+    })
+    .catch(function(e){ toast('Delete failed: '+e.message,'err'); });
+}
+
+// ════════════════════════════════════════════
+// CHART HELPERS
+// ════════════════════════════════════════════
+function drawChart(id, type, labels, vals, color){
+  var el=document.getElementById(id); if(!el) return;
+  if(charts[id]) charts[id].destroy();
+  if(type==='doughnut'){
+    charts[id]=new Chart(el,{type:'doughnut',
+      data:{labels:labels,datasets:[{data:vals,backgroundColor:PAL.slice(0,labels.length),borderColor:'#1a1d2e',borderWidth:2}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{color:'#9ba3c0',font:{size:10},boxWidth:10,padding:8}}}}});
+  } else {
+    charts[id]=new Chart(el,{type:'bar',
+      data:{labels:labels,datasets:[{data:vals,backgroundColor:(color||'#4f7cff')+'b3',borderColor:color||'#4f7cff',borderWidth:1,borderRadius:5}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+        scales:{x:{ticks:{color:'#5c6285',font:{size:10},maxRotation:30},grid:{color:'rgba(42,45,69,.4)'}},
+                y:{ticks:{color:'#5c6285',font:{size:10}},grid:{color:'rgba(42,45,69,.4)'}}}}});
+  }
+}
+
+// ════════════════════════════════════════════
 // DEMO DATA
-// ═══════════════════════════════════════════
+// ════════════════════════════════════════════
 function genDemo(){
-  commHeaders=['File No','Date','Consignee','Shipper','Country of Origin','Port of Loading','Port of Discharge','Commodity','HS Code','Weight (KG)','CBM','No. of Pkgs','Mode','Status','Agent','Remarks'];
-  const stats=['Pending','Under Clearance','Cleared','Delivered','On Hold','Delayed','In Transit'];
-  const origins=['China','UAE','USA','Germany','UK','India','Turkey','Italy'];
-  const modes=['Air','Sea','Road'];
-  const agents=['Al Rashid','Blue Falcon','Swift Log','Apex Freight','Global Air'];
-  const commodities=['Electronics','Garments','Auto Parts','Machinery','Chemicals','Food Items','Furniture','Toys'];
-  const ports=['Karachi','Lahore','Islamabad','Jebel Ali','Shanghai','Hamburg','JFK'];
-  commData=Array.from({length:35},(_,i)=>({
+  commHeaders=['File No','Date','Consignee','Shipper','Country of Origin','Port of Loading','Port of Discharge','Commodity','HS Code','Weight (KGS)','CBM','No. of Pkgs','Mode','Incoterm','Status','CHB','CFS','Mode of delivery','Agent','Remarks'];
+  var stats=['Pending','Under Clearance','Cleared','Delivered','On Hold','Delayed'];
+  var origins=['China','UAE','USA','Germany','UK','India','Turkey'];
+  var modes=['Air','Sea','Road'];
+  var incots=['DDP','DAP','DDU'];
+  var chbs=['WC','Regal','Reagal','RB','CH Robinson'];
+  var cfss=['AMI','KW','Direct airline recovery','WC','1C'];
+  var dels=['UPS','LTL','FTL','FTL / LTL','Air + Sea'];
+  var comm=['Electronics','Garments','Auto Parts','Machinery','Food Items'];
+  var ports=['Karachi','Lahore','Islamabad','Jebel Ali','Shanghai','Hamburg'];
+  commData=Array.from({length:35},function(_,i){return{
     'File No':'COM-'+(2001+i),'Date':'2026-0'+((i%9)+1)+'-'+String((i%28)+1).padStart(2,'0'),
     'Consignee':'Company '+(i+1),'Shipper':'Shipper '+(i%10+1),
     'Country of Origin':origins[i%origins.length],'Port of Loading':ports[i%7],
-    'Port of Discharge':ports[(i+2)%7],'Commodity':commodities[i%commodities.length],
-    'HS Code':'8471.'+String(30+i%70).padStart(2,'0'),'Weight (KG)':String(Math.round(50+Math.random()*950)),
+    'Port of Discharge':ports[(i+2)%7],'Commodity':comm[i%comm.length],
+    'HS Code':'8471.'+String(30+i%70).padStart(2,'0'),
+    'Weight (KGS)':String(Math.round(50+Math.random()*950)),
     'CBM':String((1+Math.random()*9).toFixed(2)),'No. of Pkgs':String(1+i%30),
-    'Mode':modes[i%3],'Status':stats[i%stats.length],'Agent':agents[i%agents.length],
-    'Remarks':i%5===0?'Urgent delivery':i%7===0?'Docs pending':''
-  }));
-  
-  exprHeaders=['MAWB','FLIGHT No.','OC Clearance Partner','Number Of Pkgs','HANDOVER DATE','Expected FLYING DATE','Port','ETD (Local airport time)','ATD (Local airport time)','ETA (Local airport time)','Shipper','Consignee','Weight (KG)','Commodity','Remarks'];
-  const portsList=['DXB','LHR','FRA','JFK','SIN','CDG','AMS','DOH','BKK','KUL'];
-  const partners=['Al Futtaim','Emirates SkyCargo','DHL Express','FedEx','UPS','Aramex'];
-  exprData=Array.from({length:42},(_,i)=>({
+    'Mode':modes[i%3],'Incoterm':incots[i%3],'Status':stats[i%stats.length],
+    'CHB':chbs[i%chbs.length],'CFS':cfss[i%cfss.length],'Mode of delivery':dels[i%dels.length],
+    'Agent':'Agent '+(i%5+1),'Remarks':i%5===0?'Urgent':''
+  };});
+  exprHeaders=['MAWB','FLIGHT No.','OC Clearance Partner','Number Of Pkgs','HANDOVER DATE','Expected FLYING DATE','Port','ETD (Local airport time)','ATD (Local airport time)','ETA (Local airport time)','Shipper','Consignee','Weight (KG)','Commodity'];
+  var epts=['DXB','LHR','FRA','JFK','SIN','CDG','AMS','DOH'];
+  var partners=['Al Futtaim','Emirates SkyCargo','DHL','FedEx','UPS','Aramex'];
+  exprData=Array.from({length:42},function(_,i){return{
     'MAWB':'176-'+String(10000000+i*1337),'FLIGHT No.':'EK-'+String(400+i%200),
     'OC Clearance Partner':partners[i%partners.length],'Number Of Pkgs':String(1+i%25),
     'HANDOVER DATE':'2026-0'+((i%9)+1)+'-'+String((i%28)+1).padStart(2,'0'),
     'Expected FLYING DATE':'2026-0'+((i%9)+1)+'-'+String(((i+2)%28)+1).padStart(2,'0'),
-    'Port':portsList[i%portsList.length],
+    'Port':epts[i%epts.length],
     'ETD (Local airport time)':'2026-0'+((i%9)+1)+'-'+String(((i+1)%28)+1).padStart(2,'0')+' 14:00',
     'ATD (Local airport time)':i%3===0?'—':'2026-0'+((i%9)+1)+'-'+String(((i+1)%28)+1).padStart(2,'0')+' 14:35',
     'ETA (Local airport time)':'2026-0'+((i%9)+2)+'-'+String(((i+3)%28)+1).padStart(2,'0')+' 08:00',
     'Shipper':'Shipper '+(i%12+1),'Consignee':'Consignee '+(i%15+1),
-    'Weight (KG)':String(Math.round(10+Math.random()*500)),'Commodity':commodities[i%commodities.length],'Remarks':''
-  }));
+    'Weight (KG)':String(Math.round(10+Math.random()*500)),'Commodity':comm[i%comm.length]
+  };});
 }
 
-// ═══════════════════════════════════════════
+// ════════════════════════════════════════════
 // UTILS
-// ═══════════════════════════════════════════
-function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function toast(msg,type=''){
-  const w=document.getElementById('twrap'),el=document.createElement('div');
-  el.className='toast '+(type==='ok'?'ok':type==='err'?'err':type==='info'?'info':'');
-  el.textContent=msg;w.appendChild(el);
-  requestAnimationFrame(()=>el.classList.add('show'));
-  setTimeout(()=>{el.classList.remove('show');setTimeout(()=>el.remove(),400);},3500);
+// ════════════════════════════════════════════
+function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+function toast(msg,type){
+  var w=document.getElementById('twrap'),el=document.createElement('div');
+  el.className='toast'+(type==='ok'?' ok':type==='err'?' err':type==='info'?' info':'');
+  el.textContent=msg; w.appendChild(el);
+  requestAnimationFrame(function(){el.classList.add('show');});
+  setTimeout(function(){el.classList.remove('show');setTimeout(function(){el.remove();},400);},3500);
 }
-
-// ═══════════════════════════════════════════
-// INIT
-// ═══════════════════════════════════════════
-window.onload=()=>{
-  const s=localStorage.getItem('opsCfg');
-  if(s){
-    cfg=JSON.parse(s);
-    if(cfg.url){
-      document.getElementById('webAppUrl').value=cfg.url;
-      document.getElementById('commSN').value=cfg.commSheet||'Commercial';
-      document.getElementById('exprSN').value=cfg.exprSheet||'Express';
-      showLoading('Reconnecting to Google Sheet...');
-      fetchAll().then(()=>{showApp();startTimer();}).catch(e=>{hideLoading();toast('Reconnect failed: '+e.message,'err');});
-    }
-  }
-};
 </script>
 </body>
 </html>
