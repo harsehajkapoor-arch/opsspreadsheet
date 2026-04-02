@@ -407,28 +407,53 @@ function renderPage(){
 }
 
 // ═══════════════════════════════════════════
-// SMART COLUMN ANALYSER
-// Returns categorised info about each column
+// SMART COLUMN ANALYSER — v3
+// Strict type detection, no false numerics
 // ═══════════════════════════════════════════
 function analyseColumns(headers, data){
   return headers.map(h=>{
     const vals=data.map(r=>(r[h]||'').trim()).filter(Boolean);
     const unique=[...new Set(vals)];
-    const hl=h.toLowerCase();
-    // Type detection
-    const isDate=hl.includes('date')||hl.includes('eta')||hl.includes('etd')||hl.includes('atd')||hl.includes('time');
-    const isNum=hl.includes('weight')||hl.includes('qty')||hl.includes('pcs')||hl.includes('pieces')||hl.includes('amount')||hl.includes('value')||hl.includes('rate')||hl.includes('cbm')||hl.includes('charge')||hl.includes('cost')||hl.includes('price');
-    const isCat=unique.length<=30&&unique.length>=2&&vals.length>0;
-    // Exclude identifier/code columns from numeric treatment
-    const isIdentifier=hl.includes('mawb')||hl.includes('hawb')||hl.includes('awb')||hl.includes('flight')||hl.includes('file')||hl.includes('ref')||hl.includes('code')||hl.includes('hs ')||hl===('hs')||hl.includes('id')||hl.includes('no.')||hl.includes('number')&&(hl.includes('flight')||hl.includes('awb')||hl.includes('file'));
-    const numVals=(!isIdentifier)?vals.map(v=>parseFloat(v.replace(/[^0-9.-]/g,''))).filter(v=>!isNaN(v)):[];
-    const isNumeric=!isIdentifier&&numVals.length>vals.length*0.7&&numVals.every(v=>v>0);
-    return {h,vals,unique,isDate,isNum,isCat,isNumeric,numVals,
-      total:vals.length,missing:data.length-vals.length,
-      sum:numVals.reduce((a,b)=>a+b,0),
-      avg:numVals.length?numVals.reduce((a,b)=>a+b,0)/numVals.length:0,
-      max:numVals.length?Math.max(...numVals):0,
-      min:numVals.length?Math.min(...numVals):0,
+    const hl=h.toLowerCase().replace(/[^a-z0-9 ]/g,' ');
+
+    // ── 1. DATE detection — name OR value pattern ──
+    const dateNameHints=['date','eta','etd','atd','time','handover','flying','arrival','departure','pre alert'];
+    const isDateName=dateNameHints.some(k=>hl.includes(k));
+    const dateValuePattern=/^\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4}$|^\d{4}[\/\-]\d{2}[\/\-]\d{2}|^\d{1,2} \w{3} \d{4}/;
+    const dateSample=vals.slice(0,10).filter(v=>dateValuePattern.test(v));
+    const isDate=isDateName||(dateSample.length>vals.slice(0,10).length*0.5);
+
+    // ── 2. IDENTIFIER detection — never sum these ──
+    const idHints=['mawb','hawb','awb','flight no','flight #','file no','file #','ref','hs code','invoice no','bl no','bl #','job no','booking','container','seal','vessel'];
+    const isIdentifier=idHints.some(k=>hl.includes(k));
+
+    // ── 3. TRUE NUMERIC detection ──
+    // Only columns whose name strongly implies a measurable quantity
+    const numNameHints=['weight','kg','kgs','cbm','m3','qty','quantity','pcs','pieces','packages','pkgs','amount','value','rate','charge','cost','price','fee','total','revenue','count'];
+    const isNumName=numNameHints.some(k=>hl.includes(k));
+    // AND values must actually be clean numbers (not date-like, not codes)
+    const cleanNums=isDate||isIdentifier?[]:
+      vals.map(v=>{
+        const c=v.replace(/,/g,'').replace(/[^0-9.-]/g,'');
+        const n=parseFloat(c);
+        return(!isNaN(n)&&c.length>=1&&c===v.replace(/,/g,'').replace(/[^0-9.-]/g,''))?n:NaN;
+      }).filter(v=>!isNaN(v));
+    const numRatio=vals.length?cleanNums.length/vals.length:0;
+    const isNumeric=!isDate&&!isIdentifier&&isNumName&&numRatio>0.7;
+    const numVals=isNumeric?cleanNums:[];
+
+    // ── 4. CATEGORICAL ──
+    const isCat=!isDate&&unique.length>=2&&unique.length<=25&&vals.length>0;
+
+    return {
+      h, vals, unique, isDate, isIdentifier, isNumeric, isCat,
+      numVals,
+      total:vals.length,
+      missing:data.length-vals.length,
+      sum:numVals.length?numVals.reduce((a,b)=>a+b,0):null,
+      avg:numVals.length?numVals.reduce((a,b)=>a+b,0)/numVals.length:null,
+      max:numVals.length?Math.max(...numVals):null,
+      min:numVals.length?Math.min(...numVals):null,
       freq:vals.reduce((m,v)=>{m[v]=(m[v]||0)+1;return m;},{})
     };
   });
@@ -444,15 +469,15 @@ function renderDash(){
   const ca=analyseColumns(commHeaders,commData);
   const ea=analyseColumns(exprHeaders,exprData);
   
-  const pkgCol=ea.find(c=>c.h.toLowerCase().includes('pkg')||c.h.toLowerCase().includes('package'));
+  const pkgCol=ea.find(c=>c.isNumeric&&(c.h.toLowerCase().includes('pkg')||c.h.toLowerCase().includes('package')||c.h.toLowerCase().includes('pcs')));
   const statusCol=ca.find(c=>c.h.toLowerCase().includes('status'));
-  const portCol=ea.find(c=>c.h.toLowerCase().includes('port'));
-  const originCol=ca.find(c=>c.h.toLowerCase().includes('origin')||c.h.toLowerCase().includes('loading'));
-  const destCol=ca.find(c=>c.h.toLowerCase().includes('dest')||c.h.toLowerCase().includes('discharge'));
+  const portCol=ea.find(c=>c.isCat&&(c.h.toLowerCase().includes('port')));
+  const originCol=ca.find(c=>c.isCat&&(c.h.toLowerCase().includes('origin')||c.h.toLowerCase().includes('loading')));
+  const destCol=ca.find(c=>c.isCat&&(c.h.toLowerCase().includes('dest')||c.h.toLowerCase().includes('discharge')));
   const alerts=getAlerts();
   const alertCount=alerts.filter(a=>a.type!=='ok').length;
   
-  let totalPkgs=pkgCol?Math.round(pkgCol.sum):0;
+  let totalPkgs=pkgCol&&pkgCol.sum!=null?Math.round(pkgCol.sum):0;
   let pendCount=statusCol?statusCol.vals.filter(v=>v.toLowerCase().includes('pend')).length:0;
   
   mc.innerHTML=`
@@ -601,17 +626,18 @@ function renderCommAnalytics(ca){
   const el=document.getElementById('aContent');
   if(!commData.length){el.innerHTML='<div class="empty">No commercial data loaded</div>';return;}
   
-  // Pick the best categorical columns (up to 8)
-  const catCols=ca.filter(c=>c.isCat&&!c.isDate&&c.unique.length>=2&&c.unique.length<=20&&c.total>0).slice(0,8);
-  const numCols=ca.filter(c=>c.isNumeric&&c.numVals.length>0).slice(0,4);
+  // Pick the best categorical columns (up to 8) — exclude dates and identifiers
+  const catCols=ca.filter(c=>c.isCat&&!c.isDate&&!c.isIdentifier&&c.unique.length>=2&&c.unique.length<=20&&c.total>0).slice(0,8);
+  // Only true numeric columns (weight, cbm, charges etc) — never dates, never IDs
+  const numCols=ca.filter(c=>c.isNumeric&&c.sum!=null&&c.numVals.length>0).slice(0,4);
   const dateCols=ca.filter(c=>c.isDate&&c.vals.length>0).slice(0,2);
   
-  // Summary stats
+  // Summary stats — only real numerics get metric cards
   let summaryHTML=`<div class="mrow" style="margin-bottom:16px">
     <div class="mc blue"><div class="ml">Total Entries</div><div class="mv">${commData.length}</div><div class="ms">${commHeaders.length} columns</div></div>
     ${numCols.map((c,i)=>{
       const colors=['amber','green','pink','cyan'];
-      return`<div class="mc ${colors[i]}"><div class="ml">${c.h}</div><div class="mv">${Math.round(c.sum).toLocaleString()}</div><div class="ms">Avg: ${c.avg.toFixed(1)}</div></div>`;
+      return`<div class="mc ${colors[i]}"><div class="ml">${c.h}</div><div class="mv">${Math.round(c.sum).toLocaleString()}</div><div class="ms">Avg: ${c.avg.toFixed(1)} · Max: ${c.max.toFixed(0)}</div></div>`;
     }).join('')}
     ${catCols[0]?`<div class="mc indigo"><div class="ml">Unique ${catCols[0].h}</div><div class="mv">${catCols[0].unique.length}</div><div class="ms">distinct values</div></div>`:''}
   </div>`;
