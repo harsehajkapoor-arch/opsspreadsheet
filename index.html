@@ -349,6 +349,13 @@ var EXPR_AUTO = ['FLIGHT No.','OC Clearance Partner','Number Of Pkgs','HANDOVER 
 var PAL = ['#4f7cff','#22d3a5','#f59e0b','#ef4444','#e879a0','#7c6fcd','#06b6d4','#84cc16','#f97316','#a855f7','#14b8a6','#eab308'];
 
 // ════════════════════════════════════════════
+// HARDCODED CONFIG — no setup screen needed
+// ════════════════════════════════════════════
+var HARDCODED_URL = 'https://script.google.com/macros/s/AKfycbxIG-20KYQTwdTzd6JXwF31mrVs09N-tJFQM8_VyMnNB8i/exec';
+var HARDCODED_COMM = 'Commercial';
+var HARDCODED_EXPR = 'Express';
+
+// ════════════════════════════════════════════
 // INIT — wire up all events after DOM ready
 // ════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', function() {
@@ -365,22 +372,21 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('backBtn').addEventListener('click', drillBack);
   document.getElementById('doverlay').addEventListener('click', function(e){ if(e.target===this) closeDrill(); });
 
-  // Nav
   document.querySelectorAll('.ni').forEach(function(el){
     el.addEventListener('click', function(){ switchPage(this.dataset.page); });
   });
 
-  // Load saved config
-  var saved = localStorage.getItem('opsCfgV3');
-  if(saved){
-    try{
-      cfg = JSON.parse(saved);
-      document.getElementById('webAppUrl').value = cfg.url||'';
-      document.getElementById('commSN').value = cfg.commSheet||'Commercial';
-      document.getElementById('exprSN').value = cfg.exprSheet||'Express';
-      if(cfg.url){ showLoading('Reconnecting...'); fetchAll().then(function(){ showApp(); startTimer(); }).catch(function(e){ hideLoading(); toast('Reconnect failed: '+e.message,'err'); }); }
-    }catch(e){}
-  }
+  // Always auto-connect with hardcoded URL — skip setup for everyone
+  cfg = {url: HARDCODED_URL, commSheet: HARDCODED_COMM, exprSheet: HARDCODED_EXPR, isDemo: false};
+  showLoading('Loading your data...');
+  fetchAll()
+    .then(function(){ showApp(); startTimer(); })
+    .catch(function(e){
+      hideLoading();
+      // Only show setup screen if connection fails (for admin to reconfigure)
+      toast('Could not connect to sheet: '+e.message+'. Showing setup screen.','err');
+      document.getElementById('setupScreen').style.display='flex';
+    });
 });
 
 // ════════════════════════════════════════════
