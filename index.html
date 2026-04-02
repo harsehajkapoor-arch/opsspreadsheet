@@ -417,10 +417,12 @@ function analyseColumns(headers, data){
     const hl=h.toLowerCase();
     // Type detection
     const isDate=hl.includes('date')||hl.includes('eta')||hl.includes('etd')||hl.includes('atd')||hl.includes('time');
-    const isNum=hl.includes('pkg')||hl.includes('package')||hl.includes('weight')||hl.includes('qty')||hl.includes('pcs')||hl.includes('pieces')||hl.includes('no.')||hl.includes('num')||hl.includes('amount')||hl.includes('value')||hl.includes('rate');
+    const isNum=hl.includes('weight')||hl.includes('qty')||hl.includes('pcs')||hl.includes('pieces')||hl.includes('amount')||hl.includes('value')||hl.includes('rate')||hl.includes('cbm')||hl.includes('charge')||hl.includes('cost')||hl.includes('price');
     const isCat=unique.length<=30&&unique.length>=2&&vals.length>0;
-    const numVals=vals.map(v=>parseFloat(v.replace(/[^0-9.-]/g,''))).filter(v=>!isNaN(v));
-    const isNumeric=numVals.length>vals.length*0.6;
+    // Exclude identifier/code columns from numeric treatment
+    const isIdentifier=hl.includes('mawb')||hl.includes('hawb')||hl.includes('awb')||hl.includes('flight')||hl.includes('file')||hl.includes('ref')||hl.includes('code')||hl.includes('hs ')||hl===('hs')||hl.includes('id')||hl.includes('no.')||hl.includes('number')&&(hl.includes('flight')||hl.includes('awb')||hl.includes('file'));
+    const numVals=(!isIdentifier)?vals.map(v=>parseFloat(v.replace(/[^0-9.-]/g,''))).filter(v=>!isNaN(v)):[];
+    const isNumeric=!isIdentifier&&numVals.length>vals.length*0.7&&numVals.every(v=>v>0);
     return {h,vals,unique,isDate,isNum,isCat,isNumeric,numVals,
       total:vals.length,missing:data.length-vals.length,
       sum:numVals.reduce((a,b)=>a+b,0),
