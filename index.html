@@ -377,18 +377,23 @@ document.addEventListener('DOMContentLoaded', function() {
     el.addEventListener('click', function(){ switchPage(this.dataset.page); });
   });
 
-  // Always auto-connect — skip setup screen for everyone
-  cfg = {url: HARDCODED_URL, commSheet: HARDCODED_COMM, exprSheet: HARDCODED_EXPR, isDemo: false};
-  // Hide setup screen immediately, show loading
+  // ── AUTO CONNECT — no setup screen ever ──────────
+  cfg = {
+    url: 'https://script.google.com/macros/s/AKfycbxIG-20KYQTwdTzd6JXwF31mrVs09N-tJFQM8_VyMnNB8i/exec',
+    commSheet: 'Commercial',
+    exprSheet: 'Express',
+    isDemo: false
+  };
+
   document.getElementById('setupScreen').style.display = 'none';
   showLoading('Loading your data...');
   fetchAll()
     .then(function(){ showApp(); startTimer(); })
     .catch(function(e){
       hideLoading();
-      toast('Connection error: '+e.message,'err');
-      // Show setup screen only as fallback for admin
+      // Only show setup as last resort
       document.getElementById('setupScreen').style.display = 'flex';
+      toast('Connection error: ' + e.message, 'err');
     });
 });
 
