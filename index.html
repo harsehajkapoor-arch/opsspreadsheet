@@ -4,47 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ops IQ</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230d0f1a'/%3E%3Crect x='2' y='2' width='28' height='28' rx='7' fill='none' stroke='%234f7cff' stroke-width='1.5'/%3E%3C!-- Lightning bolt --%3E%3Cpath d='M18 4 L10 17 L15 17 L14 28 L22 15 L17 15 Z' fill='url(%23g)' /%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%234f7cff'/%3E%3Cstop offset='100%25' stop-color='%2322d3a5'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230d0f1a'/%3E%3Crect x='2' y='2' width='28' height='28' rx='7' fill='none' stroke='%234f7cff' stroke-width='1.5'/%3E%3Cpath d='M18 4 L10 17 L15 17 L14 28 L22 15 L17 15 Z' fill='url(%23g)' /%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%234f7cff'/%3E%3Cstop offset='100%25' stop-color='%2322d3a5'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#0d0f1a;--bg2:#141624;--bg3:#1a1d2e;--bg4:#1f2235;
-  --border:#2a2d45;--border2:#363a5a;
-  --blue:#4f7cff;--blue2:#3d6bef;--indigo:#7c6fcd;
-  --green:#22d3a5;--amber:#f59e0b;--red:#ef4444;--pink:#e879a0;--cyan:#06b6d4;
-  --text:#e8eaf6;--text2:#9ba3c0;--text3:#5c6285;
-}
+:root{--bg:#0d0f1a;--bg2:#141624;--bg3:#1a1d2e;--bg4:#1f2235;--border:#2a2d45;--border2:#363a5a;--blue:#4f7cff;--blue2:#3d6bef;--indigo:#7c6fcd;--green:#22d3a5;--amber:#f59e0b;--red:#ef4444;--pink:#e879a0;--cyan:#06b6d4;--text:#e8eaf6;--text2:#9ba3c0;--text3:#5c6285}
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:13px;min-height:100vh}
-
-/* ── SETUP ── */
-.setup{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem;background:radial-gradient(ellipse at 30% 20%,rgba(79,124,255,.08),transparent 60%),var(--bg)}
-.setup-inner{max-width:680px;width:100%}
-.setup-inner h1{font-size:26px;font-weight:800;background:linear-gradient(135deg,#4f7cff,#22d3a5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
-.setup-inner>p{color:var(--text2);margin-bottom:1.5rem;line-height:1.7;font-size:14px}
-.scard{background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1.2rem}
-.scard h2{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--blue);margin-bottom:1.2rem}
-.step{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
-.step:last-child{margin-bottom:0}
-.snum{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--indigo));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;color:#fff}
-.sbody strong{display:block;font-size:13px;color:var(--text);margin-bottom:3px}
-.sbody p{font-size:12px;color:var(--text2);line-height:1.6}
-.sbody code{background:rgba(79,124,255,.15);color:#7eb3ff;padding:1px 6px;border-radius:4px;font-size:11px;font-family:monospace}
-.codebox{background:#0a0c15;border:1px solid var(--border);border-radius:10px;padding:1rem;font-family:monospace;font-size:11px;color:#7eb3ff;overflow-x:auto;white-space:pre;margin-top:8px;max-height:240px;overflow-y:auto}
-.copybtn{float:right;background:var(--blue);color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;margin-bottom:6px;position:sticky;top:0}
-.igroup{margin-bottom:12px}
-.igroup label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text2);margin-bottom:5px}
-.igroup input{width:100%;padding:9px 12px;background:var(--bg);border:1.5px solid var(--border2);border-radius:8px;color:var(--text);font-size:13px;outline:none;transition:border .2s}
-.igroup input:focus{border-color:var(--blue)}
-.igroup input::placeholder{color:var(--text3)}
-.igrid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
-.btnconnect{width:100%;padding:12px;background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:opacity .2s}
-.btnconnect:hover{opacity:.9}
-.altnote{margin-top:.8rem;font-size:12px;color:var(--text3);text-align:center}
-.altnote a{color:var(--blue);cursor:pointer;text-decoration:underline}
-
-/* ── APP SHELL ── */
-.app{display:none;flex-direction:column;height:100vh;overflow:hidden}
+.app{display:flex;flex-direction:column;height:100vh;overflow:hidden}
 .topbar{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 20px;height:52px;display:flex;align-items:center;gap:12px;flex-shrink:0}
 .logo{font-size:15px;font-weight:800;background:linear-gradient(135deg,#4f7cff,#22d3a5);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .tsep{flex:1}
@@ -64,41 +30,28 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 .nbadge{background:var(--blue);color:#fff;font-size:10px;padding:1px 5px;border-radius:8px;font-weight:700}
 .nbadge.warn{background:var(--amber)}
 .main{flex:1;overflow-y:auto;padding:18px 20px}
-
-/* ── METRIC CARDS ── */
 .mrow{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:18px}
 .mc{background:var(--bg3);border:1px solid var(--border);border-radius:13px;padding:14px 16px;position:relative;overflow:hidden}
 .mc::after{content:'';position:absolute;top:-20px;right:-20px;width:70px;height:70px;border-radius:50%;opacity:.1}
-.mc.blue::after{background:var(--blue)}.mc.green::after{background:var(--green)}.mc.amber::after{background:var(--amber)}
-.mc.pink::after{background:var(--pink)}.mc.red::after{background:var(--red)}.mc.indigo::after{background:var(--indigo)}.mc.cyan::after{background:var(--cyan)}
+.mc.blue::after{background:var(--blue)}.mc.green::after{background:var(--green)}.mc.amber::after{background:var(--amber)}.mc.pink::after{background:var(--pink)}.mc.red::after{background:var(--red)}.mc.indigo::after{background:var(--indigo)}.mc.cyan::after{background:var(--cyan)}
 .ml{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin-bottom:6px}
 .mv{font-size:26px;font-weight:800;color:var(--text)}
-.mc.blue .mv{color:var(--blue)}.mc.green .mv{color:var(--green)}.mc.amber .mv{color:var(--amber)}
-.mc.pink .mv{color:var(--pink)}.mc.red .mv{color:var(--red)}.mc.indigo .mv{color:var(--indigo)}.mc.cyan .mv{color:var(--cyan)}
+.mc.blue .mv{color:var(--blue)}.mc.green .mv{color:var(--green)}.mc.amber .mv{color:var(--amber)}.mc.pink .mv{color:var(--pink)}.mc.red .mv{color:var(--red)}.mc.indigo .mv{color:var(--indigo)}.mc.cyan .mv{color:var(--cyan)}
 .ms{font-size:11px;color:var(--text3);margin-top:3px}
 .clickable{cursor:pointer;transition:all .18s}
 .clickable:hover{border-color:var(--blue)!important;transform:translateY(-1px)}
 .mc.clickable:hover{box-shadow:0 0 0 2px rgba(79,124,255,.4)}
-
-/* ── LAYOUT ── */
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px}
-.g21{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-bottom:14px}
-
-/* ── CHART CARDS ── */
 .cc{background:var(--bg3);border:1px solid var(--border);border-radius:13px;padding:16px}
 .cc h3{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px}
 .ccsub{font-size:11px;color:var(--text3);margin-bottom:14px}
 .chwrap{position:relative;width:100%}
-.clicktip{font-size:10px;color:var(--blue);margin-top:6px;text-align:center}
-
-/* ── TABLE ── */
 .tpanel{background:var(--bg3);border:1px solid var(--border);border-radius:13px;overflow:hidden}
 .ttoolbar{padding:12px 14px;display:flex;gap:8px;align-items:center;border-bottom:1px solid var(--border);flex-wrap:wrap;background:var(--bg4)}
 .ttoolbar input[type=text]{padding:6px 11px;background:var(--bg);border:1px solid var(--border2);border-radius:7px;color:var(--text);font-size:12px;outline:none;width:180px}
 .ttoolbar input:focus{border-color:var(--blue)}
 .ttoolbar select{padding:6px 9px;background:var(--bg);border:1px solid var(--border2);border-radius:7px;color:var(--text);font-size:12px;outline:none;max-width:150px}
-.tscroll{overflow:auto;max-height:460px}
+.tscroll{overflow:auto;max-height:450px}
 table{width:100%;border-collapse:collapse;font-size:12px}
 thead{background:var(--bg4);position:sticky;top:0;z-index:5}
 th{padding:9px 11px;text-align:left;font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--text3);white-space:nowrap;border-bottom:1px solid var(--border)}
@@ -110,52 +63,32 @@ tr:hover .abt{opacity:1}
 .abt.e{color:var(--blue);border-color:rgba(79,124,255,.3)}
 .abt.d{color:var(--red);border-color:rgba(239,68,68,.3);margin-left:3px}
 .autocell{color:var(--indigo);font-style:italic}
-
-/* ── BADGE ── */
-.badge{padding:2px 7px;border-radius:10px;font-size:10px;font-weight:700;white-space:nowrap}
-.bg{background:rgba(34,211,165,.12);color:var(--green)}.ba{background:rgba(245,158,11,.12);color:var(--amber)}
-.br{background:rgba(239,68,68,.12);color:var(--red)}.bb{background:rgba(79,124,255,.12);color:var(--blue)}
-.bi{background:rgba(124,111,205,.12);color:var(--indigo)}.bgr{background:rgba(92,98,133,.2);color:var(--text3)}
-
-/* ── PROGRESS BARS ── */
-.plist{display:flex;flex-direction:column;gap:9px}
+.badge{padding:2px 7px;border-radius:10px;font-size:10px;font-weight:700;letter-spacing:.02em;white-space:nowrap}
+.bg{background:rgba(34,211,165,.12);color:var(--green)}.ba{background:rgba(245,158,11,.12);color:var(--amber)}.br{background:rgba(239,68,68,.12);color:var(--red)}.bb{background:rgba(79,124,255,.12);color:var(--blue)}.bi{background:rgba(124,111,205,.12);color:var(--indigo)}.bgr{background:rgba(92,98,133,.2);color:var(--text3)}
+.sbl-list{display:flex;flex-direction:column;gap:5px;max-height:280px;overflow-y:auto}
+.sbl-row{display:flex;align-items:center;gap:8px;font-size:12px;padding:5px 7px;border-radius:6px;cursor:pointer;transition:background .15s}
+.sbl-row:hover{background:rgba(79,124,255,.08)}
+.sbl-label{flex:1;color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sbl-track{width:65px;height:5px;background:var(--bg4);border-radius:3px;overflow:hidden;flex-shrink:0}
+.sbl-fill{height:100%;border-radius:3px}
+.sbl-count{font-weight:700;color:var(--text);min-width:28px;text-align:right;font-size:11px}
+.sbl-pct{font-size:10px;color:var(--text3);min-width:30px;text-align:right}
+.mstats{display:flex;flex-direction:column;gap:7px}
+.mstat{display:flex;justify-content:space-between;align-items:center;padding:7px 11px;background:var(--bg4);border-radius:7px;border:1px solid var(--border)}
+.msl{font-size:12px;color:var(--text2)}.msv{font-size:13px;font-weight:700;color:var(--text)}
+.plist{display:flex;flex-direction:column;gap:7px}
 .pi{display:flex;flex-direction:column;gap:4px}
 .ph{display:flex;justify-content:space-between;font-size:11px;color:var(--text2)}
 .ph span:last-child{font-weight:700;color:var(--text)}
 .pt{height:5px;background:var(--bg4);border-radius:3px;overflow:hidden}
 .pf{height:100%;border-radius:3px;transition:width .5s ease}
-
-/* ── SUB BARS (clickable) ── */
-.sbl-list{display:flex;flex-direction:column;gap:5px;max-height:320px;overflow-y:auto}
-.sbl-row{display:flex;align-items:center;gap:8px;font-size:12px;padding:6px 8px;border-radius:7px;cursor:pointer;transition:background .15s}
-.sbl-row:hover{background:rgba(79,124,255,.08)}
-.sbl-label{flex:1;color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.sbl-track{width:70px;height:5px;background:var(--bg4);border-radius:3px;overflow:hidden;flex-shrink:0}
-.sbl-fill{height:100%;border-radius:3px}
-.sbl-count{font-weight:700;color:var(--text);min-width:28px;text-align:right;font-size:11px}
-.sbl-pct{font-size:10px;color:var(--text3);min-width:30px;text-align:right}
-
-/* ── MINI STATS ── */
-.mstats{display:flex;flex-direction:column;gap:7px}
-.mstat{display:flex;justify-content:space-between;align-items:center;padding:7px 11px;background:var(--bg4);border-radius:7px;border:1px solid var(--border)}
-.msl{font-size:12px;color:var(--text2)}.msv{font-size:13px;font-weight:700;color:var(--text)}
-
-/* ── ALERTS ── */
 .alist{display:flex;flex-direction:column;gap:7px}
 .ai{display:flex;gap:10px;padding:9px 12px;border-radius:9px;border:1px solid;align-items:flex-start}
-.ai.warn{background:rgba(245,158,11,.06);border-color:rgba(245,158,11,.2)}
-.ai.danger{background:rgba(239,68,68,.06);border-color:rgba(239,68,68,.2)}
-.ai.info{background:rgba(79,124,255,.06);border-color:rgba(79,124,255,.2)}
-.ai.ok{background:rgba(34,211,165,.06);border-color:rgba(34,211,165,.2)}
-.att{font-size:12px;font-weight:600;color:var(--text)}
-.ats{font-size:11px;color:var(--text3);margin-top:2px}
-
-/* ── STABS ── */
+.ai.warn{background:rgba(245,158,11,.06);border-color:rgba(245,158,11,.2)}.ai.danger{background:rgba(239,68,68,.06);border-color:rgba(239,68,68,.2)}.ai.ok{background:rgba(34,211,165,.06);border-color:rgba(34,211,165,.2)}
+.att{font-size:12px;font-weight:600;color:var(--text)}.ats{font-size:11px;color:var(--text3);margin-top:2px}
 .stabs{display:flex;gap:0;margin-bottom:16px;border-bottom:1px solid var(--border)}
 .stab{padding:7px 15px;font-size:12px;font-weight:600;cursor:pointer;color:var(--text3);border-bottom:2px solid transparent;transition:all .2s}
 .stab.active{color:var(--blue);border-bottom-color:var(--blue)}
-
-/* ── MODAL ── */
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center}
 .overlay.open{display:flex}
 .modal{background:var(--bg3);border:1px solid var(--border2);border-radius:16px;width:760px;max-width:96vw;max-height:88vh;display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,.5)}
@@ -169,22 +102,18 @@ tr:hover .abt{opacity:1}
 .ff.full{grid-column:1/-1}
 .ff label{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;display:flex;align-items:center;gap:5px}
 .autotag{background:rgba(124,111,205,.2);color:var(--indigo);padding:1px 6px;border-radius:4px;font-size:9px;font-weight:700;text-transform:none}
-.ff input,.ff select,.ff textarea{padding:8px 10px;background:var(--bg);border:1.5px solid var(--border2);border-radius:7px;color:var(--text);font-size:12px;outline:none;font-family:inherit;transition:border .2s}
-.ff input:focus,.ff select:focus,.ff textarea:focus{border-color:var(--blue)}
+.ff input{padding:8px 10px;background:var(--bg);border:1.5px solid var(--border2);border-radius:7px;color:var(--text);font-size:12px;outline:none;font-family:inherit;transition:border .2s}
+.ff input:focus{border-color:var(--blue)}
 .ff input[readonly]{background:rgba(124,111,205,.08);color:var(--indigo);cursor:not-allowed}
 .ff input::placeholder{color:var(--text3)}
-.mftr{padding:14px 20px;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:space-between;align-items:center}
-.mnote{font-size:11px;color:var(--text3)}
-.mbtns{display:flex;gap:8px}
+.mftr{padding:14px 20px;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:flex-end}
 .btn{padding:8px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;border:1.5px solid;transition:all .2s}
 .btn-g{background:transparent;border-color:var(--border2);color:var(--text2)}.btn-g:hover{background:var(--bg4)}
 .btn-p{background:var(--blue);border-color:var(--blue);color:#fff}.btn-p:hover{background:var(--blue2)}
 .btn-p:disabled{opacity:.5;cursor:not-allowed}
-
-/* ── DRILL DOWN ── */
 .doverlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);z-index:400;align-items:flex-end;justify-content:center}
 .doverlay.open{display:flex}
-.dpanel{background:var(--bg3);border:1px solid var(--border2);border-radius:18px 18px 0 0;width:100%;max-width:1100px;max-height:88vh;display:flex;flex-direction:column;box-shadow:0 -20px 60px rgba(0,0,0,.5);animation:slideup .25s ease}
+.dpanel{background:var(--bg3);border:1px solid var(--border2);border-radius:18px 18px 0 0;width:100%;max-height:88vh;display:flex;flex-direction:column;box-shadow:0 -20px 60px rgba(0,0,0,.5);animation:slideup .25s ease}
 @keyframes slideup{from{transform:translateY(60px);opacity:0}to{transform:translateY(0);opacity:1}}
 .dhdr{padding:16px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;flex-shrink:0}
 .dhdr h2{font-size:15px;font-weight:700;flex:1}
@@ -202,100 +131,40 @@ tr:hover .abt{opacity:1}
 .dtable{width:100%;border-collapse:collapse;font-size:12px}
 .dtable th{padding:8px 10px;background:var(--bg4);font-size:10px;text-transform:uppercase;color:var(--text3);font-weight:700;letter-spacing:.04em;white-space:nowrap;border-bottom:1px solid var(--border);position:sticky;top:0}
 .dtable td{padding:7px 10px;border-bottom:1px solid rgba(42,45,69,.4);color:var(--text2);white-space:nowrap;max-width:150px;overflow:hidden;text-overflow:ellipsis}
-.dtable tr:hover td{background:rgba(79,124,255,.04);color:var(--text)}
-
-/* ── TOAST / LOADING ── */
 .twrap{position:fixed;bottom:20px;right:20px;z-index:999;display:flex;flex-direction:column;gap:7px;pointer-events:none}
 .toast{padding:10px 16px;border-radius:9px;font-size:12px;color:#fff;background:var(--bg4);border:1px solid var(--border2);opacity:0;transform:translateY(8px);transition:all .3s;max-width:320px;box-shadow:0 8px 30px rgba(0,0,0,.4)}
 .toast.show{opacity:1;transform:translateY(0)}
 .toast.ok{background:rgba(22,163,74,.9)}.toast.err{background:rgba(185,28,28,.9)}.toast.info{background:rgba(79,124,255,.9)}
-.lov{position:fixed;inset:0;background:rgba(13,15,26,.85);backdrop-filter:blur(6px);z-index:300;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px}
+.lov{position:fixed;inset:0;background:var(--bg);z-index:300;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px}
 .lov.hide{display:none}
-.spinner{width:34px;height:34px;border:3px solid rgba(79,124,255,.2);border-top-color:var(--blue);border-radius:50%;animation:sp .7s linear infinite}
+.spinner{width:36px;height:36px;border:3px solid rgba(79,124,255,.2);border-top-color:var(--blue);border-radius:50%;animation:sp .7s linear infinite}
 @keyframes sp{to{transform:rotate(360deg)}}
-.ltxt{color:var(--text2);font-size:13px}
-.empty{text-align:center;padding:50px 20px;color:var(--text3)}
-
+.ltxt{color:var(--text2);font-size:14px;font-weight:600}
+.lsub{color:var(--text3);font-size:12px}
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{background:var(--bg2)}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
-@media(max-width:860px){.g2,.g3,.g21{grid-template-columns:1fr}}
+@media(max-width:860px){.g2{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
-<div class="lov hide" id="lov"><div class="spinner"></div><div class="ltxt" id="ltxt">Connecting...</div></div>
-
-<!-- SETUP -->
-<div class="setup" id="setupScreen">
-  <div class="setup-inner">
-    <h1>⚡ Ops Intelligence Platform</h1>
-    <p>Real-time Google Sheet connection — reads all your columns automatically and builds full drill-down analytics from your live data.</p>
-    <div class="scard">
-      <h2>Step 1 — Paste this into Apps Script (Extensions → Apps Script in your Sheet)</h2>
-      <div style="position:relative">
-        <div class="codebox" id="scriptCode">const COMM_SHEET = 'Commercial';
-const EXPR_SHEET = 'Express';
-
-function doGet(e) {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var name = (e.parameter.sheet === 'express') ? EXPR_SHEET : COMM_SHEET;
-  var ws = ss.getSheetByName(name);
-  var data = ws ? ws.getDataRange().getValues() : [];
-  return ContentService
-    .createTextOutput(JSON.stringify({ok:true, data:data}))
-    .setMimeType(ContentService.MimeType.JSON);
-}
-
-function doPost(e) {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var body = JSON.parse(e.postData.contents);
-  var name = (body.sheet === 'express') ? EXPR_SHEET : COMM_SHEET;
-  var ws = ss.getSheetByName(name);
-  if (!ws) {
-    return ContentService.createTextOutput(JSON.stringify({ok:false,error:'Sheet not found'}))
-      .setMimeType(ContentService.MimeType.JSON);
-  }
-  if (body.action === 'append') {
-    ws.appendRow(body.row);
-  } else if (body.action === 'update') {
-    ws.getRange(body.rowIndex, 1, 1, body.row.length).setValues([body.row]);
-  } else if (body.action === 'delete') {
-    ws.deleteRow(body.rowIndex);
-  }
-  return ContentService.createTextOutput(JSON.stringify({ok:true}))
-    .setMimeType(ContentService.MimeType.JSON);
-}</div>
-        <button class="copybtn" id="copyBtn">Copy Script</button>
-      </div>
-      <div class="step" style="margin-top:14px">
-        <div class="snum">2</div>
-        <div class="sbody"><strong>Deploy → New Deployment → Web App</strong><p>Execute as: <code>Me</code> · Who has access: <code>Anyone</code> · Deploy → copy the URL</p></div>
-      </div>
-    </div>
-    <div class="scard">
-      <h2>Step 2 — Connect</h2>
-      <div class="igroup"><label>Apps Script Web App URL</label><input type="text" id="webAppUrl" placeholder="https://script.google.com/macros/s/.../exec"></div>
-      <div class="igrid2">
-        <div class="igroup" style="margin:0"><label>Commercial Sheet Name</label><input type="text" id="commSN" value="Commercial"></div>
-        <div class="igroup" style="margin:0"><label>Express Sheet Name</label><input type="text" id="exprSN" value="Express"></div>
-      </div>
-      <button class="btnconnect" id="connectBtn">Connect &amp; Load Data →</button>
-      <p class="altnote">No sheet yet? <a id="demoLink">Explore with demo data</a></p>
-    </div>
-  </div>
+<!-- LOADING -->
+<div class="lov" id="lov">
+  <div class="spinner"></div>
+  <div class="ltxt">⚡ OPS IQ</div>
+  <div class="lsub" id="ltxt">Connecting to your Google Sheet...</div>
 </div>
 
 <!-- APP -->
-<div class="app" id="mainApp">
+<div class="app" id="mainApp" style="display:none">
   <div class="topbar">
     <div class="logo">⚡ OPS IQ</div>
-    <span style="font-size:11px;color:var(--text3)" id="sheetLabel"></span>
+    <span style="font-size:11px;color:var(--text3)" id="sheetLabel">Live · Google Sheet</span>
     <div class="tsep"></div>
     <div class="syncpill"><div class="sdot" id="sdot"></div><span id="stxt">Live</span></div>
     <button class="tbtn" id="syncBtn">↻ Sync</button>
     <button class="tbtn pri" id="topAddBtn">+ Add Entry</button>
-    <button class="tbtn" id="settingsBtn" style="font-size:11px">⚙</button>
   </div>
   <div class="nav">
     <div class="ni active" data-page="dashboard">📊 Dashboard</div>
@@ -307,12 +176,12 @@ function doPost(e) {
   <div class="main" id="mainContent"></div>
 </div>
 
-<!-- ADD/EDIT MODAL -->
+<!-- MODAL -->
 <div class="overlay" id="overlay">
   <div class="modal">
     <div class="mhdr"><h2 id="mtitle">Add Entry</h2><div class="mclose" id="mcloseBtn">×</div></div>
     <div class="mbody"><div id="formContent"></div></div>
-    <div class="mftr"><span class="mnote" id="mnote"></span><div class="mbtns"><button class="btn btn-g" id="mcancelBtn">Cancel</button><button class="btn btn-p" id="saveBtn">Save</button></div></div>
+    <div class="mftr"><button class="btn btn-g" id="mcancelBtn">Cancel</button><button class="btn btn-p" id="saveBtn">Save</button></div>
   </div>
 </div>
 
@@ -321,7 +190,7 @@ function doPost(e) {
   <div class="dpanel">
     <div class="dhdr">
       <button class="backbtn" id="backBtn" style="display:none">← Back</button>
-      <h2 id="dtitle">Drill Down</h2>
+      <h2 id="dtitle"></h2>
       <span style="font-size:11px;color:var(--text3);margin-left:8px" id="dsubtitle"></span>
       <div style="flex:1"></div>
       <div class="dclose" id="dcloseBtn">×</div>
@@ -329,929 +198,363 @@ function doPost(e) {
     <div class="dbody" id="dbody"></div>
   </div>
 </div>
-
 <div class="twrap" id="twrap"></div>
 
 <script>
-// ════════════════════════════════════════════
-// STATE
-// ════════════════════════════════════════════
-var cfg = {url:'', commSheet:'Commercial', exprSheet:'Express', isDemo:false};
+// ══ HARDCODED CONFIG — edit only these 3 lines if your URL changes ══
+var WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxIG-20KYQTwdTzd6JXwF31mrVs09N-tJFQM8_VyMnNB8i/exec';
+var COMM_SHEET_NAME = 'Commercial';
+var EXPR_SHEET_NAME = 'Express';
+// ══════════════════════════════════════════════════════════════════════
+
+var cfg = {url: WEB_APP_URL, commSheet: COMM_SHEET_NAME, exprSheet: EXPR_SHEET_NAME, isDemo: false};
 var commData=[], exprData=[], commHeaders=[], exprHeaders=[];
-var modalState = {sheet:'', rowIdx:-1};
-var drillStack = [];
-var autoTimer = null;
-var charts = {};
-var currentPage = 'dashboard';
+var modalState={sheet:'',rowIdx:-1}, drillStack=[], charts={}, currentPage='dashboard', autoTimer=null;
+var EXPR_AUTO=['FLIGHT No.','OC Clearance Partner','Number Of Pkgs','HANDOVER DATE','Expected FLYING DATE','Port','ETD (Local airport time)','ATD (Local airport time)','ETA (Local airport time)'];
+var PAL=['#4f7cff','#22d3a5','#f59e0b','#ef4444','#e879a0','#7c6fcd','#06b6d4','#84cc16','#f97316','#a855f7','#14b8a6','#eab308'];
 
-var EXPR_AUTO = ['FLIGHT No.','OC Clearance Partner','Number Of Pkgs','HANDOVER DATE',
-  'Expected FLYING DATE','Port','ETD (Local airport time)','ATD (Local airport time)','ETA (Local airport time)'];
-
-var PAL = ['#4f7cff','#22d3a5','#f59e0b','#ef4444','#e879a0','#7c6fcd','#06b6d4','#84cc16','#f97316','#a855f7','#14b8a6','#eab308'];
-
-// ════════════════════════════════════════════
-// HARDCODED CONFIG — no setup screen needed
-// ════════════════════════════════════════════
-var HARDCODED_URL = 'https://script.google.com/macros/s/AKfycbxIG-20KYQTwdTzd6JXwF31mrVs09N-tJFQM8_VyMnNB8i/exec';
-var HARDCODED_COMM = 'Commercial';
-var HARDCODED_EXPR = 'Express';
-
-// ════════════════════════════════════════════
-// INIT — wire up all events after DOM ready
-// ════════════════════════════════════════════
-document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('connectBtn').addEventListener('click', connectSheet);
-  document.getElementById('demoLink').addEventListener('click', loadDemo);
-  document.getElementById('copyBtn').addEventListener('click', copyScript);
+document.addEventListener('DOMContentLoaded', function(){
   document.getElementById('syncBtn').addEventListener('click', refreshAll);
-  document.getElementById('settingsBtn').addEventListener('click', resetToSetup);
-  document.getElementById('topAddBtn').addEventListener('click', function(){ openModal(currentPage==='express'?'express':'commercial', -1); });
+  document.getElementById('topAddBtn').addEventListener('click', function(){ openModal(currentPage==='express'?'express':'commercial',-1); });
   document.getElementById('saveBtn').addEventListener('click', saveEntry);
   document.getElementById('mcancelBtn').addEventListener('click', closeModal);
   document.getElementById('mcloseBtn').addEventListener('click', closeModal);
   document.getElementById('dcloseBtn').addEventListener('click', closeDrill);
   document.getElementById('backBtn').addEventListener('click', drillBack);
   document.getElementById('doverlay').addEventListener('click', function(e){ if(e.target===this) closeDrill(); });
+  document.querySelectorAll('.ni').forEach(function(el){ el.addEventListener('click', function(){ switchPage(this.dataset.page); }); });
 
-  document.querySelectorAll('.ni').forEach(function(el){
-    el.addEventListener('click', function(){ switchPage(this.dataset.page); });
-  });
-
-  // ── AUTO CONNECT — no setup screen ever ──────────
-  cfg = {
-    url: 'https://script.google.com/macros/s/AKfycbxIG-20KYQTwdTzd6JXwF31mrVs09N-tJFQM8_VyMnNB8i/exec',
-    commSheet: 'Commercial',
-    exprSheet: 'Express',
-    isDemo: false
-  };
-
-  document.getElementById('setupScreen').style.display = 'none';
-  showLoading('Loading your data...');
+  // AUTO-CONNECT immediately — no setup screen
+  document.getElementById('ltxt').textContent = 'Fetching your data...';
   fetchAll()
     .then(function(){ showApp(); startTimer(); })
-    .catch(function(e){
-      hideLoading();
-      // Only show setup as last resort
-      document.getElementById('setupScreen').style.display = 'flex';
-      toast('Connection error: ' + e.message, 'err');
-    });
+    .catch(function(e){ document.getElementById('ltxt').textContent = 'Error: ' + e.message + ' — Please refresh the page.'; });
 });
 
-// ════════════════════════════════════════════
-// SETUP
-// ════════════════════════════════════════════
-function copyScript(){
-  var txt = document.getElementById('scriptCode').innerText;
-  navigator.clipboard.writeText(txt).then(function(){ toast('Script copied!','info'); });
-}
-
-function connectSheet(){
-  var url = document.getElementById('webAppUrl').value.trim();
-  if(!url){ toast('Paste your Web App URL first','err'); return; }
-  cfg = {url:url, commSheet:document.getElementById('commSN').value.trim()||'Commercial',
-         exprSheet:document.getElementById('exprSN').value.trim()||'Express', isDemo:false};
-  localStorage.setItem('opsCfgV3', JSON.stringify(cfg));
-  showLoading('Connecting to Google Sheet...');
-  fetchAll().then(function(){ showApp(); toast('Connected! Auto-syncing every 30s.','ok'); startTimer(); })
-    .catch(function(e){ hideLoading(); toast('Connection failed: '+e.message,'err'); });
-}
-
-function loadDemo(){
-  cfg.isDemo = true;
-  genDemo();
-  showApp();
-  toast('Demo mode — changes not synced','info');
-}
-
-function resetToSetup(){
-  clearInterval(autoTimer);
-  document.getElementById('setupScreen').style.display='flex';
-  document.getElementById('mainApp').style.display='none';
-}
-
-// ════════════════════════════════════════════
-// DATA FETCH & PARSE
-// ════════════════════════════════════════════
 function fetchAll(){
   return Promise.all([fetchSheet('commercial'), fetchSheet('express')])
     .then(function(res){ parseSheet(res[0],'commercial'); parseSheet(res[1],'express'); updateBadges(); });
 }
 
 function fetchSheet(which){
-  if(cfg.isDemo) return Promise.resolve(null);
-  return fetch(cfg.url+'?sheet='+which+'&t='+Date.now(), {redirect:'follow'})
+  var url = cfg.url + '?sheet=' + which + '&t=' + Date.now();
+  return fetch(url, {redirect:'follow'})
     .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.text(); })
     .then(function(txt){
-      var j;
-      try{ j=JSON.parse(txt); }catch(e){ throw new Error('Bad response — check script is deployed'); }
+      var j; try{ j=JSON.parse(txt); }catch(e){ throw new Error('Bad response from script'); }
       if(!j.ok) throw new Error('Script error');
       return j.data;
     });
 }
 
 function parseSheet(raw, which){
-  if(!raw||!raw.length) return;
-  var headers = raw[0].map(function(h){ return String(h||'').trim(); }).filter(Boolean);
-  var rows = raw.slice(1).map(function(r){
-    var o={};
-    headers.forEach(function(h,i){ o[h]=r[i]!==undefined?String(r[i]):''; });
-    return o;
-  }).filter(function(r){ return Object.values(r).some(function(v){ return v.trim()!==''; }); });
-  if(which==='commercial'){ commHeaders=headers; commData=rows; }
-  else{ exprHeaders=headers; exprData=rows; }
+  if(!raw||!Array.isArray(raw)||raw.length<2) return;
+  var headers=raw[0].map(function(h){ return (h===null||h===undefined)?'':String(h).trim(); }).filter(Boolean);
+  if(!headers.length) return;
+  var rows=[];
+  for(var i=1;i<raw.length;i++){
+    var r=raw[i],obj={},has=false;
+    headers.forEach(function(h,j){
+      var c=r[j],v='';
+      if(c===null||c===undefined||c==='') v='';
+      else if(typeof c==='object'&&typeof c.getMonth==='function'){ var d=c.getDate(),m=c.getMonth()+1,y=c.getFullYear(); v=(y<1900)?'':(d<10?'0':'')+d+'/'+(m<10?'0':'')+m+'/'+y; }
+      else v=String(c).trim();
+      obj[h]=v; if(v) has=true;
+    });
+    if(has) rows.push(obj);
+  }
+  if(which==='commercial'){commHeaders=headers;commData=rows;}else{exprHeaders=headers;exprData=rows;}
+}
+
+function showApp(){
+  document.getElementById('lov').classList.add('hide');
+  document.getElementById('mainApp').style.display='flex';
+  setSync('ok','Live');
+  switchPage('dashboard');
 }
 
 function refreshAll(){
-  if(cfg.isDemo){ renderPage(); return; }
+  if(cfg.isDemo){renderPage();return;}
   setSync('spin','Syncing...');
-  fetchAll().then(function(){ renderPage(); setSync('ok','Live'); toast('Refreshed','ok'); })
+  fetchAll().then(function(){ renderPage(); setSync('ok','Live'); toast('Data refreshed','ok'); })
     .catch(function(e){ setSync('err','Error'); toast('Sync failed: '+e.message,'err'); });
 }
 
 function startTimer(){
   clearInterval(autoTimer);
-  autoTimer = setInterval(function(){
-    fetchAll().then(function(){ renderPage(); setSync('ok','Live'); }).catch(function(){ setSync('err','Sync error'); });
-  }, 30000);
+  autoTimer=setInterval(function(){ fetchAll().then(function(){ renderPage(); setSync('ok','Live'); }).catch(function(){ setSync('err','Sync error'); }); }, 30000);
 }
 
 async function writeSheet(action, sheet, row, rowIndex){
-  if(cfg.isDemo) return;
-  var r = await fetch(cfg.url, {method:'POST', redirect:'follow',
-    headers:{'Content-Type':'text/plain'},
-    body:JSON.stringify({action:action, sheet:sheet, row:row, rowIndex:rowIndex})});
+  var r=await fetch(cfg.url,{method:'POST',redirect:'follow',headers:{'Content-Type':'text/plain'},body:JSON.stringify({action,sheet,row,rowIndex})});
   if(!r.ok) throw new Error('HTTP '+r.status);
 }
 
-// ════════════════════════════════════════════
-// APP UI HELPERS
-// ════════════════════════════════════════════
-function showApp(){
-  hideLoading();
-  document.getElementById('setupScreen').style.display='none';
-  document.getElementById('mainApp').style.display='flex';
-  document.getElementById('sheetLabel').textContent = cfg.isDemo?'Demo Mode':'Live · Google Sheet';
-  setSync(cfg.isDemo?'warn':'ok', cfg.isDemo?'Demo':'Live');
-  switchPage('dashboard');
-}
-function showLoading(t){ document.getElementById('ltxt').textContent=t||'Loading...'; document.getElementById('lov').classList.remove('hide'); }
-function hideLoading(){ document.getElementById('lov').classList.add('hide'); }
-function setSync(s,t){
-  var d=document.getElementById('sdot');
-  d.className='sdot'+(s==='spin'?' spin':s==='err'?' err':'');
-  document.getElementById('stxt').textContent=t;
-}
-function updateBadges(){
-  document.getElementById('cb').textContent=commData.length;
-  document.getElementById('eb').textContent=exprData.length;
-  var ac=getAlerts().filter(function(a){ return a.type!=='ok'; }).length;
-  document.getElementById('ab').textContent=ac||'✓';
-}
-function switchPage(name){
-  currentPage=name;
-  document.querySelectorAll('.ni').forEach(function(el){ el.classList.toggle('active', el.dataset.page===name); });
-  renderPage();
-}
-function renderPage(){
-  if(currentPage==='dashboard') renderDash();
-  else if(currentPage==='commercial') renderTable('commercial');
-  else if(currentPage==='express') renderTable('express');
-  else if(currentPage==='analytics') renderAnalytics();
-  else if(currentPage==='alerts') renderAlerts();
-}
+function setSync(s,t){ var d=document.getElementById('sdot'); d.className='sdot'+(s==='spin'?' spin':s==='err'?' err':''); document.getElementById('stxt').textContent=t; }
+function updateBadges(){ document.getElementById('cb').textContent=commData.length; document.getElementById('eb').textContent=exprData.length; var ac=getAlerts().filter(function(a){return a.type!=='ok';}).length; document.getElementById('ab').textContent=ac||'✓'; }
+function switchPage(name){ currentPage=name; document.querySelectorAll('.ni').forEach(function(el){ el.classList.toggle('active',el.dataset.page===name); }); renderPage(); }
+function renderPage(){ if(currentPage==='dashboard') renderDash(); else if(currentPage==='commercial') renderTable('commercial'); else if(currentPage==='express') renderTable('express'); else if(currentPage==='analytics') renderAnalytics(); else renderAlerts(); }
 
-// ════════════════════════════════════════════
-// COLUMN ANALYSER — strict type detection
-// ════════════════════════════════════════════
-function analyseColumns(headers, data){
+function analyseColumns(headers,data){
   return headers.map(function(h){
-    var vals=data.map(function(r){ return (r[h]||'').trim(); }).filter(Boolean);
-    var unique=[...new Set(vals)];
-    var hl=h.toLowerCase().replace(/[^a-z0-9 ]/g,' ');
-
-    // DATE — name hint or value pattern
-    var dateHints=['date','eta','etd','atd','time','handover','flying','arrival','departure','pre alert','pre-alert'];
-    var isDate=dateHints.some(function(k){ return hl.includes(k); });
-    if(!isDate){
-      var dp=/^\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4}$|^\d{4}[\/\-]\d{2}[\/\-]\d{2}|^\d{1,2} \w{3} \d{4}/;
-      var dsample=vals.slice(0,10).filter(function(v){ return dp.test(v); });
-      isDate=dsample.length>vals.slice(0,10).length*0.5;
-    }
-
-    // IDENTIFIER — never sum
-    var idHints=['mawb','hawb','awb','flight no','flight #','file no','file #','ref','hs code','invoice no','bl no','bl #','job no','booking','container','seal','vessel'];
-    var isId=idHints.some(function(k){ return hl.includes(k); });
-
-    // NUMERIC — only if name signals measurable quantity
-    var numHints=['weight','kg','kgs','cbm','m3','qty','quantity','pcs','pieces','packages','pkgs','amount','value','rate','charge','cost','price','fee','total','revenue'];
-    var isNumName=numHints.some(function(k){ return hl.includes(k); });
-    var cleanNums=[];
-    if(!isDate&&!isId&&isNumName){
-      cleanNums=vals.map(function(v){
-        var c=v.replace(/,/g,'').trim();
-        var n=parseFloat(c);
-        return(!isNaN(n)&&String(n)===c||c.match(/^\d+\.?\d*$/))?n:NaN;
-      }).filter(function(v){ return !isNaN(v); });
-    }
+    var vals=data.map(function(r){return (r[h]||'').trim();}).filter(Boolean);
+    var unique=[...new Set(vals)],hl=h.toLowerCase().replace(/[^a-z0-9 ]/g,' ');
+    var dateHints=['date','eta','etd','atd','time','handover','flying','arrival','departure','pre alert'];
+    var isDate=dateHints.some(function(k){return hl.includes(k);});
+    var idHints=['mawb','hawb','awb','flight no','file no','ref','hs code','invoice no','bl no','job no'];
+    var isId=idHints.some(function(k){return hl.includes(k);});
+    var numHints=['weight','kg','kgs','cbm','qty','quantity','pcs','pieces','packages','pkgs','amount','value','rate','charge','cost','price','fee','total'];
+    var isNumName=numHints.some(function(k){return hl.includes(k);});
+    var cleanNums=(!isDate&&!isId&&isNumName)?vals.map(function(v){var n=parseFloat(v.replace(/,/g,''));return isNaN(n)?NaN:n;}).filter(function(v){return !isNaN(v);}):[];
     var isNumeric=!isDate&&!isId&&isNumName&&cleanNums.length>vals.length*0.6;
-    var numVals=isNumeric?cleanNums:[];
-    var isCat=!isDate&&unique.length>=2&&unique.length<=25&&vals.length>0;
+    var numVals=isNumeric?cleanNums:[],isCat=!isDate&&unique.length>=2&&unique.length<=30&&vals.length>0;
     var sum=numVals.length?numVals.reduce(function(a,b){return a+b;},0):null;
-    var avg=numVals.length?sum/numVals.length:null;
-
-    return {h:h, vals:vals, unique:unique, isDate:isDate, isId:isId, isNumeric:isNumeric, isCat:isCat,
-      numVals:numVals, total:vals.length, missing:data.length-vals.length,
-      sum:sum, avg:avg,
-      max:numVals.length?Math.max.apply(null,numVals):null,
-      min:numVals.length?Math.min.apply(null,numVals):null,
+    return{h,vals,unique,isDate,isId,isNumeric,isCat,numVals,total:vals.length,missing:data.length-vals.length,sum,
+      avg:numVals.length?sum/numVals.length:null,max:numVals.length?Math.max(...numVals):null,min:numVals.length?Math.min(...numVals):null,
       freq:vals.reduce(function(m,v){m[v]=(m[v]||0)+1;return m;},{})};
   });
 }
+function topN(freq,n){return Object.entries(freq).sort((a,b)=>b[1]-a[1]).slice(0,n||8);}
+function extractArea(addr){if(!addr||!addr.trim())return null;var p=addr.split(',');return p.length>=2?p[1].trim():p[0].trim();}
+function mkBarRow(sheet,col,v,c,total,i){var p=Math.round(c/Math.max(total,1)*100);return`<div class="sbl-row" data-drill-val="${esc(col)}|||${esc(v)}" data-drill-sheet="${sheet}"><div class="sbl-label" title="${esc(v)}">${esc(v||'(blank)')}</div><div class="sbl-track"><div class="sbl-fill" style="width:${Math.max(p,2)}%;background:${PAL[i%PAL.length]}"></div></div><div class="sbl-count">${c}</div><div class="sbl-pct">${p}%</div></div>`;}
 
-function topN(freq,n){
-  return Object.entries(freq).sort(function(a,b){return b[1]-a[1];}).slice(0,n||8);
+function drawDoughnut(id,labels,vals){
+  var ctx=document.getElementById(id);if(!ctx)return;
+  if(charts[id])charts[id].destroy();
+  charts[id]=new Chart(ctx,{type:'doughnut',data:{labels,datasets:[{data:vals,backgroundColor:PAL.slice(0,labels.length),borderColor:'#1a1d2e',borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{color:'#9ba3c0',font:{size:10},boxWidth:10,padding:8}}}}});
+}
+function drawBar(id,labels,vals,color){
+  var ctx=document.getElementById(id);if(!ctx)return;
+  if(charts[id])charts[id].destroy();
+  charts[id]=new Chart(ctx,{type:'bar',data:{labels,datasets:[{data:vals,backgroundColor:(color||'#4f7cff')+'b3',borderColor:color||'#4f7cff',borderWidth:1,borderRadius:5}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#5c6285',font:{size:10},maxRotation:30},grid:{color:'rgba(42,45,69,.4)'}},y:{ticks:{color:'#5c6285',font:{size:10}},grid:{color:'rgba(42,45,69,.4)'}}}}});
 }
 
-// ════════════════════════════════════════════
-// DASHBOARD
-// ════════════════════════════════════════════
 function renderDash(){
   var mc=document.getElementById('mainContent');
-  var ca=analyseColumns(commHeaders,commData);
-  var ea=analyseColumns(exprHeaders,exprData);
-  var pkgCol=ea.find(function(c){return c.isNumeric&&(c.h.toLowerCase().includes('pkg')||c.h.toLowerCase().includes('pcs'));});
-  var statusCol=ca.find(function(c){return c.h.toLowerCase().includes('status');});
-  var portCol=ea.find(function(c){return c.isCat&&c.h.toLowerCase().includes('port');});
-  var originCol=ca.find(function(c){return c.isCat&&(c.h.toLowerCase().includes('origin')||c.h.toLowerCase().includes('loading'));});
-  var destCol=ca.find(function(c){return c.isCat&&(c.h.toLowerCase().includes('dest')||c.h.toLowerCase().includes('discharge'));});
-  var alerts=getAlerts();
-  var ac=alerts.filter(function(a){return a.type!=='ok';}).length;
+  var ca=analyseColumns(commHeaders,commData),ea=analyseColumns(exprHeaders,exprData);
+  var statusCol=ca.find(c=>c.h.toLowerCase().includes('status'));
+  var portCol=ea.find(c=>c.isCat&&c.h.toLowerCase().includes('port'));
+  var pkgCol=ea.find(c=>c.isNumeric&&(c.h.toLowerCase().includes('pkg')||c.h.toLowerCase().includes('pcs')));
+  var addrCol=ca.find(c=>c.h.toLowerCase().includes('delivery')||c.h.toLowerCase().includes('address'));
+  var alerts=getAlerts(),ac=alerts.filter(a=>a.type!=='ok').length;
   var totalPkgs=pkgCol&&pkgCol.sum!=null?Math.round(pkgCol.sum):0;
-  var pendCount=statusCol?statusCol.vals.filter(function(v){return v.toLowerCase().includes('pend');}).length:0;
-
-  // Extract area/zone from full delivery address (take first 2 parts before comma)
-  function extractArea(addr){
-    if(!addr) return 'Unknown';
-    var parts=addr.split(',');
-    return parts.length>=2 ? parts[1].trim() : parts[0].trim();
-  }
-
-  var addrCol=ca.find(function(c){return c.h.toLowerCase().includes('delivery')||c.h.toLowerCase().includes('address');});
+  var pendCount=statusCol?statusCol.vals.filter(v=>v.toLowerCase().includes('pend')).length:0;
   var addrAreaMap={};
-  if(addrCol){
-    commData.forEach(function(r){
-      var area=extractArea(r[addrCol.h]||'');
-      if(area&&area!=='Unknown') addrAreaMap[area]=(addrAreaMap[area]||0)+1;
-    });
-  }
-  var addrTopAreas=Object.entries(addrAreaMap).sort(function(a,b){return b[1]-a[1];});
+  if(addrCol)commData.forEach(r=>{var z=extractArea(r[addrCol.h]||'');if(z)addrAreaMap[z]=(addrAreaMap[z]||0)+1;});
+  var addrAreas=Object.entries(addrAreaMap).sort((a,b)=>b[1]-a[1]);
 
-  var destBars='';
-  if(destCol){
-    destBars=topN(destCol.freq,6).map(function(kv,i){
-      var v=kv[0],c=kv[1],p=Math.round(c/commData.length*100);
-      return '<div class="sbl-row" data-drill-val="'+esc(destCol.h)+'|||'+esc(v)+'" data-drill-sheet="commercial">'+
-        '<div class="sbl-label">'+esc(v)+'</div>'+
-        '<div class="sbl-track"><div class="sbl-fill" style="width:'+Math.max(p,2)+'%;background:'+PAL[i]+'"></div></div>'+
-        '<div class="sbl-count">'+c+'</div><div class="sbl-pct">'+p+'%</div></div>';
-    }).join('');
-  }
+  mc.innerHTML=`
+  <div class="mrow">
+    <div class="mc blue"><div class="ml">Commercial</div><div class="mv">${commData.length}</div><div class="ms">${commHeaders.length} columns</div></div>
+    <div class="mc green"><div class="ml">Express</div><div class="mv">${exprData.length}</div><div class="ms">${exprHeaders.length} columns</div></div>
+    ${totalPkgs?`<div class="mc amber clickable" data-drill-num="${pkgCol?esc(pkgCol.h):''}" data-drill-sheet="express"><div class="ml">Total Packages</div><div class="mv">${totalPkgs.toLocaleString()}</div><div class="ms">Click to analyse ↗</div></div>`:''}
+    ${pendCount&&statusCol?`<div class="mc red clickable" data-drill-val="${esc(statusCol.h)}|||Pending" data-drill-sheet="commercial"><div class="ml">Pending</div><div class="mv">${pendCount}</div><div class="ms">Click to see records ↗</div></div>`:''}
+    <div class="mc ${ac>0?'amber':'green'}"><div class="ml">Alerts</div><div class="mv">${ac||'✓'}</div><div class="ms">${ac?'Need attention':'All clear'}</div></div>
+    <div class="mc indigo"><div class="ml">Total Records</div><div class="mv">${commData.length+exprData.length}</div><div class="ms">Both sheets</div></div>
+  </div>
+  <div class="g2">
+    ${statusCol?`<div class="cc clickable" data-drill-col="${esc(statusCol.h)}" data-drill-sheet="commercial"><h3>Commercial — ${esc(statusCol.h)}</h3><div class="ccsub">Click to explore ↗</div><div class="chwrap" style="height:200px"><canvas id="dsc"></canvas></div></div>`:''}
+    ${portCol?`<div class="cc clickable" data-drill-col="${esc(portCol.h)}" data-drill-sheet="express"><h3>Express — ${esc(portCol.h)}</h3><div class="ccsub">Click to explore ↗</div><div class="chwrap" style="height:200px"><canvas id="dpc"></canvas></div></div>`:''}
+  </div>
+  ${addrCol&&addrAreas.length?`<div class="g2">
+    <div class="cc clickable" data-drill-col="${esc(addrCol.h)}" data-drill-sheet="commercial">
+      <h3>📍 Delivery Zones</h3><div class="ccsub">Click any row or card to drill ↗</div>
+      <div class="sbl-list">${addrAreas.slice(0,7).map((kv,i)=>mkBarRow('commercial',addrCol.h,kv[0],kv[1],commData.length,i)).join('')}</div>
+    </div>
+    <div class="cc"><h3>📍 Delivery Address Stats</h3><div class="ccsub">Coverage overview</div>
+      <div class="mstats">
+        <div class="mstat"><span class="msl">With Address</span><span class="msv" style="color:var(--green)">${addrCol.total}</span></div>
+        <div class="mstat"><span class="msl">Missing</span><span class="msv" style="color:${addrCol.missing>0?'var(--red)':'var(--green)'}">${addrCol.missing}</span></div>
+        <div class="mstat"><span class="msl">Unique Addresses</span><span class="msv" style="color:var(--blue)">${addrCol.unique.length}</span></div>
+        <div class="mstat"><span class="msl">Unique Zones</span><span class="msv" style="color:var(--amber)">${addrAreas.length}</span></div>
+        <div class="mstat clickable" data-drill-col="${esc(addrCol.h)}" data-drill-sheet="commercial"><span class="msl">Top Zone</span><span class="msv" style="font-size:11px;color:var(--cyan)">${addrAreas[0]?esc(addrAreas[0][0]):'—'} ↗</span></div>
+      </div>
+    </div>
+  </div>`:''}
+  <div class="cc"><h3>🔔 Live Alerts</h3><div class="ccsub">Auto-detected from your data</div>
+    <div class="alist">${alerts.slice(0,5).map(a=>`<div class="ai ${a.type}"><div class="att">${a.type==='danger'?'🔴':a.type==='warn'?'🟡':'✅'} ${a.title}</div><div class="ats">${a.sub}</div></div>`).join('')}</div>
+  </div>`;
 
-  var addrBars=addrTopAreas.slice(0,6).map(function(kv,i){
-    var v=kv[0],c=kv[1],p=Math.round(c/commData.length*100);
-    return'<div class="sbl-row" data-drill-val="'+(addrCol?esc(addrCol.h):'')+' |||'+esc(v)+'" data-drill-sheet="commercial" style="cursor:default">'+
-      '<div class="sbl-label" title="'+esc(v)+'">'+esc(v)+'</div>'+
-      '<div class="sbl-track"><div class="sbl-fill" style="width:'+Math.max(p,2)+'%;background:'+PAL[i]+'"></div></div>'+
-      '<div class="sbl-count">'+c+'</div><div class="sbl-pct">'+p+'%</div></div>';
-  }).join('');
-
-  mc.innerHTML=
-    '<div class="mrow">'+
-      '<div class="mc blue"><div class="ml">Commercial</div><div class="mv">'+commData.length+'</div><div class="ms">'+commHeaders.length+' columns</div></div>'+
-      '<div class="mc green"><div class="ml">Express</div><div class="mv">'+exprData.length+'</div><div class="ms">'+exprHeaders.length+' columns</div></div>'+
-      (totalPkgs?'<div class="mc amber clickable" data-drill-num="'+(pkgCol?esc(pkgCol.h):'')+'" data-drill-sheet="express"><div class="ml">Total Packages</div><div class="mv">'+totalPkgs.toLocaleString()+'</div><div class="ms">Express pkgs ↗</div></div>':'')+
-      (pendCount&&statusCol?'<div class="mc red clickable" data-drill-val="'+esc(statusCol.h)+'|||Pending" data-drill-sheet="commercial"><div class="ml">Pending</div><div class="mv">'+pendCount+'</div><div class="ms">Need action ↗</div></div>':'')+
-      '<div class="mc '+(ac>0?'amber':'green')+'"><div class="ml">Alerts</div><div class="mv">'+(ac||'✓')+'</div><div class="ms">'+(ac?'Need attention':'All clear')+'</div></div>'+
-      '<div class="mc indigo"><div class="ml">Total Records</div><div class="mv">'+(commData.length+exprData.length)+'</div><div class="ms">Both sheets</div></div>'+
-    '</div>'+
-    '<div class="g2">'+
-      (statusCol?'<div class="cc clickable" data-drill-col="'+esc(statusCol.h)+'" data-drill-sheet="commercial"><h3>Commercial — '+statusCol.h+'</h3><div class="ccsub">Click to explore all statuses ↗</div><div class="chwrap" style="height:200px"><canvas id="dsc"></canvas></div></div>':'')+
-      (portCol?'<div class="cc clickable" data-drill-col="'+esc(portCol.h)+'" data-drill-sheet="express"><h3>Express — '+portCol.h+'</h3><div class="ccsub">Click to explore ports ↗</div><div class="chwrap" style="height:200px"><canvas id="dpc"></canvas></div></div>':'')+
-      (!statusCol&&originCol?'<div class="cc clickable" data-drill-col="'+esc(originCol.h)+'" data-drill-sheet="commercial"><h3>Commercial — '+originCol.h+'</h3><div class="ccsub">Click to explore ↗</div><div class="chwrap" style="height:200px"><canvas id="doc"></canvas></div></div>':'')+
-    '</div>'+
-    '<div class="g2">'+
-      (destCol?'<div class="cc"><h3>Commercial — '+destCol.h+'</h3><div class="ccsub">Click a row to drill into records</div><div class="sbl-list">'+destBars+'</div></div>':'')+
-      '<div class="cc"><h3>🔔 Live Alerts</h3><div class="ccsub">Auto-detected from your data</div>'+
-        '<div class="alist">'+alerts.slice(0,5).map(function(a){return'<div class="ai '+a.type+'"><div class="att">'+a.title+'</div><div class="ats">'+a.sub+'</div></div>';}).join('')+'</div>'+
-      '</div>'+
-    '</div>'+
-    (addrCol&&addrTopAreas.length?
-      '<div class="g2">'+
-        '<div class="cc clickable" data-drill-col="'+esc(addrCol.h)+'" data-drill-sheet="commercial">'+
-          '<h3>📍 Delivery Zones</h3>'+
-          '<div class="ccsub">Top delivery areas (extracted from address) · click to drill ↗</div>'+
-          '<div class="sbl-list">'+addrBars+'</div>'+
-        '</div>'+
-        '<div class="cc"><h3>📍 Delivery Address Stats</h3><div class="ccsub">Coverage overview</div>'+
-          '<div class="mstats">'+
-            '<div class="mstat"><span class="msl">Total with Address</span><span class="msv" style="color:var(--green)">'+addrCol.total+'</span></div>'+
-            '<div class="mstat"><span class="msl">Missing Address</span><span class="msv" style="color:'+(addrCol.missing>0?'var(--red)':'var(--green)')+'">'+addrCol.missing+'</span></div>'+
-            '<div class="mstat"><span class="msl">Unique Addresses</span><span class="msv" style="color:var(--blue)">'+addrCol.unique.length+'</span></div>'+
-            '<div class="mstat"><span class="msl">Unique Zones</span><span class="msv" style="color:var(--amber)">'+addrTopAreas.length+'</span></div>'+
-            '<div class="mstat"><span class="msl">Top Zone</span><span class="msv" style="font-size:11px;color:var(--cyan)">'+(addrTopAreas[0]?addrTopAreas[0][0]:'—')+'</span></div>'+
-          '</div>'+
-        '</div>'+
-      '</div>'
-    :'')+
-    '</div>';
-
-  // Bind click events
   bindDrillClicks(mc);
-
-  setTimeout(function(){
-    if(statusCol){var t=topN(statusCol.freq,8);drawChart('dsc','doughnut',t.map(function(x){return x[0];}),t.map(function(x){return x[1];}));}
-    if(portCol){var t=topN(portCol.freq,8);drawChart('dpc','bar',t.map(function(x){return x[0];}),t.map(function(x){return x[1];}),'#4f7cff');}
-    if(!statusCol&&originCol){var t=topN(originCol.freq,8);drawChart('doc','bar',t.map(function(x){return x[0];}),t.map(function(x){return x[1];}),'#22d3a5');}
+  setTimeout(()=>{
+    if(statusCol){var t=topN(statusCol.freq,8);drawDoughnut('dsc',t.map(x=>x[0]),t.map(x=>x[1]));}
+    if(portCol){var t=topN(portCol.freq,8);drawBar('dpc',t.map(x=>x[0]),t.map(x=>x[1]),'#4f7cff');}
   },80);
 }
 
-// ════════════════════════════════════════════
-// TABLE PAGE
-// ════════════════════════════════════════════
 function renderTable(sheet){
-  var isE=sheet==='express', headers=isE?exprHeaders:commHeaders, data=isE?exprData:commData;
-  var catCols=headers.filter(function(h){
-    var u=[...new Set(data.map(function(r){return (r[h]||'').trim();}).filter(Boolean))];
-    return u.length>=2&&u.length<=25;
-  }).slice(0,4);
-  var selects=catCols.map(function(h,i){
-    var opts=[...new Set(data.map(function(r){return (r[h]||'').trim();}).filter(Boolean))].sort()
-      .map(function(v){return '<option>'+esc(v)+'</option>';}).join('');
-    return '<select class="tfilter" data-col="'+esc(h)+'"><option value="">All '+esc(h)+'</option>'+opts+'</select>';
-  }).join('');
-  document.getElementById('mainContent').innerHTML=
-    '<div class="tpanel">'+
-      '<div class="ttoolbar">'+
-        '<input type="text" id="tsearch" placeholder="Search all columns...">'+selects+
-        '<button class="tbtn pri" id="tAddBtn" style="padding:5px 12px;font-size:11px">+ Add Row</button>'+
-        '<span style="margin-left:auto;font-size:11px;color:var(--text3)" id="tcount">'+data.length+' records</span>'+
-      '</div>'+
-      '<div class="tscroll"><table><thead id="thead"></thead><tbody id="tbody"></tbody></table>'+
-        '<div class="empty" id="tempty" style="display:none">📋 No records match</div>'+
-      '</div>'+
-    '</div>';
-  document.getElementById('tsearch').addEventListener('input', function(){ filterTbl(sheet); });
-  document.getElementById('tAddBtn').addEventListener('click', function(){ openModal(sheet,-1); });
-  document.querySelectorAll('.tfilter').forEach(function(s){ s.addEventListener('change', function(){ filterTbl(sheet); }); });
+  var isE=sheet==='express',headers=isE?exprHeaders:commHeaders,data=isE?exprData:commData;
+  var catCols=headers.filter(h=>{var u=[...new Set(data.map(r=>(r[h]||'').trim()).filter(Boolean))];return u.length>=2&&u.length<=25;}).slice(0,4);
+  var selects=catCols.map(h=>{var opts=[...new Set(data.map(r=>(r[h]||'').trim()).filter(Boolean))].sort().map(v=>`<option>${esc(v)}</option>`).join('');return`<select class="tfilter" data-col="${esc(h)}"><option value="">All ${esc(h)}</option>${opts}</select>`;}).join('');
+  document.getElementById('mainContent').innerHTML=`<div class="tpanel"><div class="ttoolbar"><input type="text" id="tsearch" placeholder="Search...">${selects}<button class="tbtn pri" id="tAddBtn" style="padding:5px 12px;font-size:11px">+ Add Row</button><span style="margin-left:auto;font-size:11px;color:var(--text3)" id="tcount">${data.length} records</span></div><div class="tscroll"><table><thead id="thead"></thead><tbody id="tbody"></tbody></table><div class="empty" id="tempty" style="display:none;text-align:center;padding:40px;color:var(--text3)">No records match</div></div></div>`;
+  document.getElementById('tsearch').addEventListener('input',()=>filterTbl(sheet));
+  document.getElementById('tAddBtn').addEventListener('click',()=>openModal(sheet,-1));
+  document.querySelectorAll('.tfilter').forEach(s=>s.addEventListener('change',()=>filterTbl(sheet)));
   filterTbl(sheet);
 }
 
 function filterTbl(sheet){
-  var isE=sheet==='express', headers=isE?exprHeaders:commHeaders, data=isE?exprData:commData;
-  var q=(document.getElementById('tsearch').value||'').toLowerCase();
-  var filters={};
-  document.querySelectorAll('.tfilter').forEach(function(s){ if(s.value) filters[s.dataset.col]=s.value; });
-  var statusH=commHeaders.find(function(h){return h.toLowerCase().includes('status');})||'';
-  var rows=data.filter(function(r){
-    for(var col in filters){ if((r[col]||'')!==filters[col]) return false; }
-    if(!q) return true;
-    return headers.some(function(h){return (r[h]||'').toLowerCase().includes(q);});
-  });
-  var tc=document.getElementById('tcount'); if(tc) tc.textContent=rows.length+' of '+data.length+' records';
-  var th=document.getElementById('thead'), tb=document.getElementById('tbody'), em=document.getElementById('tempty');
-  if(!tb) return;
-  th.innerHTML='<tr><th class="rn">#</th>'+headers.map(function(h){return '<th'+(isE&&EXPR_AUTO.includes(h)?' style="color:#b794f4"':'')+'>'+esc(h)+(isE&&EXPR_AUTO.includes(h)?'★':'')+'</th>';}).join('')+'<th></th></tr>';
-  if(!rows.length){tb.innerHTML='';em.style.display='block';return;}
-  em.style.display='none';
-  tb.innerHTML=rows.map(function(r){
-    var oi=data.indexOf(r);
-    return'<tr><td class="rn">'+( oi+1)+'</td>'+headers.map(function(h){
-      var v=r[h]||'',isA=isE&&EXPR_AUTO.includes(h),isSt=h===statusH;
-      return'<td class="'+(isA?'autocell':'')+'" title="'+esc(v)+'">'+(isSt?statusBadge(v):esc(v)||'—')+'</td>';
-    }).join('')+'<td>'+
-      '<button class="abt e" data-sheet="'+sheet+'" data-idx="'+oi+'">Edit</button>'+
-      '<button class="abt d" data-sheet="'+sheet+'" data-idx="'+oi+'">Del</button>'+
-    '</td></tr>';
-  }).join('');
-  tb.querySelectorAll('.abt.e').forEach(function(b){ b.addEventListener('click', function(){ openModal(b.dataset.sheet, parseInt(b.dataset.idx)); }); });
-  tb.querySelectorAll('.abt.d').forEach(function(b){ b.addEventListener('click', function(){ delRow(b.dataset.sheet, parseInt(b.dataset.idx)); }); });
+  var isE=sheet==='express',headers=isE?exprHeaders:commHeaders,data=isE?exprData:commData;
+  var q=(document.getElementById('tsearch').value||'').toLowerCase(),filters={};
+  document.querySelectorAll('.tfilter').forEach(s=>{if(s.value)filters[s.dataset.col]=s.value;});
+  var statusH=commHeaders.find(h=>h.toLowerCase().includes('status'))||'';
+  var rows=data.filter(r=>{for(var col in filters){if((r[col]||'')!==filters[col])return false;}if(!q)return true;return headers.some(h=>(r[h]||'').toLowerCase().includes(q));});
+  var tc=document.getElementById('tcount');if(tc)tc.textContent=rows.length+' of '+data.length+' records';
+  var th=document.getElementById('thead'),tb=document.getElementById('tbody'),em=document.getElementById('tempty');
+  if(!tb)return;
+  th.innerHTML=`<tr><th class="rn">#</th>${headers.map(h=>`<th${isE&&EXPR_AUTO.includes(h)?' style="color:#b794f4"':''}>${h}${isE&&EXPR_AUTO.includes(h)?'★':''}</th>`).join('')}<th></th></tr>`;
+  if(!rows.length){tb.innerHTML='';em.style.display='block';return;}em.style.display='none';
+  tb.innerHTML=rows.map(r=>{var oi=data.indexOf(r);return`<tr><td class="rn">${oi+1}</td>${headers.map(h=>{var v=r[h]||'',isA=isE&&EXPR_AUTO.includes(h),isSt=h===statusH;return`<td class="${isA?'autocell':''}" title="${esc(v)}">${isSt?statusBadge(v):esc(v)||'—'}</td>`;}).join('')}<td><button class="abt e" data-sheet="${sheet}" data-idx="${oi}">Edit</button><button class="abt d" data-sheet="${sheet}" data-idx="${oi}">Del</button></td></tr>`;}).join('');
+  tb.querySelectorAll('.abt.e').forEach(b=>b.addEventListener('click',()=>openModal(b.dataset.sheet,parseInt(b.dataset.idx))));
+  tb.querySelectorAll('.abt.d').forEach(b=>b.addEventListener('click',()=>delRow(b.dataset.sheet,parseInt(b.dataset.idx))));
 }
+function statusBadge(v){var vl=(v||'').toLowerCase();var cls=vl.includes('clear')||vl.includes('done')||vl.includes('deliver')||vl.includes('complet')?'bg':vl.includes('pend')||vl.includes('process')?'ba':vl.includes('hold')||vl.includes('delay')||vl.includes('cancel')?'br':v?'bb':'bgr';return v?`<span class="badge ${cls}">${esc(v)}</span>`:'—';}
 
-function statusBadge(v){
-  var vl=(v||'').toLowerCase();
-  var cls=vl.includes('clear')||vl.includes('done')||vl.includes('deliver')||vl.includes('complet')?'bg':
-    vl.includes('pend')||vl.includes('process')?'ba':
-    vl.includes('hold')||vl.includes('delay')||vl.includes('cancel')?'br':v?'bb':'bgr';
-  return v?'<span class="badge '+cls+'">'+esc(v)+'</span>':'—';
-}
-
-// ════════════════════════════════════════════
-// ANALYTICS
-// ════════════════════════════════════════════
 function renderAnalytics(){
-  document.getElementById('mainContent').innerHTML=
-    '<div class="stabs">'+
-      '<div class="stab active" data-atab="comm">🏢 Commercial Analysis</div>'+
-      '<div class="stab" data-atab="expr">✈ Express Analysis</div>'+
-      '<div class="stab" data-atab="cross">🔗 Cross-Sheet Insights</div>'+
-    '</div><div id="aContent"></div>';
-  document.querySelectorAll('.stab').forEach(function(el){
-    el.addEventListener('click', function(){
-      document.querySelectorAll('.stab').forEach(function(s){s.classList.remove('active');});
-      this.classList.add('active');
-      if(this.dataset.atab==='comm') renderCommAnalytics();
-      else if(this.dataset.atab==='expr') renderExprAnalytics();
-      else renderCrossAnalytics();
-    });
-  });
-  renderCommAnalytics();
+  document.getElementById('mainContent').innerHTML='<div class="stabs"><div class="stab active" data-atab="comm">🏢 Commercial Analysis</div><div class="stab" data-atab="expr">✈ Express Analysis</div><div class="stab" data-atab="cross">🔗 Cross-Sheet</div></div><div id="aContent"></div>';
+  document.querySelectorAll('.stab').forEach(el=>el.addEventListener('click',function(){document.querySelectorAll('.stab').forEach(s=>s.classList.remove('active'));this.classList.add('active');if(this.dataset.atab==='comm')renderCommA();else if(this.dataset.atab==='expr')renderExprA();else renderCrossA();}));
+  renderCommA();
 }
-
-function renderCommAnalytics(){
-  var el=document.getElementById('aContent');
-  if(!commData.length){el.innerHTML='<div class="empty">No commercial data loaded</div>';return;}
+function renderCommA(){
+  var el=document.getElementById('aContent');if(!commData.length){el.innerHTML='<div style="text-align:center;padding:40px;color:var(--text3)">No data</div>';return;}
   var ca=analyseColumns(commHeaders,commData);
-  var catCols=ca.filter(function(c){return c.isCat&&!c.isDate&&!c.isId&&c.unique.length>=2&&c.unique.length<=20;}).slice(0,10);
-  var numCols=ca.filter(function(c){return c.isNumeric&&c.sum!=null;}).slice(0,4);
-
-  var metricCards=numCols.map(function(c,i){
-    var colors=['amber','green','pink','cyan'];
-    return'<div class="mc '+colors[i]+' clickable" data-drill-num="'+esc(c.h)+'" data-drill-sheet="commercial">'+
-      '<div class="ml">'+esc(c.h)+'</div><div class="mv">'+Math.round(c.sum).toLocaleString()+'</div>'+
-      '<div class="ms">Avg: '+c.avg.toFixed(1)+' · Max: '+c.max.toFixed(0)+' ↗</div></div>';
-  }).join('');
-  var firstCat=catCols[0];
-  var uniqueCard=firstCat?'<div class="mc indigo clickable" data-drill-col="'+esc(firstCat.h)+'" data-drill-sheet="commercial"><div class="ml">Unique '+esc(firstCat.h)+'</div><div class="mv">'+firstCat.unique.length+'</div><div class="ms">distinct values ↗</div></div>':'';
-
+  var catCols=ca.filter(c=>c.isCat&&!c.isDate&&!c.isId&&c.unique.length>=2&&c.unique.length<=20).slice(0,10);
+  var numCols=ca.filter(c=>c.isNumeric&&c.sum!=null).slice(0,4);
+  var addrCol=ca.find(c=>c.h.toLowerCase().includes('delivery')||c.h.toLowerCase().includes('address'));
+  var addrAreaMap={};if(addrCol)commData.forEach(r=>{var z=extractArea(r[addrCol.h]||'');if(z)addrAreaMap[z]=(addrAreaMap[z]||0)+1;});
+  var addrAreas=Object.entries(addrAreaMap).sort((a,b)=>b[1]-a[1]);
+  var metrics=`<div class="mrow" style="margin-bottom:16px"><div class="mc blue"><div class="ml">Total Entries</div><div class="mv">${commData.length}</div><div class="ms">${commHeaders.length} columns</div></div>${numCols.map((c,i)=>{var colors=['amber','green','pink','cyan'];return`<div class="mc ${colors[i]} clickable" data-drill-num="${esc(c.h)}" data-drill-sheet="commercial"><div class="ml">${esc(c.h)}</div><div class="mv">${Math.round(c.sum).toLocaleString()}</div><div class="ms">Avg: ${c.avg.toFixed(1)} ↗</div></div>`;}).join('')}${addrCol?`<div class="mc cyan clickable" data-drill-col="${esc(addrCol.h)}" data-drill-sheet="commercial"><div class="ml">Delivery Zones</div><div class="mv">${addrAreas.length}</div><div class="ms">unique zones ↗</div></div>`:''}</div>`;
+  var addrSection='';
+  if(addrCol&&addrAreas.length){addrSection=`<div class="g2" style="margin-bottom:14px"><div class="cc clickable" data-drill-col="${esc(addrCol.h)}" data-drill-sheet="commercial"><h3>📍 ${esc(addrCol.h)}</h3><div class="ccsub">${addrAreas.length} zones · click to drill ↗</div><div class="sbl-list">${addrAreas.slice(0,8).map((kv,i)=>mkBarRow('commercial',addrCol.h,kv[0],kv[1],commData.length,i)).join('')}</div></div><div class="cc"><h3>📍 Zone Chart</h3><div class="ccsub">Distribution</div><div class="chwrap" style="height:200px"><canvas id="addrChart"></canvas></div></div></div>`;}
   var chartRows='';
-  for(var i=0;i<catCols.length;i+=2){
-    var c1=catCols[i],c2=catCols[i+1];
-    chartRows+='<div class="g2" style="margin-bottom:14px">'+buildCatCard(c1,'commercial',i)+( c2?buildCatCard(c2,'commercial',i+1):'')+' </div>';
-  }
-
-  var numTable='';
-  if(numCols.length){
-    numTable='<div class="cc" style="margin-bottom:14px"><h3>Numeric Column Summary</h3><div class="ccsub">Statistical overview of measurable fields</div>'+
-      '<div style="overflow-x:auto"><table style="min-width:480px;font-size:12px;width:100%">'+
-      '<thead><tr><th style="padding:8px 10px;background:var(--bg4);font-size:10px;text-transform:uppercase;color:var(--text3);font-weight:700">Column</th><th style="padding:8px 10px;background:var(--bg4);font-size:10px;text-transform:uppercase;color:var(--text3);font-weight:700">Count</th><th style="padding:8px 10px;background:var(--bg4);font-size:10px;text-transform:uppercase;color:var(--text3);font-weight:700">Total</th><th style="padding:8px 10px;background:var(--bg4);font-size:10px;text-transform:uppercase;color:var(--text3);font-weight:700">Average</th><th style="padding:8px 10px;background:var(--bg4);font-size:10px;text-transform:uppercase;color:var(--text3);font-weight:700">Min</th><th style="padding:8px 10px;background:var(--bg4);font-size:10px;text-transform:uppercase;color:var(--text3);font-weight:700">Max</th></tr></thead>'+
-      '<tbody>'+numCols.map(function(c){return'<tr><td style="padding:7px 10px;border-bottom:1px solid rgba(42,45,69,.4)"><strong style="color:var(--text)">'+esc(c.h)+'</strong></td><td style="padding:7px 10px;border-bottom:1px solid rgba(42,45,69,.4)">'+c.numVals.length+'</td><td style="padding:7px 10px;border-bottom:1px solid rgba(42,45,69,.4);color:var(--green)">'+Math.round(c.sum).toLocaleString()+'</td><td style="padding:7px 10px;border-bottom:1px solid rgba(42,45,69,.4);color:var(--blue)">'+c.avg.toFixed(1)+'</td><td style="padding:7px 10px;border-bottom:1px solid rgba(42,45,69,.4)">'+c.min.toFixed(0)+'</td><td style="padding:7px 10px;border-bottom:1px solid rgba(42,45,69,.4);color:var(--amber)">'+c.max.toFixed(0)+'</td></tr>';}).join('')+'</tbody></table></div></div>';
-  }
-
-  var completeness='<div class="cc" style="margin-bottom:14px"><h3>Data Completeness</h3><div class="ccsub">Fill rate per column — click to inspect</div>'+
-    '<div class="plist">'+ca.sort(function(a,b){return a.missing-b.missing;}).slice(0,12).map(function(c){
-      var pct=Math.round(c.total/Math.max(commData.length,1)*100);
-      var col=pct===100?'#22d3a5':pct>70?'#f59e0b':'#ef4444';
-      return'<div class="pi"><div class="ph"><span>'+esc(c.h)+'</span><span style="color:'+col+'">'+pct+'% ('+c.missing+' missing)</span></div><div class="pt"><div class="pf" style="width:'+pct+'%;background:'+col+'"></div></div></div>';
-    }).join('')+'</div></div>';
-
-  el.innerHTML='<div class="mrow" style="margin-bottom:16px"><div class="mc blue"><div class="ml">Total Entries</div><div class="mv">'+commData.length+'</div><div class="ms">'+commHeaders.length+' columns</div></div>'+metricCards+uniqueCard+'</div>'+chartRows+numTable+completeness;
-
+  for(var i=0;i<catCols.length;i+=2){var c1=catCols[i],c2=catCols[i+1];chartRows+=`<div class="g2" style="margin-bottom:14px">${buildCatCard(c1,'commercial',i)}${c2?buildCatCard(c2,'commercial',i+1):''}</div>`;}
+  var complete=`<div class="cc"><h3>Data Completeness</h3><div class="ccsub">Fill rate per column</div><div class="plist">${ca.slice(0,14).map(c=>{var pct=Math.round(c.total/Math.max(commData.length,1)*100);var col=pct===100?'#22d3a5':pct>70?'#f59e0b':'#ef4444';return`<div class="pi"><div class="ph"><span>${esc(c.h)}</span><span style="color:${col}">${pct}%${c.missing?' ('+c.missing+' missing)':''}</span></div><div class="pt"><div class="pf" style="width:${pct}%;background:${col}"></div></div></div>`;}).join('')}</div></div>`;
+  el.innerHTML=metrics+addrSection+chartRows+complete;
   bindDrillClicks(el);
-  setTimeout(function(){
-    catCols.forEach(function(c,i){
-      if(c.unique.length<=8){ var t=topN(c.freq,8); drawChart('cc_'+i,'doughnut',t.map(function(x){return x[0];}),t.map(function(x){return x[1];})); }
-    });
-  },80);
+  setTimeout(()=>{catCols.forEach((c,i)=>{if(c.unique.length<=8){var t=topN(c.freq,8);drawDoughnut('cc_'+i,t.map(x=>x[0]),t.map(x=>x[1]));} });if(addrAreas.length){var t=addrAreas.slice(0,8);drawDoughnut('addrChart',t.map(x=>x[0]),t.map(x=>x[1]));}},80);
 }
-
-function buildCatCard(c, sheet, idx){
-  var isSmall=c.unique.length<=8;
-  var barsHtml=topN(c.freq,8).map(function(kv,j){
-    var v=kv[0],ct=kv[1],p=Math.round(ct/(sheet==='express'?exprData.length:commData.length)*100);
-    return'<div class="sbl-row" data-drill-val="'+esc(c.h)+'|||'+esc(v)+'" data-drill-sheet="'+sheet+'">'+
-      '<div class="sbl-label" title="'+esc(v)+'">'+esc(v||'(blank)')+'</div>'+
-      '<div class="sbl-track"><div class="sbl-fill" style="width:'+Math.max(p,2)+'%;background:'+PAL[j%PAL.length]+'"></div></div>'+
-      '<div class="sbl-count">'+ct+'</div><div class="sbl-pct">'+p+'%</div></div>';
-  }).join('');
-  return'<div class="cc clickable" data-drill-col="'+esc(c.h)+'" data-drill-sheet="'+sheet+'">'+
-    '<h3>'+esc(c.h)+'</h3>'+
-    '<div class="ccsub">'+c.total+' values · '+c.unique.length+' unique · <span style="color:var(--blue)">click to drill down ↗</span></div>'+
-    (isSmall?'<div class="chwrap" style="height:200px"><canvas id="cc_'+idx+'"></canvas></div>':'<div class="sbl-list">'+barsHtml+'</div>')+
-  '</div>';
+function buildCatCard(c,sheet,idx){
+  var isSmall=c.unique.length<=8,total=sheet==='express'?exprData.length:commData.length;
+  var bars=topN(c.freq,8).map((kv,j)=>mkBarRow(sheet,c.h,kv[0],kv[1],total,j)).join('');
+  return`<div class="cc clickable" data-drill-col="${esc(c.h)}" data-drill-sheet="${sheet}"><h3>${esc(c.h)}</h3><div class="ccsub">${c.total} values · ${c.unique.length} unique · <span style="color:var(--blue)">click ↗</span></div>${isSmall?`<div class="chwrap" style="height:200px"><canvas id="cc_${idx}"></canvas></div>`:`<div class="sbl-list">${bars}</div>`}</div>`;
 }
-
-function renderExprAnalytics(){
-  var el=document.getElementById('aContent');
-  if(!exprData.length){el.innerHTML='<div class="empty">No express data loaded</div>';return;}
+function renderExprA(){
+  var el=document.getElementById('aContent');if(!exprData.length){el.innerHTML='<div style="text-align:center;padding:40px;color:var(--text3)">No data</div>';return;}
   var ea=analyseColumns(exprHeaders,exprData);
-  var manualCols=ea.filter(function(c){return c.isCat&&!c.isDate&&!c.isId&&c.unique.length>=2&&c.unique.length<=20&&!EXPR_AUTO.includes(c.h);}).slice(0,8);
-  var autoCols=ea.filter(function(c){return EXPR_AUTO.includes(c.h)&&c.isCat&&!c.isDate&&c.unique.length>=2;});
-  var numCols=ea.filter(function(c){return c.isNumeric&&c.sum!=null;});
-
-  var metricCards=numCols.map(function(c,i){
-    var colors=['amber','blue','pink','cyan'];
-    return'<div class="mc '+colors[i%4]+' clickable" data-drill-num="'+esc(c.h)+'" data-drill-sheet="express">'+
-      '<div class="ml">'+esc(c.h)+'</div><div class="mv">'+Math.round(c.sum).toLocaleString()+'</div>'+
-      '<div class="ms">Avg: '+c.avg.toFixed(1)+' ↗</div></div>';
-  }).join('');
-
-  var manualRows='';
-  for(var i=0;i<manualCols.length;i+=2){
-    manualRows+='<div class="g2" style="margin-bottom:14px">'+buildCatCard(manualCols[i],'express',i)+(manualCols[i+1]?buildCatCard(manualCols[i+1],'express',i+1):'')+' </div>';
-  }
-  var autoRows='';
-  if(autoCols.length){
-    autoRows='<div style="margin:14px 0 10px;font-size:11px;color:var(--indigo);font-weight:600">★ AUTO-COMPUTED COLUMNS (from formula)</div>';
-    for(var i=0;i<autoCols.length;i+=2){
-      autoRows+='<div class="g2" style="margin-bottom:14px">'+buildAutoCard(autoCols[i],'express')+(autoCols[i+1]?buildAutoCard(autoCols[i+1],'express'):'')+' </div>';
-    }
-  }
-
-  el.innerHTML='<div class="mrow" style="margin-bottom:16px"><div class="mc green"><div class="ml">Total Shipments</div><div class="mv">'+exprData.length+'</div><div class="ms">'+exprHeaders.length+' columns</div></div>'+metricCards+'</div>'+
-    '<div style="margin-bottom:10px;font-size:11px;color:var(--text2);font-weight:600">MANUAL ENTRY COLUMNS</div>'+manualRows+autoRows;
-
-  bindDrillClicks(el);
-  setTimeout(function(){
-    manualCols.forEach(function(c,i){
-      if(c.unique.length<=8){var t=topN(c.freq,8);drawChart('cc_'+i,'doughnut',t.map(function(x){return x[0];}),t.map(function(x){return x[1];}));}
-    });
-  },80);
+  var manualCols=ea.filter(c=>c.isCat&&!c.isDate&&!c.isId&&c.unique.length>=2&&c.unique.length<=20&&!EXPR_AUTO.includes(c.h)).slice(0,8);
+  var numCols=ea.filter(c=>c.isNumeric&&c.sum!=null);
+  var metrics=`<div class="mrow" style="margin-bottom:16px"><div class="mc green"><div class="ml">Shipments</div><div class="mv">${exprData.length}</div><div class="ms">${exprHeaders.length} columns</div></div>${numCols.map((c,i)=>{var cls=['amber','blue','pink','cyan'][i%4];return`<div class="mc ${cls} clickable" data-drill-num="${esc(c.h)}" data-drill-sheet="express"><div class="ml">${esc(c.h)}</div><div class="mv">${Math.round(c.sum).toLocaleString()}</div><div class="ms">Avg: ${c.avg.toFixed(1)} ↗</div></div>`;}).join('')}</div>`;
+  var rows='';for(var i=0;i<manualCols.length;i+=2){rows+=`<div class="g2" style="margin-bottom:14px">${buildCatCard(manualCols[i],'express',i)}${manualCols[i+1]?buildCatCard(manualCols[i+1],'express',i+1):''}</div>`;}
+  el.innerHTML=metrics+rows;bindDrillClicks(el);
+  setTimeout(()=>{manualCols.forEach((c,i)=>{if(c.unique.length<=8){var t=topN(c.freq,8);drawDoughnut('cc_'+i,t.map(x=>x[0]),t.map(x=>x[1]));} });},80);
 }
-
-function buildAutoCard(c, sheet){
-  var bars=topN(c.freq,6).map(function(kv,j){
-    var v=kv[0],ct=kv[1],p=Math.round(ct/exprData.length*100);
-    return'<div class="sbl-row" data-drill-val="'+esc(c.h)+'|||'+esc(v)+'" data-drill-sheet="'+sheet+'">'+
-      '<div class="sbl-label">'+esc(v)+'</div>'+
-      '<div class="sbl-track"><div class="sbl-fill" style="width:'+Math.max(p,2)+'%;background:'+PAL[j]+'"></div></div>'+
-      '<div class="sbl-count">'+ct+'</div><div class="sbl-pct">'+p+'%</div></div>';
-  }).join('');
-  return'<div class="cc clickable" style="border-color:rgba(124,111,205,.35)" data-drill-col="'+esc(c.h)+'" data-drill-sheet="'+sheet+'">'+
-    '<h3 style="color:var(--indigo)">'+esc(c.h)+' ★</h3>'+
-    '<div class="ccsub">'+c.total+' values · '+c.unique.length+' unique · <span style="color:var(--indigo)">click to drill down ↗</span></div>'+
-    '<div class="sbl-list">'+bars+'</div></div>';
-}
-
-function renderCrossAnalytics(){
+function renderCrossA(){
   var el=document.getElementById('aContent');
-  var ca=analyseColumns(commHeaders,commData);
-  var ea=analyseColumns(exprHeaders,exprData);
-  el.innerHTML=
-    '<div class="g2" style="margin-bottom:14px">'+
-      '<div class="cc"><h3>Sheet Comparison</h3><div class="ccsub">Side-by-side overview</div>'+
-        '<div class="mstats">'+
-          '<div class="mstat"><span class="msl">Commercial Records</span><span class="msv" style="color:var(--blue)">'+commData.length+'</span></div>'+
-          '<div class="mstat"><span class="msl">Express Records</span><span class="msv" style="color:var(--green)">'+exprData.length+'</span></div>'+
-          '<div class="mstat"><span class="msl">Commercial Columns</span><span class="msv">'+commHeaders.length+'</span></div>'+
-          '<div class="mstat"><span class="msl">Express Columns</span><span class="msv">'+exprHeaders.length+'</span></div>'+
-          '<div class="mstat"><span class="msl">Total Data Points</span><span class="msv" style="color:var(--amber)">'+(commData.length*commHeaders.length+exprData.length*exprHeaders.length).toLocaleString()+'</span></div>'+
-        '</div>'+
-      '</div>'+
-      '<div class="cc"><h3>Volume Comparison</h3><div class="ccsub">Records in each sheet</div><div class="chwrap" style="height:200px"><canvas id="xcc"></canvas></div></div>'+
-    '</div>'+
-    '<div class="cc" style="margin-bottom:14px"><h3>Commercial Columns ('+commHeaders.length+')</h3><div class="ccsub">Fill rate — green=100%, amber=>70%, red=low</div>'+
-      '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">'+
-        ca.map(function(c){var pct=Math.round(c.total/Math.max(commData.length,1)*100);var cls=pct===100?'bg':pct>70?'ba':'br';return'<span class="badge '+cls+'" title="'+pct+'% filled">'+esc(c.h)+(pct<100?' '+pct+'%':'')+'</span>';}).join('')+
-      '</div></div>'+
-    '<div class="cc"><h3>Express Columns ('+exprHeaders.length+')</h3><div class="ccsub">Purple ★ = auto-computed</div>'+
-      '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">'+
-        ea.map(function(c){var pct=Math.round(c.total/Math.max(exprData.length,1)*100);var isA=EXPR_AUTO.includes(c.h);var cls=isA?'bi':pct===100?'bg':pct>70?'ba':'br';return'<span class="badge '+cls+'">'+esc(c.h)+(isA?' ★':'')+(pct<100?' '+pct+'%':'')+'</span>';}).join('')+
-      '</div></div>';
-  setTimeout(function(){
-    drawChart('xcc','bar',['Commercial','Express'],[commData.length,exprData.length],'#4f7cff');
-  },80);
+  var ca=analyseColumns(commHeaders,commData),ea=analyseColumns(exprHeaders,exprData);
+  el.innerHTML=`<div class="g2" style="margin-bottom:14px"><div class="cc"><h3>Sheet Comparison</h3><div class="ccsub">Side-by-side overview</div><div class="mstats"><div class="mstat"><span class="msl">Commercial Records</span><span class="msv" style="color:var(--blue)">${commData.length}</span></div><div class="mstat"><span class="msl">Express Records</span><span class="msv" style="color:var(--green)">${exprData.length}</span></div><div class="mstat"><span class="msl">Commercial Columns</span><span class="msv">${commHeaders.length}</span></div><div class="mstat"><span class="msl">Express Columns</span><span class="msv">${exprHeaders.length}</span></div></div></div><div class="cc"><h3>Volume Comparison</h3><div class="ccsub">Records per sheet</div><div class="chwrap" style="height:200px"><canvas id="xcc"></canvas></div></div></div><div class="cc" style="margin-bottom:14px"><h3>Commercial Columns (${commHeaders.length})</h3><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">${ca.map(c=>{var pct=Math.round(c.total/Math.max(commData.length,1)*100);var cls=pct===100?'bg':pct>70?'ba':'br';return`<span class="badge ${cls}">${esc(c.h)}${pct<100?' '+pct+'%':''}</span>`;}).join('')}</div></div><div class="cc"><h3>Express Columns (${exprHeaders.length})</h3><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">${ea.map(c=>{var isA=EXPR_AUTO.includes(c.h);return`<span class="badge ${isA?'bi':'bg'}">${esc(c.h)}${isA?' ★':''}</span>`;}).join('')}</div></div>`;
+  setTimeout(()=>drawBar('xcc',['Commercial','Express'],[commData.length,exprData.length],'#4f7cff'),80);
 }
-
-// ════════════════════════════════════════════
-// ALERTS
-// ════════════════════════════════════════════
 function getAlerts(){
-  var alerts=[];
-  var ca=analyseColumns(commHeaders,commData);
-  var ea=analyseColumns(exprHeaders,exprData);
-  var today=new Date();
-  var statusH=commHeaders.find(function(h){return h.toLowerCase().includes('status');})||'';
-  if(statusH){
-    var pend=commData.filter(function(r){return (r[statusH]||'').toLowerCase().includes('pend');});
-    var held=commData.filter(function(r){var s=(r[statusH]||'').toLowerCase();return s.includes('hold')||s.includes('delay');});
-    if(pend.length) alerts.push({type:'warn',title:pend.length+' commercial entries pending',sub:'Status "'+statusH+'" shows Pending'});
-    if(held.length) alerts.push({type:'danger',title:held.length+' entries on hold or delayed',sub:'Requires immediate attention'});
-  }
-  ca.filter(function(c){return c.missing>0&&c.missing/Math.max(commData.length,1)>0.1;}).forEach(function(c){
-    alerts.push({type:'warn',title:c.missing+' missing values in "'+c.h+'"',sub:'Commercial — '+Math.round(c.missing/commData.length*100)+'% rows empty'});
-  });
-  ea.filter(function(c){return c.missing>0&&!EXPR_AUTO.includes(c.h)&&c.missing/Math.max(exprData.length,1)>0.1;}).forEach(function(c){
-    alerts.push({type:'warn',title:c.missing+' missing values in "'+c.h+'" (Express)',sub:Math.round(c.missing/exprData.length*100)+'% of express rows empty'});
-  });
-  if(exprHeaders[0]){
-    var noKey=exprData.filter(function(r){return !(r[exprHeaders[0]]||'').trim();});
-    if(noKey.length) alerts.push({type:'danger',title:noKey.length+' Express rows missing '+exprHeaders[0],sub:'Key identifier column is empty'});
-  }
-  if(!alerts.length) alerts.push({type:'ok',title:'All clear — no issues detected',sub:'Data looks complete across both sheets'});
+  var alerts=[],ca=analyseColumns(commHeaders,commData),ea=analyseColumns(exprHeaders,exprData);
+  var statusH=commHeaders.find(h=>h.toLowerCase().includes('status'))||'';
+  if(statusH){var p=commData.filter(r=>(r[statusH]||'').toLowerCase().includes('pend'));var hd=commData.filter(r=>{var s=(r[statusH]||'').toLowerCase();return s.includes('hold')||s.includes('delay');});if(p.length)alerts.push({type:'warn',title:`${p.length} commercial entries pending`,sub:'Review required'});if(hd.length)alerts.push({type:'danger',title:`${hd.length} entries on hold/delayed`,sub:'Immediate attention needed'});}
+  ca.filter(c=>c.missing>0&&c.missing/Math.max(commData.length,1)>0.1).forEach(c=>alerts.push({type:'warn',title:`${c.missing} missing in "${c.h}"`,sub:`${Math.round(c.missing/commData.length*100)}% empty`}));
+  if(exprHeaders[0]){var nk=exprData.filter(r=>!(r[exprHeaders[0]]||'').trim());if(nk.length)alerts.push({type:'danger',title:`${nk.length} Express rows missing ${exprHeaders[0]}`,sub:'Key identifier empty'});}
+  if(!alerts.length)alerts.push({type:'ok',title:'All clear',sub:'No issues detected'});
   return alerts;
 }
-
 function renderAlerts(){
-  var alerts=getAlerts();
-  var ca=analyseColumns(commHeaders,commData);
-  document.getElementById('mainContent').innerHTML=
-    '<div class="g2">'+
-      '<div class="cc"><h3>🔔 Active Alerts</h3><div class="ccsub">'+alerts.filter(function(a){return a.type!=='ok';}).length+' issues found</div>'+
-        '<div class="alist">'+alerts.map(function(a){
-          var icon=a.type==='danger'?'🔴':a.type==='warn'?'🟡':a.type==='ok'?'✅':'🔵';
-          return'<div class="ai '+a.type+'"><div class="att">'+icon+' '+a.title+'</div><div class="ats">'+a.sub+'</div></div>';
-        }).join('')+'</div>'+
-      '</div>'+
-      '<div class="cc"><h3>📊 Column Health — Commercial</h3><div class="ccsub">Fill rate for each column</div>'+
-        '<div class="plist">'+ca.map(function(c){
-          var pct=Math.round(c.total/Math.max(commData.length,1)*100);
-          var col=pct===100?'#22d3a5':pct>70?'#f59e0b':'#ef4444';
-          return'<div class="pi"><div class="ph"><span>'+esc(c.h)+'</span><span style="color:'+col+'">'+pct+'%</span></div><div class="pt"><div class="pf" style="width:'+pct+'%;background:'+col+'"></div></div></div>';
-        }).join('')+'</div>'+
-      '</div>'+
-    '</div>';
+  var alerts=getAlerts(),ca=analyseColumns(commHeaders,commData);
+  document.getElementById('mainContent').innerHTML=`<div class="g2"><div class="cc"><h3>🔔 Active Alerts (${alerts.filter(a=>a.type!=='ok').length})</h3><div class="ccsub">Auto-generated</div><div class="alist">${alerts.map(a=>`<div class="ai ${a.type}"><div class="att">${a.type==='danger'?'🔴':a.type==='warn'?'🟡':'✅'} ${a.title}</div><div class="ats">${a.sub}</div></div>`).join('')}</div></div><div class="cc"><h3>📊 Column Health</h3><div class="ccsub">Commercial fill rate</div><div class="plist">${ca.map(c=>{var pct=Math.round(c.total/Math.max(commData.length,1)*100);var col=pct===100?'#22d3a5':pct>70?'#f59e0b':'#ef4444';return`<div class="pi"><div class="ph"><span>${esc(c.h)}</span><span style="color:${col}">${pct}%</span></div><div class="pt"><div class="pf" style="width:${pct}%;background:${col}"></div></div></div>`;}).join('')}</div></div></div>`;
 }
 
-// ════════════════════════════════════════════
-// DRILL DOWN ENGINE
-// ════════════════════════════════════════════
+// DRILL DOWN
 function bindDrillClicks(container){
-  container.querySelectorAll('[data-drill-col]').forEach(function(el){
-    el.addEventListener('click', function(e){
-      if(e.target.closest('[data-drill-val]')&&e.target.closest('[data-drill-val]')!==this) return;
-      drillColumn(this.dataset.drillSheet, this.dataset.drillCol);
-    });
-  });
-  container.querySelectorAll('[data-drill-val]').forEach(function(el){
-    el.addEventListener('click', function(e){
-      e.stopPropagation();
-      var parts=this.dataset.drillVal.split('|||');
-      drillColumnValue(this.dataset.drillSheet, parts[0], parts[1]);
-    });
-  });
-  container.querySelectorAll('[data-drill-num]').forEach(function(el){
-    el.addEventListener('click', function(e){
-      e.stopPropagation();
-      drillNumeric(this.dataset.drillSheet, this.dataset.drillNum);
-    });
-  });
+  container.querySelectorAll('[data-drill-col]').forEach(el=>el.addEventListener('click',function(e){if(e.target.closest('[data-drill-val]')&&e.target.closest('[data-drill-val]')!==this)return;drillColumn(this.dataset.drillSheet,this.dataset.drillCol);}));
+  container.querySelectorAll('[data-drill-val]').forEach(el=>el.addEventListener('click',function(e){e.stopPropagation();var p=this.dataset.drillVal.split('|||');drillColumnValue(this.dataset.drillSheet,p[0].trim(),p[1]);}));
+  container.querySelectorAll('[data-drill-num]').forEach(el=>el.addEventListener('click',function(e){e.stopPropagation();drillNumeric(this.dataset.drillSheet,this.dataset.drillNum);}));
 }
-
-function openDrill(title, subtitle, bodyHtml){
-  drillStack.push({title:title, subtitle:subtitle, bodyHtml:bodyHtml});
-  renderDrill();
-}
-
+function openDrill(title,subtitle,bodyHtml){drillStack.push({title,subtitle,bodyHtml});renderDrill();}
 function renderDrill(){
   var cur=drillStack[drillStack.length-1];
   document.getElementById('dtitle').textContent=cur.title;
   document.getElementById('dsubtitle').textContent=cur.subtitle||'';
   document.getElementById('backBtn').style.display=drillStack.length>1?'':'none';
-  var body=document.getElementById('dbody');
-  body.innerHTML=cur.bodyHtml;
+  var body=document.getElementById('dbody');body.innerHTML=cur.bodyHtml;
   document.getElementById('doverlay').classList.add('open');
   bindDrillClicks(body);
-  setTimeout(function(){
-    body.querySelectorAll('[data-chart]').forEach(function(el){
-      var d=JSON.parse(el.dataset.chart);
-      drawChart(el.id, d.type, d.labels, d.vals, d.color);
-    });
-  },60);
+  setTimeout(()=>{body.querySelectorAll('[data-chart]').forEach(el=>{var d=JSON.parse(el.dataset.chart);if(d.type==='doughnut')drawDoughnut(el.id,d.labels,d.vals);else drawBar(el.id,d.labels,d.vals,d.color);});},60);
+}
+function drillBack(){drillStack.pop();if(drillStack.length)renderDrill();else closeDrill();}
+function closeDrill(){document.getElementById('doverlay').classList.remove('open');drillStack=[];}
+
+function drillColumn(sheet,colName){
+  var isE=sheet==='express',data=isE?exprData:commData,headers=isE?exprHeaders:commHeaders;
+  var col=analyseColumns(headers,data).find(c=>c.h===colName);if(!col)return;
+  var top=topN(col.freq,20),total=data.length;
+  var isAddr=colName.toLowerCase().includes('delivery')||colName.toLowerCase().includes('address');
+  var addrZoneHtml='';
+  if(isAddr){var zoneMap={};data.forEach(r=>{var z=extractArea(r[colName]||'');if(z)zoneMap[z]=(zoneMap[z]||0)+1;});var zones=Object.entries(zoneMap).sort((a,b)=>b[1]-a[1]);var cdata=JSON.stringify({type:'doughnut',labels:zones.slice(0,8).map(x=>x[0]),vals:zones.slice(0,8).map(x=>x[1])});var zbars=zones.map((kv,i)=>{var v=kv[0],c=kv[1],p=Math.round(c/total*100);return`<div class="sbl-row" data-drill-val="${esc(colName)}|||${esc(v)}" data-drill-sheet="${sheet}"><div class="sbl-label">${esc(v)}</div><div class="sbl-track"><div class="sbl-fill" style="width:${Math.max(p,2)}%;background:${PAL[i]}"></div></div><div class="sbl-count">${c}</div><div class="sbl-pct">${p}%</div></div>`;}).join('');addrZoneHtml=`<div class="g2" style="margin-bottom:12px"><div class="cc"><h3>📍 Zones (click to filter)</h3><div class="sbl-list">${zbars}</div></div><div class="cc"><h3>📍 Zone Distribution</h3><div class="chwrap" style="height:190px"><canvas id="zc1" data-chart='${cdata}'></canvas></div></div></div>`;}
+  var cdata2=JSON.stringify({type:'doughnut',labels:top.slice(0,8).map(x=>x[0]),vals:top.slice(0,8).map(x=>x[1])});
+  var bars=top.map((kv,i)=>{var v=kv[0],c=kv[1],p=Math.round(c/total*100);return`<div class="sbl-row" data-drill-val="${esc(colName)}|||${esc(v)}" data-drill-sheet="${sheet}"><div class="sbl-label" title="${esc(v)}">${esc(v||'(blank)')}</div><div class="sbl-track"><div class="sbl-fill" style="width:${Math.max(p,2)}%;background:${PAL[i%PAL.length]}"></div></div><div class="sbl-count">${c}</div><div class="sbl-pct">${p}%</div></div>`;}).join('');
+  openDrill(colName,`${col.total} values · ${col.unique.length} unique`,addrZoneHtml+`<div class="g2"><div class="cc"><h3>Distribution</h3><div class="chwrap" style="height:190px"><canvas id="dc1" data-chart='${cdata2}'></canvas></div></div><div class="cc"><h3>All Values — click to filter</h3><div class="sbl-list">${bars}</div></div></div>`);
 }
 
-function drillBack(){ drillStack.pop(); if(drillStack.length) renderDrill(); else closeDrill(); }
-function closeDrill(){ document.getElementById('doverlay').classList.remove('open'); drillStack=[]; }
-
-function drillColumn(sheet, colName){
-  var isE=sheet==='express', data=isE?exprData:commData, headers=isE?exprHeaders:commHeaders;
-  var col=analyseColumns(headers,data).find(function(c){return c.h===colName;});
-  if(!col) return;
-  var top=topN(col.freq,20);
-  var total=data.length;
-  var cid='drill_col_chart';
-  var chartData=JSON.stringify({type:'doughnut',labels:top.slice(0,8).map(function(x){return x[0];}),vals:top.slice(0,8).map(function(x){return x[1];})});
-  var bars=top.map(function(kv,i){
-    var v=kv[0],c=kv[1],p=Math.round(c/total*100);
-    return'<div class="sbl-row" data-drill-val="'+esc(colName)+'|||'+esc(v)+'" data-drill-sheet="'+sheet+'">'+
-      '<div class="sbl-label" title="'+esc(v)+'">'+esc(v||'(blank)')+'</div>'+
-      '<div class="sbl-track"><div class="sbl-fill" style="width:'+Math.max(p,2)+'%;background:'+PAL[i%PAL.length]+'"></div></div>'+
-      '<div class="sbl-count">'+c+'</div><div class="sbl-pct">'+p+'%</div></div>';
-  }).join('');
-  var html='<div class="g2">'+
-    '<div class="cc"><h3>Distribution</h3><div class="ccsub">'+col.unique.length+' unique values</div>'+
-      '<canvas id="'+cid+'" style="max-height:240px" data-chart=\''+chartData+'\'></canvas>'+
-    '</div>'+
-    '<div class="cc"><h3>All Values — click to see records</h3><div class="ccsub">Ranked by count</div>'+
-      '<div class="sbl-list">'+bars+'</div>'+
-    '</div>'+
-  '</div>';
-  openDrill(colName, col.total+' values · '+col.unique.length+' unique', html);
+function drillColumnValue(sheet,colName,value){
+  var isE=sheet==='express',data=isE?exprData:commData,headers=isE?exprHeaders:commHeaders;
+  var isAddr=colName.toLowerCase().includes('delivery')||colName.toLowerCase().includes('address');
+  var filtered=data.filter(r=>{var v=(r[colName]||'').trim();if(isAddr){var z=extractArea(v);return z===value||v===value;}return v===value.trim();});
+  var fa=analyseColumns(headers,filtered),numCols=fa.filter(c=>c.isNumeric&&c.sum!=null);
+  var otherCats=fa.filter(c=>c.isCat&&!c.isDate&&!c.isId&&c.h!==colName&&c.unique.length>=2&&c.unique.length<=15&&c.total>0).slice(0,4);
+  var showCols=headers.filter(h=>!EXPR_AUTO.includes(h)).slice(0,10);
+  var stats=`<div class="dstats"><div class="dsc"><div class="dl">Records</div><div class="dv">${filtered.length}</div><div class="ds">matching</div></div><div class="dsc"><div class="dl">% of Total</div><div class="dv">${Math.round(filtered.length/Math.max(data.length,1)*100)}%</div><div class="ds">of ${data.length}</div></div>${numCols.map(c=>`<div class="dsc"><div class="dl">${esc(c.h)}</div><div class="dv">${Math.round(c.sum).toLocaleString()}</div><div class="ds">Avg: ${c.avg.toFixed(1)}</div></div>`).join('')}</div>`;
+  var subs='';if(otherCats.length){var pairs='';for(var i=0;i<otherCats.length;i+=2){var c1=otherCats[i],c2=otherCats[i+1];var b1=topN(c1.freq,5).map((kv,j)=>mkBarRow(sheet,c1.h,kv[0],kv[1],filtered.length,j)).join('');var b2=c2?topN(c2.freq,5).map((kv,j)=>mkBarRow(sheet,c2.h,kv[0],kv[1],filtered.length,j)).join(''):'';pairs+=`<div class="g2" style="margin-bottom:10px"><div class="cc"><h3>${esc(c1.h)}</h3><div class="sbl-list">${b1}</div></div>${c2?`<div class="cc"><h3>${esc(c2.h)}</h3><div class="sbl-list">${b2}</div></div>`:''}</div>`;}subs=pairs;}
+  var tbl=`<div class="cc"><h3>${filtered.length} Matching Records</h3><div class="dtscroll"><table class="dtable"><thead><tr><th>#</th>${showCols.map(h=>`<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${filtered.map((r,i)=>`<tr><td style="color:var(--text3)">${i+1}</td>${showCols.map(h=>`<td title="${esc(r[h]||'')}">${esc(r[h]||'')||'—'}</td>`).join('')}</tr>`).join('')}</tbody></table></div></div>`;
+  openDrill(`${colName}: "${value}"`,`${filtered.length} matching records`,stats+subs+tbl);
 }
 
-function drillColumnValue(sheet, colName, value){
-  var isE=sheet==='express', data=isE?exprData:commData, headers=isE?exprHeaders:commHeaders;
-  var filtered=data.filter(function(r){return (r[colName]||'').trim()===(value||'').trim();});
-  var fa=analyseColumns(headers,filtered);
-  var numCols=fa.filter(function(c){return c.isNumeric&&c.sum!=null;});
-  var otherCats=fa.filter(function(c){return c.isCat&&!c.isDate&&!c.isId&&c.h!==colName&&c.unique.length>=2&&c.unique.length<=15&&c.total>0;}).slice(0,4);
-  var showCols=headers.filter(function(h){return !EXPR_AUTO.includes(h);}).slice(0,10);
-
-  var statsHtml='<div class="dstats">'+
-    '<div class="dsc"><div class="dl">Records</div><div class="dv">'+filtered.length+'</div><div class="ds">matching this value</div></div>'+
-    '<div class="dsc"><div class="dl">% of Total</div><div class="dv">'+Math.round(filtered.length/Math.max(data.length,1)*100)+'%</div><div class="ds">of '+data.length+' total</div></div>'+
-    numCols.map(function(c){return'<div class="dsc"><div class="dl">'+esc(c.h)+'</div><div class="dv">'+Math.round(c.sum).toLocaleString()+'</div><div class="ds">Avg: '+c.avg.toFixed(1)+'</div></div>';}).join('')+
-  '</div>';
-
-  var subHtml='';
-  if(otherCats.length){
-    var pairs='';
-    for(var i=0;i<otherCats.length;i+=2){
-      var c1=otherCats[i],c2=otherCats[i+1];
-      var b1=topN(c1.freq,5).map(function(kv,j){
-        var v2=kv[0],ct=kv[1],p=Math.round(ct/filtered.length*100);
-        return'<div class="sbl-row" data-drill-val="'+esc(c1.h)+'|||'+esc(v2)+'" data-drill-sheet="'+sheet+'">'+
-          '<div class="sbl-label">'+esc(v2)+'</div>'+
-          '<div class="sbl-track"><div class="sbl-fill" style="width:'+Math.max(p,2)+'%;background:'+PAL[j]+'"></div></div>'+
-          '<div class="sbl-count">'+ct+'</div><div class="sbl-pct">'+p+'%</div></div>';
-      }).join('');
-      var b2=c2?topN(c2.freq,5).map(function(kv,j){
-        var v2=kv[0],ct=kv[1],p=Math.round(ct/filtered.length*100);
-        return'<div class="sbl-row" data-drill-val="'+esc(c2.h)+'|||'+esc(v2)+'" data-drill-sheet="'+sheet+'">'+
-          '<div class="sbl-label">'+esc(v2)+'</div>'+
-          '<div class="sbl-track"><div class="sbl-fill" style="width:'+Math.max(p,2)+'%;background:'+PAL[j]+'"></div></div>'+
-          '<div class="sbl-count">'+ct+'</div><div class="sbl-pct">'+p+'%</div></div>';
-      }).join(''):'';
-      pairs+='<div class="g2" style="margin-bottom:12px">'+
-        '<div class="cc"><h3>'+esc(c1.h)+'</h3><div class="ccsub">Within this filter</div><div class="sbl-list">'+b1+'</div></div>'+
-        (c2?'<div class="cc"><h3>'+esc(c2.h)+'</h3><div class="ccsub">Within this filter</div><div class="sbl-list">'+b2+'</div></div>':'')+
-      '</div>';
-    }
-    subHtml=pairs;
-  }
-
-  var tableHtml='<div class="cc"><h3>All '+filtered.length+' Matching Records</h3><div class="ccsub" style="margin-bottom:10px">Showing first 10 columns</div>'+
-    '<div class="dtscroll"><table class="dtable">'+
-      '<thead><tr><th>#</th>'+showCols.map(function(h){return'<th>'+esc(h)+'</th>';}).join('')+'</tr></thead>'+
-      '<tbody>'+filtered.map(function(r,i){
-        return'<tr><td style="color:var(--text3)">'+( i+1)+'</td>'+showCols.map(function(h){return'<td title="'+esc(r[h]||'')+'">'+esc(r[h]||'')||'—'+'</td>';}).join('')+'</tr>';
-      }).join('')+'</tbody>'+
-    '</table></div></div>';
-
-  openDrill(colName+': "'+value+'"', filtered.length+' matching records', statsHtml+subHtml+tableHtml);
+function drillNumeric(sheet,colName){
+  var isE=sheet==='express',data=isE?exprData:commData,headers=isE?exprHeaders:commHeaders;
+  var col=analyseColumns(headers,data).find(c=>c.h===colName);if(!col||!col.isNumeric)return;
+  var mn=col.min,mx=col.max,range=mx-mn||1,buckets=6,bSize=range/buckets;
+  var bLabels=Array.from({length:buckets},(_,i)=>`${Math.round(mn+i*bSize)}–${Math.round(mn+(i+1)*bSize)}`);
+  var bVals=Array(buckets).fill(0);col.numVals.forEach(v=>{var b=Math.min(Math.floor((v-mn)/bSize),buckets-1);bVals[b]++;});
+  var cdata=JSON.stringify({type:'bar',labels:bLabels,vals:bVals,color:'#22d3a5'});
+  openDrill(`${colName} — Analysis`,`${col.numVals.length} values`,`<div class="dstats"><div class="dsc"><div class="dl">Total</div><div class="dv">${Math.round(col.sum).toLocaleString()}</div></div><div class="dsc"><div class="dl">Average</div><div class="dv">${col.avg.toFixed(1)}</div></div><div class="dsc"><div class="dl">Max</div><div class="dv">${col.max.toFixed(0)}</div></div><div class="dsc"><div class="dl">Min</div><div class="dv">${col.min.toFixed(0)}</div></div><div class="dsc"><div class="dl">Count</div><div class="dv">${col.numVals.length}</div></div><div class="dsc"><div class="dl">Missing</div><div class="dv">${col.missing}</div></div></div><div class="cc"><h3>Distribution</h3><div class="chwrap" style="height:200px"><canvas id="ndc" data-chart='${cdata}'></canvas></div></div>`);
 }
 
-function drillNumeric(sheet, colName){
-  var isE=sheet==='express', data=isE?exprData:commData, headers=isE?exprHeaders:commHeaders;
-  var col=analyseColumns(headers,data).find(function(c){return c.h===colName;});
-  if(!col||!col.isNumeric) return;
-  var vals=col.numVals, mn=col.min, mx=col.max, range=mx-mn||1;
-  var buckets=6, bSize=range/buckets;
-  var bLabels=Array.from({length:buckets},function(_,i){return Math.round(mn+i*bSize)+'–'+Math.round(mn+(i+1)*bSize);});
-  var bVals=Array(buckets).fill(0);
-  vals.forEach(function(v){var b=Math.min(Math.floor((v-mn)/bSize),buckets-1);bVals[b]++;});
-  var cid='drill_num_chart';
-  var chartData=JSON.stringify({type:'bar',labels:bLabels,vals:bVals,color:'#22d3a5'});
-  var html='<div class="dstats">'+
-    '<div class="dsc"><div class="dl">Total</div><div class="dv">'+Math.round(col.sum).toLocaleString()+'</div><div class="ds">sum</div></div>'+
-    '<div class="dsc"><div class="dl">Average</div><div class="dv">'+col.avg.toFixed(1)+'</div><div class="ds">per record</div></div>'+
-    '<div class="dsc"><div class="dl">Max</div><div class="dv">'+col.max.toFixed(0)+'</div><div class="ds">highest</div></div>'+
-    '<div class="dsc"><div class="dl">Min</div><div class="dv">'+col.min.toFixed(0)+'</div><div class="ds">lowest</div></div>'+
-    '<div class="dsc"><div class="dl">Count</div><div class="dv">'+vals.length+'</div><div class="ds">of '+data.length+' rows</div></div>'+
-    '<div class="dsc"><div class="dl">Missing</div><div class="dv">'+col.missing+'</div><div class="ds">empty rows</div></div>'+
-  '</div>'+
-  '<div class="cc"><h3>Value Distribution</h3><div class="ccsub">How values are spread across ranges</div>'+
-    '<div style="height:200px"><canvas id="'+cid+'" data-chart=\''+chartData+'\'></canvas></div>'+
-  '</div>';
-  openDrill(colName+' — Numeric Analysis', vals.length+' values', html);
-}
-
-// ════════════════════════════════════════════
 // MODAL
-// ════════════════════════════════════════════
-function openModal(sheet, rowIdx){
-  modalState={sheet:sheet, rowIdx:rowIdx};
-  var isE=sheet==='express', headers=isE?exprHeaders:commHeaders, data=rowIdx>=0?(isE?exprData[rowIdx]:commData[rowIdx]):{};
+function openModal(sheet,rowIdx){
+  modalState={sheet,rowIdx};
+  var isE=sheet==='express',headers=isE?exprHeaders:commHeaders,data=rowIdx>=0?(isE?exprData[rowIdx]:commData[rowIdx]):{};
   document.getElementById('mtitle').textContent=(rowIdx<0?'Add New ':'Edit ')+(isE?'Express Shipment':'Commercial Entry');
-  document.getElementById('mnote').textContent=cfg.isDemo?'Demo — not synced':isE?'★ auto-computed fields are read-only':'';
-  if(!headers.length){document.getElementById('formContent').innerHTML='<p style="color:var(--text3)">No headers found — load data first.</p>';document.getElementById('overlay').classList.add('open');return;}
-  var html='<div class="fgrid">';
-  headers.forEach(function(h,i){
-    var isA=isE&&EXPR_AUTO.includes(h), val=data[h]||'';
-    html+='<div class="ff"><label>'+esc(h)+(isA?' <span class="autotag">auto</span>':'')+'</label>'+
-      '<input type="text" id="ff_'+i+'" value="'+esc(val)+'" '+(isA?'readonly placeholder="Auto-computed by formula"':'placeholder="'+esc(h)+'"')+'>'+
-    '</div>';
-  });
-  html+='</div>';
-  document.getElementById('formContent').innerHTML=html;
+  if(!headers.length){document.getElementById('formContent').innerHTML='<p style="color:var(--text3)">No headers found.</p>';document.getElementById('overlay').classList.add('open');return;}
+  document.getElementById('formContent').innerHTML=`<div class="fgrid">${headers.map((h,i)=>{var isA=isE&&EXPR_AUTO.includes(h),val=data[h]||'';return`<div class="ff"><label>${esc(h)}${isA?'<span class="autotag">auto</span>':''}</label><input type="text" id="ff_${i}" value="${esc(val)}" ${isA?'readonly placeholder="Auto-computed by formula"':'placeholder="'+esc(h)+'"'}></div>`;}).join('')}</div>`;
   document.getElementById('overlay').classList.add('open');
 }
-
-function closeModal(){ document.getElementById('overlay').classList.remove('open'); }
-
-function saveEntry(){
-  var s=modalState.sheet, ri=modalState.rowIdx, isE=s==='express';
-  var headers=isE?exprHeaders:commHeaders;
-  var newRow={}, arr=headers.map(function(h,i){var v=document.getElementById('ff_'+i)?.value||'';newRow[h]=v;return v;});
-  var btn=document.getElementById('saveBtn');
-  btn.disabled=true; btn.textContent='Saving...';
-  writeSheet(ri<0?'append':'update', isE?'express':'commercial', arr, ri<0?null:ri+2)
-    .then(function(){
-      if(ri<0){if(isE)exprData.push(newRow);else commData.push(newRow);}
-      else{if(isE)exprData[ri]=newRow;else commData[ri]=newRow;}
-      closeModal(); updateBadges(); renderPage();
-      toast((ri<0?'Entry added':'Updated')+(cfg.isDemo?'':' · synced to Google Sheet'),'ok');
-    })
-    .catch(function(e){ toast('Save failed: '+e.message,'err'); })
-    .finally(function(){ btn.disabled=false; btn.textContent='Save'; });
+function closeModal(){document.getElementById('overlay').classList.remove('open');}
+async function saveEntry(){
+  var{sheet,rowIdx}=modalState,isE=sheet==='express',headers=isE?exprHeaders:commHeaders;
+  var newRow={},arr=headers.map((h,i)=>{var v=document.getElementById('ff_'+i)?.value||'';newRow[h]=v;return v;});
+  var btn=document.getElementById('saveBtn');btn.disabled=true;btn.textContent='Saving...';
+  try{
+    await writeSheet(rowIdx<0?'append':'update',isE?'express':'commercial',arr,rowIdx<0?null:rowIdx+2);
+    if(rowIdx<0){if(isE)exprData.push(newRow);else commData.push(newRow);}else{if(isE)exprData[rowIdx]=newRow;else commData[rowIdx]=newRow;}
+    closeModal();updateBadges();renderPage();toast((rowIdx<0?'Entry added':'Updated')+' · synced to Google Sheet','ok');
+  }catch(e){toast('Save failed: '+e.message,'err');}
+  btn.disabled=false;btn.textContent='Save';
+}
+async function delRow(sheet,idx){
+  if(!confirm('Delete this row? Will also remove from Google Sheet.'))return;
+  try{
+    await writeSheet('delete',sheet==='express'?'express':'commercial',[],idx+2);
+    if(sheet==='express')exprData.splice(idx,1);else commData.splice(idx,1);
+    updateBadges();renderPage();toast('Deleted','ok');
+  }catch(e){toast('Delete failed: '+e.message,'err');}
 }
 
-function delRow(sheet, idx){
-  if(!confirm('Delete this row? Will also remove from Google Sheet.')) return;
-  var isE=sheet==='express';
-  writeSheet('delete', isE?'express':'commercial', [], idx+2)
-    .then(function(){
-      if(isE)exprData.splice(idx,1);else commData.splice(idx,1);
-      updateBadges(); renderPage(); toast('Deleted','ok');
-    })
-    .catch(function(e){ toast('Delete failed: '+e.message,'err'); });
-}
-
-// ════════════════════════════════════════════
-// CHART HELPERS
-// ════════════════════════════════════════════
-function drawChart(id, type, labels, vals, color){
-  var el=document.getElementById(id); if(!el) return;
-  if(charts[id]) charts[id].destroy();
-  if(type==='doughnut'){
-    charts[id]=new Chart(el,{type:'doughnut',
-      data:{labels:labels,datasets:[{data:vals,backgroundColor:PAL.slice(0,labels.length),borderColor:'#1a1d2e',borderWidth:2}]},
-      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{color:'#9ba3c0',font:{size:10},boxWidth:10,padding:8}}}}});
-  } else {
-    charts[id]=new Chart(el,{type:'bar',
-      data:{labels:labels,datasets:[{data:vals,backgroundColor:(color||'#4f7cff')+'b3',borderColor:color||'#4f7cff',borderWidth:1,borderRadius:5}]},
-      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
-        scales:{x:{ticks:{color:'#5c6285',font:{size:10},maxRotation:30},grid:{color:'rgba(42,45,69,.4)'}},
-                y:{ticks:{color:'#5c6285',font:{size:10}},grid:{color:'rgba(42,45,69,.4)'}}}}});
-  }
-}
-
-// ════════════════════════════════════════════
-// DEMO DATA
-// ════════════════════════════════════════════
-function genDemo(){
-  commHeaders=['File No','Date','Consignee','Shipper','Country of Origin','Port of Loading','Port of Discharge','Commodity','HS Code','Weight (KGS)','CBM','No. of Pkgs','Mode','Incoterm','Status','CHB','CFS','Mode of delivery','Delivery Address','Agent','Remarks'];
-  var stats=['Pending','Under Clearance','Cleared','Delivered','On Hold','Delayed'];
-  var origins=['China','UAE','USA','Germany','UK','India','Turkey'];
-  var modes=['Air','Sea','Road'];
-  var incots=['DDP','DAP','DDU'];
-  var chbs=['WC','Regal','Reagal','RB','CH Robinson'];
-  var cfss=['AMI','KW','Direct airline recovery','WC','1C'];
-  var dels=['UPS','LTL','FTL','FTL / LTL','Air + Sea'];
-  var comm=['Electronics','Garments','Auto Parts','Machinery','Food Items'];
-  var ports=['Karachi','Lahore','Islamabad','Jebel Ali','Shanghai','Hamburg'];
-  var addresses=[
-    'Warehouse 4, DIP 1, Dubai, UAE',
-    'Plot 12, JAFZA, Jebel Ali, Dubai',
-    'Al Quoz Industrial Area 3, Dubai',
-    'Ras Al Khor Industrial Area 2, Dubai',
-    'SAIF Zone, Sharjah, UAE',
-    'Hamriyah Free Zone, Sharjah',
-    'Abu Dhabi Industrial City, ICAD II',
-    'Mussafah Industrial Area, Abu Dhabi',
-    'DHL Logistics Park, DWC, Dubai',
-    'Technopark, Dubai Silicon Oasis'
-  ];
-  commData=Array.from({length:35},function(_,i){return{
-    'File No':'COM-'+(2001+i),'Date':'2026-0'+((i%9)+1)+'-'+String((i%28)+1).padStart(2,'0'),
-    'Consignee':'Company '+(i+1),'Shipper':'Shipper '+(i%10+1),
-    'Country of Origin':origins[i%origins.length],'Port of Loading':ports[i%7],
-    'Port of Discharge':ports[(i+2)%7],'Commodity':comm[i%comm.length],
-    'HS Code':'8471.'+String(30+i%70).padStart(2,'0'),
-    'Weight (KGS)':String(Math.round(50+Math.random()*950)),
-    'CBM':String((1+Math.random()*9).toFixed(2)),'No. of Pkgs':String(1+i%30),
-    'Mode':modes[i%3],'Incoterm':incots[i%3],'Status':stats[i%stats.length],
-    'CHB':chbs[i%chbs.length],'CFS':cfss[i%cfss.length],'Mode of delivery':dels[i%dels.length],
-    'Delivery Address':addresses[i%addresses.length],
-    'Agent':'Agent '+(i%5+1),'Remarks':i%5===0?'Urgent':''
-  };});
-  exprHeaders=['MAWB','FLIGHT No.','OC Clearance Partner','Number Of Pkgs','HANDOVER DATE','Expected FLYING DATE','Port','ETD (Local airport time)','ATD (Local airport time)','ETA (Local airport time)','Shipper','Consignee','Weight (KG)','Commodity'];
-  var epts=['DXB','LHR','FRA','JFK','SIN','CDG','AMS','DOH'];
-  var partners=['Al Futtaim','Emirates SkyCargo','DHL','FedEx','UPS','Aramex'];
-  exprData=Array.from({length:42},function(_,i){return{
-    'MAWB':'176-'+String(10000000+i*1337),'FLIGHT No.':'EK-'+String(400+i%200),
-    'OC Clearance Partner':partners[i%partners.length],'Number Of Pkgs':String(1+i%25),
-    'HANDOVER DATE':'2026-0'+((i%9)+1)+'-'+String((i%28)+1).padStart(2,'0'),
-    'Expected FLYING DATE':'2026-0'+((i%9)+1)+'-'+String(((i+2)%28)+1).padStart(2,'0'),
-    'Port':epts[i%epts.length],
-    'ETD (Local airport time)':'2026-0'+((i%9)+1)+'-'+String(((i+1)%28)+1).padStart(2,'0')+' 14:00',
-    'ATD (Local airport time)':i%3===0?'—':'2026-0'+((i%9)+1)+'-'+String(((i+1)%28)+1).padStart(2,'0')+' 14:35',
-    'ETA (Local airport time)':'2026-0'+((i%9)+2)+'-'+String(((i+3)%28)+1).padStart(2,'0')+' 08:00',
-    'Shipper':'Shipper '+(i%12+1),'Consignee':'Consignee '+(i%15+1),
-    'Weight (KG)':String(Math.round(10+Math.random()*500)),'Commodity':comm[i%comm.length]
-  };});
-}
-
-// ════════════════════════════════════════════
-// UTILS
-// ════════════════════════════════════════════
-function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
-function toast(msg,type){
-  var w=document.getElementById('twrap'),el=document.createElement('div');
-  el.className='toast'+(type==='ok'?' ok':type==='err'?' err':type==='info'?' info':'');
-  el.textContent=msg; w.appendChild(el);
-  requestAnimationFrame(function(){el.classList.add('show');});
-  setTimeout(function(){el.classList.remove('show');setTimeout(function(){el.remove();},400);},3500);
-}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+function toast(msg,type){var w=document.getElementById('twrap'),el=document.createElement('div');el.className='toast'+(type==='ok'?' ok':type==='err'?' err':type==='info'?' info':'');el.textContent=msg;w.appendChild(el);requestAnimationFrame(()=>el.classList.add('show'));setTimeout(()=>{el.classList.remove('show');setTimeout(()=>el.remove(),400);},3500);}
 </script>
 </body>
 </html>
